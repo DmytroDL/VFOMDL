@@ -1,0 +1,7 @@
+request_status_id,request_status_value
+1,Waiting to be processed
+2,Exported for external processing
+3,Paid
+4,Cancelled
+5,Request faulted by collection subsystem
+6,Re-presented

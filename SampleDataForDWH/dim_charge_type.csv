@@ -1,0 +1,6 @@
+charge_type_id,charge_type_name
+1,Initiation.
+2,Periodic.
+3,Termination.
+4,Usage.
+5,One-time charge.

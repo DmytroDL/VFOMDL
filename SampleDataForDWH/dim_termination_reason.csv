@@ -1,0 +1,2 @@
+termination_reason_id,termination_reason_value,created_when,first_time_in_applet,modified_when,termination_reason_description,extraction_timestamp,date,history_date
+9146606530413754840,Termination,2016-12-31 00:00:00,1,2016-12-31 00:00:00,Default termination reason.,2020-10-04 00:00:00,2020-10-04,2020-10-04-00-00-00

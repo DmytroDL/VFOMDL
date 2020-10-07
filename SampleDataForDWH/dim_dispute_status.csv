@@ -1,0 +1,5 @@
+dispute_status_id,dispute_status_name
+P,Pending
+A,Accepted
+R,Rejected
+C,Cancelled

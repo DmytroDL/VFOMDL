@@ -1,0 +1,6 @@
+adjustment_status_id,adjustment_status_name
+1,Pending approval.
+2,Cancelled.
+3,Approved.
+4,Rejected.
+5,Not billed in IRB.

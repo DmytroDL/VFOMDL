@@ -1,0 +1,7 @@
+otc_status_id,otc_status_name
+1,Created.
+2,Cancelled.
+3,In Progress.
+4,Success. 
+5,In error.
+6,Not processed.

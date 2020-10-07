@@ -1,0 +1,9 @@
+aggregation_level_id,aggregation_level_name
+1,Account.
+2,Product.
+3,Package.
+4,Customer hierarchy.
+5,Event source.
+6,Customer.
+7,Whole customer hierarchy.
+8,Subscription.

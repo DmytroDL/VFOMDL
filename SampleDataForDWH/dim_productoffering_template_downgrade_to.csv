@@ -1,0 +1,20 @@
+productoffering_template_id,productoffering_template_name,productoffering_downgrade_template_id,productoffering_downgrade_template_name
+91565993520658,Call Display Template,91565993520666,Voicemail Postpaid Template
+91565993520659,Premium Phone Number Template,91565993520667,Premium Phone Number Postpaid Template
+91565993520659,Template Bar Incoming Calls,91565993520667,Ported Phone Number Postpaid Template
+91565993520660,Template Bar SMS,91565993520668,eSIM Postpaid Template
+91565993520660,Template Bar MMS,91565993520668,Roaming Data Template
+91565993520661,Template Bar Outgoing Calls,91565993520669,SIM Card Template
+91565993520661,Template Bar Roaming International Calls,91565993520669,Phone Number Template
+91565993520662,Template Bar Premium SMS,91565993520670,Conference Calling Template
+91565993520662,Template Bar Outgoing Calls (Fraud),91565993520670,Ported Phone Number Template
+91565993520663,Template Bar Roaming Data (Fraud),91565993520671,Change SIM Template
+91565993520663,Smartphone Template,91565993520671,Template Bar Data
+91565993520664,Standalone Equipment Template,91565993520672,Template Bar Roaming Data
+91565993520664,Roaming Postpaid Data Template,91565993520672,Template Bar Premium Voice
+91565993520665,Additional Recurring Data Bucket Template,91565993520673,Resume Fee Template
+91565993520665,Roaming Postpaid Voice Template,91565993520673,Pick Up Delivery Template
+91565993520666,Call Display Postpaid Template,91565993520674,Postponed Return Template
+91565993520665,Additional Recurring Data Bucket Template,91565993520674,Equipment Fees Template
+91565993520665,Roaming Postpaid Voice Template,91565993520675,Tablet Template
+91565993520666,Call Display Postpaid Template,91565993520675,Template Bar Direct Operator Billing (Fraud)

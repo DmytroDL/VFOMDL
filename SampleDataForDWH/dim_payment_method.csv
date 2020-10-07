@@ -1,0 +1,8 @@
+payment_method_id,payment_method_name,sales_start_dat,request_needed_boo,payment_system_id,system_name,system_desc,collection_offset_days,refund_request_boo,account_picklist_boo,mandate_required_boo,revenue_code_id,revenue_code_name,sales_end_dat,request_delay_days,notification_delay,extraction_timestamp,date,history_date
+4,Bank Tranfer,NULL,F,NULL,NULL,NULL,NULL,F,T,F,NULL,NULL,NULL,NULL,NULL,2020-10-04 00:00:00,2020-10-04,2020-10-04-00-00-00
+6,Direct Debit,NULL,T,NULL,NULL,NULL,NULL,F,T,T,NULL,NULL,NULL,NULL,NULL,2020-10-04 00:00:00,2020-10-04,2020-10-04-00-00-00
+3,Postal,NULL,F,NULL,NULL,NULL,NULL,F,F,F,NULL,NULL,NULL,NULL,NULL,2020-10-04 00:00:00,2020-10-04,2020-10-04-00-00-00
+1,Cash,NULL,F,NULL,NULL,NULL,NULL,F,T,F,NULL,NULL,NULL,NULL,NULL,2020-10-04 00:00:00,2020-10-04,2020-10-04-00-00-00
+7,Topup,NULL,F,NULL,NULL,NULL,NULL,F,T,F,NULL,NULL,NULL,NULL,NULL,2020-10-04 00:00:00,2020-10-04,2020-10-04-00-00-00
+2,Bank Card,NULL,F,NULL,NULL,NULL,NULL,F,F,F,NULL,NULL,NULL,NULL,NULL,2020-10-04 00:00:00,2020-10-04,2020-10-04-00-00-00
+5,Direct Debit [SEPA],NULL,T,NULL,NULL,NULL,NULL,F,T,T,NULL,NULL,NULL,NULL,NULL,2020-10-04 00:00:00,2020-10-04,2020-10-04-00-00-00

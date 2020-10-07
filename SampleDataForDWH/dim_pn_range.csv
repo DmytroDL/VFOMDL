@@ -1,0 +1,2 @@
+range_name,range_id,parent_range_id,first_number,last_number,own_first_number,own_last_number,pn_owner_id,pn_owner_name,pn_pool_id,pn_pool_name,extraction_timestamp,date,history_date
+754 11 0000 - 9999,9156806932513867400,9156806935813867300,754110000,754119999,0000,9999,NULL,NULL,NULL,NULL,2020-10-04 00:00:00,2020-10-04,2020-10-04-00-00-00

@@ -1,0 +1,19 @@
+charge_sub_type_id,charge_sub_type_name
+-101,Standard initiation (no charge).
+-102,Reactivation (no charge).
+-103,Increments (no charge).
+-201,Standard recurring (no charge).
+-202,Suspended recurring (no charge).
+-301,Standard termination (no charge).
+-302,Suspension (no charge).
+-303,Decrements (no charge).
+-304,Early termination (no charge).
+101,Standard initiation.
+102,Reactivation.
+103,Increments.
+201,Standard recurring.
+202,Suspended recurring.
+301,Standard termination.
+302,Suspension.
+303,Decrements.
+304,Early termination.

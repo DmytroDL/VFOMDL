@@ -1,0 +1,14 @@
+fct_prepaid_payments.customer_ref,fct_prepaid_payments.account_num,fct_prepaid_payments.subs_id,fct_prepaid_payments.ocs_subscriber_id,fct_prepaid_payments.bpi_id,fct_prepaid_payments.tariff_plan_id,fct_prepaid_payments.tariff_plan_name,fct_prepaid_payments.event_type,fct_prepaid_payments.event_dtm,fct_prepaid_payments.transaction_id,fct_prepaid_payments.result_message,fct_prepaid_payments.result_code,fct_prepaid_payments.ocs_charged_amount,fct_prepaid_payments.reason,fct_prepaid_payments.hour_number,fct_prepaid_payments.history_date
+1000163941,2000163934,9157818076513909098,6400000004,NULL,NULL,20200824184920,9998885,All procedures executed successfully.,2,5000,NULL,5,NULL,NULL,2020-09-08
+1000163939,2000163932,9157818076513909096,6400000002,NULL,NULL,20161201140517,5E3IY45,All procedures executed successfully.,0,1000,NULL,8,NULL,NULL,2020-09-09
+1000163940,2000163933,9157818076513909097,6400000003,NULL,NULL,20161201153011,PI48PU8,All procedures executed successfully.,1,5000,NULL,8,NULL,NULL,2020-09-09
+1000163939,2000163932,9157818076513909096,6400000002,NULL,NULL,20161201140517,5E3IY45,All procedures executed successfully.,0,1000,NULL,10,NULL,NULL,2020-09-09
+1000163940,2000163933,9157818076513909097,6400000003,NULL,NULL,20161201153011,PI48PU8,All procedures executed successfully.,1,5000,NULL,10,NULL,NULL,2020-09-09
+1000163939,2000163932,9157818076513909096,6400000002,NULL,NULL,20161201140517,5E3IY45,All procedures executed successfully.,0,1000,NULL,9,NULL,NULL,2020-09-09
+1000163940,2000163933,9157818076513909097,6400000003,NULL,NULL,20161201153011,PI48PU8,All procedures executed successfully.,1,5000,NULL,9,NULL,NULL,2020-09-09
+1000163941,2000163934,9157818076513909098,6400000004,NULL,NULL,20170125103852,3796466,All procedures executed successfully.,2,5000,NULL,8,NULL,NULL,2020-09-09
+1000163941,2000163934,9157818076513909098,6400000004,NULL,NULL,20170125103852,3796466,All procedures executed successfully.,2,5000,NULL,10,NULL,NULL,2020-09-09
+1000163941,2000163934,9157818076513909098,6400000004,NULL,NULL,20170125103852,3796466,All procedures executed successfully.,2,5000,NULL,9,NULL,NULL,2020-09-09
+1000163941,2000163934,9157818076513909098,C4366020091011,9157818076513909098,6400000004,Mobile Prepaid 6 GB,debitBalanceRequest,20170125103852,3796466,All procedures executed successfully.,2,5000,reason:Direct debit|channel:CSR|additionalProp1:{},13,2020-09-18
+1000163939,2000163932,9157818076513909096,A4366020001234,9157818076513909096,6400000002,Mobile Prepaid 6 GB,creditBalanceRequest,20161201140517,5E3IY45,All procedures executed successfully.,0,1000,reason:Direct credit|glid:12345678|channel:voucher|additionalProp1:{},13,2020-09-18
+1000163940,2000163933,9157818076513909097,B436602005678,9157818076513909097,6400000003,Mobile Prepaid 6 GB,debitBalancesRequest,20161201153011,PI48PU8,All procedures executed successfully.,1,5000,reason:Direct debit|channel:CSR|additionalProp1:{},13,2020-09-18
