@@ -1,0 +1,3 @@
+customer_ref,account_num,subs_id,dispute_seq,dispute_dtm,bill_seq,dispute_txt,dispute_mny,otc_id,dispute_status_id,dispute_status_value,outcome_desc,subs_product_seq,product_id,event_type_id,dispute_type_id,cps_id,product_seq,charge_type_id,charge_type_value,geneva_user_ora,dispute_class_id,dispute_class_value,tax_override_id,ust_category_id,ust_code_id,decision_dtm,receivable_class_id,created_dtm,otc_seq,group_id,history_date
+customer1,1000002785,234324234,1,24-Jul-19,1,hi,5000,,A,ACTIVE,happy,1,,,1,1,,,,ECAUSER,4,EVENT,,,,24-Jul-19,-1,24-Jul-19,5894.0,1,2020-10-04-00-00-00
+customer442,1000000141,456745764,1,4-Jan-20,2,test,208200,,A,ACTIVE,r,1,,18.0,1,1,,,,ECAUSER,3,One-time charge,,1.0,-1.0,2-Jan-20,-1,2-Jan-20,,1,2020-10-04-00-00-00

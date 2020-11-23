@@ -1,0 +1,6 @@
+customer_ref,account_num,adjustment_seq,adjustment_dat,bill_version,bill_dtm,adjustment_type_id,adjustment_type_value,adjustment_txt,adjustment_net_mny,created_dtm,dispute_seq,adjustment_status_id,adjustment_status_value,budget_centre_seq,bill_seq,cps_id,geneva_user_ora,approved_dtm,outcome_desc,receivable_class_id,adjustment_debt_mny,adjustment_tax_mny,linked_writeoff_payment_seq,billtimecharge_created_adj_boo,history_date
+42342432,1000002785,2,1-Aug-19,1,1-Aug-19,2,Negative without tax,test,1000,1-Aug-19,,1,PENDING,,,1.0,ECAUSER,,,-1,,,,,2020-10-04-00-00-04
+42342432,1000002785,1,24-Jul-19,1,24-Jul-19,1,Negative with tax,?? SHARP AQUOS zero Advanced Black,5000,24-Jul-19,1.0,3,APPROVED,,2.0,,ECAUSER,24-Jul-19,happy,-1,-5500.0,0.0,,,2020-10-04-00-00-05
+123123,1000000141,1,4-Jan-20,1,2-Jan-20,1,Negative with tax,?? NTT_Special_Calls 2019/12/24 18:40:12,208200,2-Jan-20,1.0,3,APPROVED,,3.0,,ECAUSER,2-Jan-20,r,-1,-229020.0,0.0,,,2020-10-04-00-00-06
+123123,1000000141,2,4-Jan-20,1,4-Jan-20,1,Negative with tax,t,500,4-Jan-20,,3,APPROVED,,3.0,1.0,ECAUSER,2-Jan-20,r,-1,-550.0,0.0,,,2020-10-04-00-00-07
+123123,1000000141,3,4-Jan-20,1,4-Jan-20,2,Negative without tax,t,400,4-Jan-20,,3,APPROVED,,3.0,1.0,ECAUSER,2-Jan-20,r,-1,-400.0,0.0,,,2020-10-04-00-00-08

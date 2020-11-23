@@ -1,0 +1,3 @@
+threshold_assesment_criteria_id,threshold_assesment_criteria_name
+0,Exclude reserved quota during notification threshold evaluation
+1,Include reserved quota during notification threshold evaluation

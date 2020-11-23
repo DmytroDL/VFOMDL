@@ -1,0 +1,2 @@
+range_name,range_id,parent_range_id,first_number,last_number,own_first_number,own_last_number,range_status_id,range_status_value,phone_number_pool_id,phone_number_pool_name,extraction_timestamp,date,history_date
+75 110 000 - 9 999,9156806935813867300,9156806934813867300,7511,7511,1,1,5051946053013506923,Free,123456,test_name,2020-11-03 12:04:59.0,2020-11-03,2020-11-03-12-04-59

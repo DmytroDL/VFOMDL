@@ -1,0 +1,9 @@
+otc_class_id,otc_class_name
+1,One-time Charge.
+2,Late Fee.
+3,Late Payment Penalty.
+4,Late Payment Penalty Refund.
+5,Product Creation.
+6,Installment One-time Charge.
+7,Interest One-time Charge.
+8,Rating-Time dynamic discount allocation cost.

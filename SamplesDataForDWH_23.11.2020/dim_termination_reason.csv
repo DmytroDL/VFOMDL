@@ -1,0 +1,2 @@
+termination_reason_id,termination_reason_value,created_when,modified_when,termination_reason_description,extraction_timestamp,date,history_date
+1,Termination,2016-12-31 02:09:59.0,2016-12-31 02:09:59.0,Default termination reason.,2020-11-13 14:04:16.0,2020-11-13,2020-11-13-14-04-16

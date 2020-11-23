@@ -158,8 +158,6 @@
       "sim_card_logical_status_id":"string",
       "ported_to_id":"decimal(20,0)",
       "ported_to_name":"string",
-      "extraction_timestamp":"timestamp",
-      "date":"string",
       "history_date":"string"
    },
     "dim_subscription_activity_indicator": {
@@ -204,6 +202,8 @@
         "event_dtm": "string",
         "event_type": "string",
         "hour_number": "string",
+		"ocs_subscriber_id": "string",
+		"bpi_id": "decimal(20,0)",
         "ocs_charged_amount": "int",
         "reason": "string",
         "result_code": "int",
@@ -212,29 +212,6 @@
         "tariff_plan_id": "decimal(20,0)",
         "tariff_plan_name": "string",
         "transaction_id": "string",
-        "history_date": "string"
-    },
-	"fct_prepaid_union_charges": {
-        "account_num": "string",
-        "customer_ref": "string",
-        "day_before_expire_date": "string",
-        "destination_msisdn": "string",
-        "direction": "string",
-        "duration": "int",
-        "event_dtm": "string",
-        "event_type": "string",
-        "expire_date": "string",
-        "hour_number": "string",
-        "is_top_offer": "string",
-        "msisdn": "string",
-        "number_of_messages": "int",
-        "ocs_charged_amount": "int",
-        "ocs_subscription_id": "string",
-        "productoffering_name": "string",
-        "productoffering_type_value": "string",
-        "source_msisdn": "string",
-        "subs_id": "string",
-        "total_volume": "int",
         "history_date": "string"
     },
     "fct_prepaid_usages": {
@@ -566,11 +543,6 @@
       "date":"string",
       "history_date":"string"
    },
-	"dim_contactmethod_notusefor": {
-		"contact_method_id": "decimal(20,0)",
-		"history_date": "string",
-		"not_use_for_id": "decimal(20,0)"
-	},
 	"dim_credit_class": {
       "credit_class_id":"decimal(20,0)",
       "created_when":"timestamp",
@@ -615,7 +587,7 @@
    },
 	"dim_cust_activity_individ": {
       "activity_id":"decimal(20,0)",
-      "individual_id":"decimal(20,0)",
+      "individ_id":"decimal(20,0)",
       "extraction_timestamp":"timestamp",
       "date":"string",
       "history_date":"string"
@@ -647,7 +619,9 @@
 	"dim_cust_interaction_individ": {
 		"history_date": "string",
 		"individual_id": "decimal(20,0)",
-		"interaction_id": "decimal(20,0)"
+		"interaction_id": "decimal(20,0)",
+		"extraction_timestamp":"timestamp",
+		"date":"string"
 	},
 	"dim_customer_categories": {
 		"category_id": "string",
@@ -725,8 +699,6 @@
       "esim_batch_number":"int",
       "esim_batch_id":"decimal(20,0)",
       "esim_batch_total":"int",
-      "extraction_timestamp":"timestamp",
-      "date":"string",
       "history_date":"string"
    },
 	"dim_event_archive_status": {
@@ -737,7 +709,10 @@
 		"attr_name": "string",
 		"event_attr_num": "decimal(2,0)",
 		"event_type_id": "decimal(9,0)",
-		"history_date": "string"
+		"history_date": "string",
+		"extraction_timestamp":"timestamp",
+		"date":"string"
+		
 	},
 	"dim_eventdiscount": {
 		"additional_priority_num": "decimal(2,0)",
@@ -832,7 +807,9 @@
 		"temp_override_enable_rule_id": "decimal(1,0)",
 		"temp_override_enable_rule_value": "string",
 		"threshold_assesment_criteria_id": "decimal(1,0)",
-		"threshold_assesment_criteria_value": "string"
+		"threshold_assesment_criteria_value": "string",
+		"extraction_timestamp":"timestamp",
+		"date":"string"
 	},
 	"dim_filter_set": {
 		"filter_set_id": "string",
@@ -1187,7 +1164,7 @@
 	"dim_lv_user_status": {
 		"attr_type_def_id": "decimal(20,0)",
 		"user_status_id": "decimal(20,0)",
-		"user_status_id_value": "string"
+		"user_status_value": "string"
 	},
 	"dim_lv_utilization": {
 		"attr_type_def_id": "decimal(20,0)",
@@ -1243,7 +1220,9 @@
 		"sales_end_dat": "timestamp",
 		"sales_start_dat": "timestamp",
 		"system_desc": "string",
-		"system_name": "string"
+		"system_name": "string",
+		"extraction_timestamp":"timestamp",
+		"date":"string"		
 	},
 	"dim_payment_rule": {
 		"payment_rule_id": "string",
@@ -1408,7 +1387,9 @@
 		"default_value": "string",
 		"history_date": "string",
 		"null_group_value": "string",
-		"revenue_feed_id": "decimal(9,0)"
+		"revenue_feed_id": "decimal(9,0)",
+		"extraction_timestamp":"timestamp",
+		"date":"string"
 	},
 	"dim_revenuefeedattributemap": {
 		"attribute_number": "decimal(2,0)",
@@ -1417,7 +1398,9 @@
 		"revenue_feed_id": "decimal(9,0)",
 		"revenue_feed_src_attr_id": "decimal(9,0)",
 		"source_class_id": "decimal(9,0)",
-		"source_id": "decimal(9,0)"
+		"source_id": "decimal(9,0)",
+		"extraction_timestamp":"timestamp",
+		"date":"string"
 	},
 	"dim_revenuefeedsourceclass": {
 		"feed_source_bitfield": "decimal(18,0)",
@@ -1427,7 +1410,9 @@
 		"source_class_id": "decimal(9,0)",
 		"source_class_value": "string",
 		"source_table_value_ora": "string",
-		"source_value_col_ora": "string"
+		"source_value_col_ora": "string",
+		"extraction_timestamp":"timestamp",
+		"date":"string"
 	},
 	"dim_sim_batch": {
       "sim_batch_id":"decimal(20,0)",
@@ -1435,8 +1420,6 @@
       "sim_batch_number":"int",
       "item_model_id":"decimal(20,0)",
       "sim_batch_total":"int",
-      "extraction_timestamp":"timestamp",
-      "date":"string",
       "history_date":"string"
    },
 	"dim_sim_card": {

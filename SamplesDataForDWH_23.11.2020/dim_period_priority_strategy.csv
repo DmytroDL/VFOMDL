@@ -1,0 +1,4 @@
+period_priority_strategy_id,period_priority_strategy_name
+1,First In First Out.
+2,Last In First Out.
+3,"Use Last First, then Earliest."

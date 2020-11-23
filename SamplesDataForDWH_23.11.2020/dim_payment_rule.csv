@@ -1,0 +1,7 @@
+payment_rule_id,payment_rule_value
+1,Pay to all billed deposit requests
+2,Pay to all unbilled deposit requests
+3,Pay to a specific deposit balance only for billed deposit request
+4,Pay to a specific deposit balance only for unbilled deposit request
+5,Pay to a specific deposit balance having no deposit request
+6,Pay to a specific deposit balance even when it has deposit request
