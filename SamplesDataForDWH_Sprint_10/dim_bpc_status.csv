@@ -1,0 +1,7 @@
+bpc_status_id,bpc_status_name
+1,Active.
+2,Implied active.
+3,Superseded active.
+4,Refunded.
+5,Cancelled.
+6,Superseded implied active.

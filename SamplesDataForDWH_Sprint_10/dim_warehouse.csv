@@ -1,0 +1,4 @@
+warehouse_id,warehouse_name,is_central_warehouse,warehouse_state,warehouse_type_id,warehouse_type_value,extraction_timestamp,date,history_date
+9153364976013230213,Temporary Warehouse,NULL,Active,9141616011513337283,Physical Warehouse,2020-11-02 11:54:18.0,2020-11-02,2020-11-02-11-54-18
+9154765100913385974,Pre-Activated SIM cards,NULL,Active,9141616011513337283,Physical Warehouse,2020-11-02 11:54:18.0,2020-11-02,2020-11-02-11-54-18
+9154463080213301612,CATV Warehouse,NULL,Active,9141616011513337283,Physical Warehouse,2020-11-02 11:54:18.0,2020-11-02,2020-11-02-11-54-18

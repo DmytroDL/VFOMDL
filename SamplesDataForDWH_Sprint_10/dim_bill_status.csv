@@ -1,0 +1,32 @@
+bill_status_id,bill_status_name
+1,Created.
+2,Pending cancellation.
+3,Cancelled.
+4,Cancellation failed.
+5,Pending re-bill.
+6,Re-billed.
+7,Pending event deletion.
+8,Events deleted.
+9,Suppressed.
+10,Rebill failed.
+11,Skipped bill (account suspended).
+12,Rating only bill.
+13,Rating only bill - Pending cancellation.
+14,Rating only bill - Cancelled.
+15,Rating only bill - Cancellation failed.
+16,Rating only bill - Pending re-bill.
+17,Rating only bill - Re-billed.
+18,Rating only bill - Pending event deletion.
+19,Rating only bill - Events deleted.
+20,Rating only bill - Re-bill failed.
+21,Suppressed bill - Pending cancellation.
+22,Suppressed bill - Cancelled.
+23,Suppressed bill - Cancellation failed.
+24,Suppressed bill - Pending re-bill.
+25,Suppressed bill - Re-bill failed.
+26,Skipped bill - Pending cancellation.
+27,Skipped bill - Cancellation failed.
+28,On-Demand bill Created
+29,On-Demand bill Pending Cancellation
+30,On-Demand bill Cancellation Failed
+31,On-Demand bill Cancelled.

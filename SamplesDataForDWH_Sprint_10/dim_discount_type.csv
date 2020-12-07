@@ -1,0 +1,9 @@
+discount_type_id,discount_type_name
+1,Rating.
+2,Pre-itemization.
+3,Post-itemization.
+4,Tax.
+5,Aggregate pricing.
+6,Banded.
+7,Usage counter.
+8,Tapered.

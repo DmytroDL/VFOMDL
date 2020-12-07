@@ -1,0 +1,20 @@
+productoffering_template_id,productoffering_template_name,productoffering_upgrade_template_id,productoffering_upgrade_template_name,extraction_timestamp,date,history_date
+9.16E+13,Voicemail Postpaid Template,9.16E+13,Call Display Template,2020-11-06 06:28:07.0,11/6/2020,2020-11-13-09-20-46
+9.16E+13,Premium Phone Number Postpaid Template,9.16E+13,Premium Phone Number Template,2020-11-06 06:28:07.0,11/6/2020,2020-11-13-09-20-46
+9.16E+13,Ported Phone Number Postpaid Template,9.16E+13,Template Bar Incoming Calls,2020-11-06 06:28:07.0,11/6/2020,2020-11-13-09-20-46
+9.16E+13,eSIM Postpaid Template,9.16E+13,Template Bar SMS,2020-11-06 06:28:07.0,11/6/2020,2020-11-13-09-20-46
+9.16E+13,Roaming Data Template,9.16E+13,Template Bar MMS,2020-11-06 06:28:07.0,11/6/2020,2020-11-13-09-20-46
+9.16E+13,SIM Card Template,9.16E+13,Template Bar Outgoing Calls,2020-11-06 06:28:07.0,11/6/2020,2020-11-13-09-20-46
+9.16E+13,Phone Number Template,9.16E+13,Template Bar Roaming International Calls,2020-11-06 06:28:07.0,11/6/2020,2020-11-13-09-20-46
+9.16E+13,Conference Calling Template,9.16E+13,Template Bar Premium SMS,2020-11-06 06:28:07.0,11/6/2020,2020-11-13-09-20-46
+9.16E+13,Ported Phone Number Template,9.16E+13,Template Bar Outgoing Calls (Fraud),2020-11-06 06:28:07.0,11/6/2020,2020-11-13-09-20-46
+9.16E+13,Change SIM Template,9.16E+13,Template Bar Roaming Data (Fraud),2020-11-06 06:28:07.0,11/6/2020,2020-11-13-09-20-46
+9.16E+13,Template Bar Data,9.16E+13,Smartphone Template,2020-11-06 06:28:07.0,11/6/2020,2020-11-13-09-20-46
+9.16E+13,Template Bar Roaming Data,9.16E+13,Standalone Equipment Template,2020-11-06 06:28:07.0,11/6/2020,2020-11-13-09-20-46
+9.16E+13,Template Bar Premium Voice,9.16E+13,Roaming Postpaid Data Template,2020-11-06 06:28:07.0,11/6/2020,2020-11-13-09-20-46
+9.16E+13,Resume Fee Template,9.16E+13,Additional Recurring Data Bucket Template,2020-11-06 06:28:07.0,11/6/2020,2020-11-13-09-20-46
+9.16E+13,Pick Up Delivery Template,9.16E+13,Roaming Postpaid Voice Template,2020-11-06 06:28:07.0,11/6/2020,2020-11-13-09-20-46
+9.16E+13,Postponed Return Template,9.16E+13,Call Display Postpaid Template,2020-11-06 06:28:07.0,11/6/2020,2020-11-13-09-20-46
+9.16E+13,Equipment Fees Template,9.16E+13,Additional Recurring Data Bucket Template,2020-11-06 06:28:07.0,11/6/2020,2020-11-13-09-20-46
+9.16E+13,Tablet Template,9.16E+13,Roaming Postpaid Voice Template,2020-11-06 06:28:07.0,11/6/2020,2020-11-13-09-20-46
+9.16E+13,Template Bar Direct Operator Billing (Fraud),9.16E+13,Call Display Postpaid Template,2020-11-06 06:28:07.0,11/6/2020,2020-11-13-09-20-46

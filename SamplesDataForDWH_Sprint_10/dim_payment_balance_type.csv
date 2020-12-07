@@ -1,0 +1,5 @@
+payment_balance_type_id,payment_balance_type_value
+101,Regular payments
+102,Refund payments
+201,Recharge payments to account
+202,Recharge payments to discount

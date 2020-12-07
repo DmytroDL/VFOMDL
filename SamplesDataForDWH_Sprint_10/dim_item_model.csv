@@ -1,0 +1,3 @@
+item_model_id,item_model_name,sim_model_artwork,item_model_profile,item_model_serialized,sim_model_form_value,sim_model_form_id,item_model_state,item_model_type_id,item_model_type_value,sim_manufacturer_id,extraction_timestamp,date,history_date
+9148563043913674855,UNIFIED SIM,NULL,NULL,Yes,NULL,NULL,Active,9141573434813381555,SIM Model,9148562637813674698,2020-10-04 00:00:00,2020-10-04,2020-10-04-00-00-00
+9156779364813869393,eSIM Model,NULL,1,Yes,NULL,NULL,Active,9156070011213136685,eSIM Model,NULL,2020-10-04 00:00:00,2020-10-04,2020-10-04-00-00-00

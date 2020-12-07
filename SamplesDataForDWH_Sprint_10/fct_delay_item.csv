@@ -1,0 +1,2 @@
+delay_item_value,delay_item_id,corresponding_ticket_id,created_by_value,created_when,delay_note,delay_reason_id,delay_reason_value,modified_by_value,modified_when,started_on,stopped_on,extraction_timestamp,date,history_date
+Delay ItemMon Nov 23 19:38:23 GST 2020,9158907521013109484,9158907355913108888,sysadm,2020-11-23 19:38:23,NULL,9148172228013596234,More Info Requested,sysadm,2020-11-23 19:38:23,NULL,2020-11-23 19:38:23,2020-11-24 07:56:04,2020-11-24,2020-11-24-07-56-04

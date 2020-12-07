@@ -1,0 +1,8 @@
+filter_set_id,filter_set_name
+1,Event and Product.
+2,Event only.
+3,Product only.
+4,One-time charge only.
+5,Product and One-time charge.
+6,Event and One-time charge.
+7,"All (Event, Product and One-time charge)."

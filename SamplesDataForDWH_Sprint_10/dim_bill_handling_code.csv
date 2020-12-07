@@ -1,0 +1,5 @@
+bill_handling_code_id,bill_handling_code_name,bill_handling_code_value,created_when,modified_when,extraction_timestamp,date,history_date
+NOPRINT,No Paper and No Electronic Bill,NOPRINT,2019-02-19 10:02:52.0,2019-02-19 10:02:52.0,2020-11-13 14:04:16.0,2020-11-13,2020-11-13-14-04-16
+EBILL,Electronic Bill,EBILL,2019-02-19 10:02:52.0,2019-02-19 10:02:52.0,2020-11-13 14:04:16.0,2020-11-13,2020-11-13-14-04-16
+INTPOST,Int Post,INTPOST,2019-02-19 10:02:52.0,2019-02-19 10:02:52.0,2020-11-13 14:04:16.0,2020-11-13,2020-11-13-14-04-16
+PAPER,Paper,PAPER,2019-02-19 10:02:52.0,2019-02-19 10:02:52.0,2020-11-13 14:04:16.0,2020-11-13,2020-11-13-14-04-16

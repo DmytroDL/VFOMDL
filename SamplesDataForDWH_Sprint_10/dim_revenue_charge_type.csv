@@ -1,0 +1,4 @@
+revenue_charge_type_id,revenue_charge_type_name
+1,Normal charge.
+2,Deposit charge.
+3,Deferred charge.

@@ -1,0 +1,6 @@
+modtype_id,modtype_name
+0,No modifier.
+1,Override.
+2,Monetary modifier.
+3,Percentage modifier.
+4,No charge.
