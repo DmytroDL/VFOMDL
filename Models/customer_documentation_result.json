@@ -313,7 +313,50 @@
         "database": "refined", 
         "description": "Look-up entity holding adjustment types.", 
         "domain": "charges", 
-        "fields": [], 
+        "fields": [
+			    {
+                    "name": "adjustment_type_id",
+                    "type": "decimal(9,0)",
+                    "nullable": false,
+                    "description": "Unique identifier for a given adjustment type."
+                },
+                {
+                    "name": "adjustment_type_value",
+                    "type": "string",
+                    "nullable": false,
+                    "description": "The name given to the adjustment type."
+                },
+                {
+                    "name": "adjustment_type_desc",
+                    "type": "string",
+                    "nullable": true,
+                    "description": "Brief description of the adjustment type this record represents."
+                },
+                {
+                    "name": "revenue_code_id",
+                    "type": "decimal(9,0)",
+                    "nullable": false,
+                    "description": "The General Ledger revenue code identifier. Used in BillDetails to provide detailed revenue breakdown for each bill. Link to  dim_revenuecode.revenue_code_id"
+                },
+                {
+                    "name": "receivable_class_id",
+                    "type": "decimal(9,0)",
+                    "nullable": true,
+                    "description": "Optional receivable class for adjustments of this adjustment type that have not had a receivable class carried through from an underlying dispute. Link to dim_receivableclass.receivable_class_id"
+                },
+                {
+                    "name": "rev_recognition_class_id",
+                    "type": "decimal(9,0)",
+                    "nullable": true,
+                    "description": "Optional revenue recognition class for adjustments of this adjustment type. dim_revenuerecognitionclass.rev_recognition_class_id"
+                },
+                {
+                    "name": "adjustment_taxable_boo",
+                    "type": "string",
+                    "nullable": false,
+                    "description": "It indicates whether adjustment of this type can be taxed during charge creation time or not."
+                }
+            ], 
         "table_name": "dim_adjustmenttype"
     }, 
     "dim_aggregation_level": {
@@ -414,6 +457,18 @@
                 "name": "modified_when", 
                 "nullable": true, 
                 "type": "timestamp"
+            },
+			{
+                "description": "", 
+                "name": "extraction_timestamp", 
+                "nullable": true, 
+                "type": "timestamp"
+            }, 
+            {
+                "description": "", 
+                "name": "date", 
+                "nullable": true, 
+                "type": "string"
             }
         ], 
         "table_name": "dim_bill_handling_code"
@@ -1476,6 +1531,18 @@
                 "name": "def_recharge_ext_event_spec", 
                 "nullable": true, 
                 "type": "decimal(20,0)"
+            },
+			{
+                "description": "", 
+                "name": "extraction_timestamp", 
+                "nullable": true, 
+                "type": "timestamp"
+            }, 
+            {
+                "description": "", 
+                "name": "date", 
+                "nullable": true, 
+                "type": "string"
             }
         ], 
         "table_name": "dim_billing_account"
@@ -1504,7 +1571,38 @@
         "database": "refined", 
         "description": "Dictionary for types of bill available.", 
         "domain": "charges", 
-        "fields": [], 
+        "fields": [
+            {
+                "description": "Unique Id of bill type", 
+                "name": "bill_type_id", 
+                "nullable": false, 
+                "type": "decimal(9,0)"
+            }, 
+            {
+                "description": "Name of bill type (electronic, etc)", 
+                "name": "bill_type_value", 
+                "nullable": true, 
+                "type": "string"
+            },
+			            {
+                "description": "Description of bill type", 
+                "name": "bill_type_desc", 
+                "nullable": true, 
+                "type": "string"
+            },
+			{
+                "description": "", 
+                "name": "extraction_timestamp", 
+                "nullable": true, 
+                "type": "timestamp"
+            }, 
+            {
+                "description": "", 
+                "name": "date", 
+                "nullable": true, 
+                "type": "string"
+            }
+        ], 
         "table_name": "dim_billtype"
     }, 
     "dim_bpc_status": {
@@ -1548,7 +1646,7 @@
                 "description": "Billing Account Number", 
                 "name": "account_num", 
                 "nullable": true, 
-                "type": "decimal(20,0)"
+                "type": "string"
             }, 
             {
                 "description": "Unique ID of Billing Account", 
@@ -2005,6 +2103,18 @@
                 "name": "one_time_individ_basic_price", 
                 "nullable": true, 
                 "type": "string"
+            },
+			{
+                "description": "", 
+                "name": "extraction_timestamp", 
+                "nullable": true, 
+                "type": "timestamp"
+            }, 
+            {
+                "description": "", 
+                "name": "date", 
+                "nullable": true, 
+                "type": "string"
             }
         ], 
         "table_name": "dim_businessproductinstances"
@@ -2181,6 +2291,18 @@
                 "name": "method_end_date", 
                 "nullable": true, 
                 "type": "timestamp"
+            },
+			{
+                "description": "", 
+                "name": "extraction_timestamp", 
+                "nullable": true, 
+                "type": "timestamp"
+            }, 
+            {
+                "description": "", 
+                "name": "date", 
+                "nullable": true, 
+                "type": "string"
             }
         ], 
         "table_name": "dim_contactmethod"
@@ -2731,12 +2853,6 @@
                 "type": "timestamp"
             }, 
             {
-                "description": "Customer\\u2019s legal address ID", 
-                "name": "legal_address_id", 
-                "nullable": true, 
-                "type": "decimal(20,0)"
-            }, 
-            {
                 "description": "Customer current status ID. Link to dim_lv_custacc_statuses.account_status_id", 
                 "name": "account_status_id", 
                 "nullable": true, 
@@ -2885,8 +3001,20 @@
                 "name": "account_status3_value", 
                 "nullable": true, 
                 "type": "string"
+            },
+			{
+                "description": "", 
+                "name": "extraction_timestamp", 
+                "nullable": true, 
+                "type": "timestamp"
+            }, 
+            {
+                "description": "", 
+                "name": "date", 
+                "nullable": true, 
+                "type": "string"
             }
-        ], 
+		], 
         "table_name": "dim_customer"
     }, 
     "dim_customer_categories": {
@@ -2953,12 +3081,6 @@
                 "type": "string"
             }, 
             {
-                "description": "Reference to corresponding Address Unit", 
-                "name": "address_id", 
-                "nullable": true, 
-                "type": "decimal(20,0)"
-            }, 
-            {
                 "description": "Location type ID", 
                 "name": "location_type_id", 
                 "nullable": true, 
@@ -2987,7 +3109,19 @@
                 "name": "ownership_value", 
                 "nullable": true, 
                 "type": "string"
-            }
+            },
+			{
+                "description": "", 
+                "name": "extraction_timestamp", 
+                "nullable": true, 
+                "type": "timestamp"
+            }, 
+            {
+                "description": "", 
+                "name": "date", 
+                "nullable": true, 
+                "type": "string"
+            }			
         ], 
         "table_name": "dim_customerlocation"
     }, 
@@ -6465,6 +6599,18 @@
                 "name": "propagate_entered_value_to_children", 
                 "nullable": true, 
                 "type": "string"
+            },
+			{
+                "description": "", 
+                "name": "extraction_timestamp", 
+                "nullable": true, 
+                "type": "timestamp"
+            }, 
+            {
+                "description": "", 
+                "name": "date", 
+                "nullable": true, 
+                "type": "string"
             }
         ], 
         "table_name": "dim_productoffering_characteristic"
@@ -6603,6 +6749,18 @@
             {
                 "description": "True/False", 
                 "name": "is_mandatory", 
+                "nullable": true, 
+                "type": "string"
+            },
+			{
+                "description": "", 
+                "name": "extraction_timestamp", 
+                "nullable": true, 
+                "type": "timestamp"
+            }, 
+            {
+                "description": "", 
+                "name": "date", 
                 "nullable": true, 
                 "type": "string"
             }
@@ -7744,6 +7902,18 @@
                 "name": "termination_reason_description", 
                 "nullable": true, 
                 "type": "string"
+            },
+			{
+                "description": "", 
+                "name": "extraction_timestamp", 
+                "nullable": true, 
+                "type": "timestamp"
+            }, 
+            {
+                "description": "", 
+                "name": "date", 
+                "nullable": true, 
+                "type": "string"
             }
         ], 
         "table_name": "dim_termination_reason"
@@ -8640,7 +8810,20 @@
                 "name": "prepaid_installment_boo", 
                 "nullable": true, 
                 "type": "string"
+            },
+			{
+                "description": "", 
+                "name": "extraction_timestamp", 
+                "nullable": true, 
+                "type": "timestamp"
+            }, 
+            {
+                "description": "", 
+                "name": "date", 
+                "nullable": true, 
+                "type": "string"
             }
+			
         ], 
         "table_name": "fct_acchasonetimecharge"
     }, 
@@ -8700,6 +8883,18 @@
             {
                 "description": "", 
                 "name": "voucher_id", 
+                "nullable": true, 
+                "type": "string"
+            },
+			{
+                "description": "", 
+                "name": "extraction_timestamp", 
+                "nullable": true, 
+                "type": "timestamp"
+            }, 
+            {
+                "description": "", 
+                "name": "date", 
                 "nullable": true, 
                 "type": "string"
             }
@@ -8944,7 +9139,20 @@
                 "name": "event_id", 
                 "nullable": false, 
                 "type": "string"
+            },
+			{
+                "description": "", 
+                "name": "extraction_timestamp", 
+                "nullable": true, 
+                "type": "timestamp"
+            }, 
+            {
+                "description": "", 
+                "name": "date", 
+                "nullable": true, 
+                "type": "string"
             }
+			
         ], 
         "table_name": "fct_account_payment"
     }, 
@@ -9127,7 +9335,7 @@
                 "description": "The sequence number of the adjustment, to uniquely identify it along with the account_num.", 
                 "name": "adjustment_seq", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "The date of the adjustment.\nThis may differ from CREATED_DTM if the adjustment was registered in Infinys after it had been agreed with the customer.", 
@@ -9139,7 +9347,7 @@
                 "description": "Identified the type of adjustment this is.", 
                 "name": "adjustment_type_id", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "The name given to the adjustment type.", 
@@ -9157,7 +9365,7 @@
                 "description": "The amount of the refund excluding tax.\nA positive amount indicates the adjustment is in the customer's favor.\nA negative amount indicates the adjustment is in the supplier's favor.", 
                 "name": "adjustment_net_mny", 
                 "nullable": false, 
-                "type": "decimal(18,0)"
+                "type": "decimal(30,10)"
             }, 
             {
                 "description": "The date and time the adjustment entry was created.", 
@@ -9169,13 +9377,13 @@
                 "description": "The adjustment may have been as a result of the resolution of a dispute. If so, this provides a link to the entry in the Dispute table.", 
                 "name": "dispute_seq", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "Indicates status of adjustment.", 
                 "name": "adjustment_status_id", 
                 "nullable": false, 
-                "type": "decimal(1,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "Indicates status of adjustment.", 
@@ -9187,19 +9395,19 @@
                 "description": "The Budget Center to which this adjustment is assigned.", 
                 "name": "budget_centre_seq", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "This is the bill sequence of the invoice on which this adjustment was billed. Value set by the Billing Engine.", 
                 "name": "bill_seq", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "The contracted point of supply this adjustment should be invoiced under. This in turn defines the tax.\nOnly set for standalone adjustments (those not relating to a Dispute), that is, it is set if and only if dispute_seq is null.", 
                 "name": "cps_id", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "The contracted point of supply this adjustment should be invoiced under. This in turn defines the tax.\nOnly set for standalone adjustments (those not relating to a Dispute), that is, it is set if and only if dispute_seq is null.", 
@@ -9229,7 +9437,7 @@
                 "description": "Receivable class assigned to the adjustment.", 
                 "name": "receivable_class_id", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "Receivable class assigned to the adjustment.", 
@@ -9241,19 +9449,19 @@
                 "description": "The amount by which this adjustment affects legal debt on the related invoices, including an estimate of the tax related to the adjustment.", 
                 "name": "adjustment_debt_mny", 
                 "nullable": false, 
-                "type": "decimal(18,0)"
+                "type": "decimal(30,10)"
             }, 
             {
                 "description": "The tax amount that was calculated when the charge is created and will be liable to the account balance for this adjustment instance. This will have valid value (zero or non zero value) for an adjustments and those are taxed only; for all other cases will be null. This value will contribute to the real-time account balances.", 
                 "name": "adjustment_tax_mny", 
                 "nullable": false, 
-                "type": "decimal(18,0)"
+                "type": "decimal(30,10)"
             }, 
             {
                 "description": "Lists the account_payment_seq of any associated write off payment.", 
                 "name": "linked_writeoff_payment_seq", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "Boolean to identify the adjustment created for bill time charges.", 
@@ -9277,7 +9485,19 @@
                 "description": "The sequence number for generations of this bill sequence for this account. This number is incremented by bill cancellations and re-bills for the account and bill sequence.", 
                 "name": "bill_version", 
                 "nullable": false, 
-                "type": "decimal(3,0)"
+                "type": "decimal(20,0)"
+            },
+			{
+                "description": "", 
+                "name": "extraction_timestamp", 
+                "nullable": true, 
+                "type": "timestamp"
+            }, 
+            {
+                "description": "", 
+                "name": "date", 
+                "nullable": true, 
+                "type": "string"
             }
         ], 
         "table_name": "fct_adjustment"
@@ -9364,6 +9584,18 @@
                 "name": "payment_due_dat", 
                 "nullable": true, 
                 "type": "timestamp"
+            },
+			{
+                "description": "", 
+                "name": "extraction_timestamp", 
+                "nullable": true, 
+                "type": "timestamp"
+            }, 
+            {
+                "description": "", 
+                "name": "date", 
+                "nullable": true, 
+                "type": "string"
             }
         ], 
         "table_name": "fct_allocation_to_bill"
@@ -9389,19 +9621,19 @@
                 "description": "Specifies the domain of the account to which this bill detail record applies.", 
                 "name": "domain_id", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "The unique sequence number of the bill within the account.", 
                 "name": "bill_seq", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "The sequence number for generations of this bill sequence for this account. This number is incremented by bill cancellations and re-bills for the account and bill sequence.", 
                 "name": "bill_version", 
                 "nullable": false, 
-                "type": "decimal(3,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "Customer category ID. Customer category is configured in PIM. Link to DIM_CUSTOMER_CATEGORIES.category_id", 
@@ -9431,13 +9663,13 @@
                 "description": "Unique identifier for a given revenue feed.", 
                 "name": "revenue_feed_id", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "The charge type as defined by the domain REVENUE_CHARGE_TYPE.", 
                 "name": "revenue_charge_type_id", 
                 "nullable": false, 
-                "type": "decimal(1,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "The charge type as defined by the domain REVENUE_CHARGE_TYPE.", 
@@ -9449,7 +9681,7 @@
                 "description": "Identifies the ledger record for a given bill and revenue feed.", 
                 "name": "bill_revenue_feed_seq", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "It states whether the charge is included in invoice or not.\nWhen TRUE states the charge is a normal charge (the default state).\nWhen FALSE states the charge is included in the total charge of another record.", 
@@ -9479,19 +9711,19 @@
                 "description": "States the value of money included on the charge that is represented by other charges in the revenue feed.", 
                 "name": "tax_inclusive_charge_mny", 
                 "nullable": false, 
-                "type": "decimal(18,0)"
+                "type": "decimal(30,10)"
             }, 
             {
                 "description": "Money re-engineered from the original charge by the plug-in.", 
                 "name": "re_calculated_charge_mny", 
                 "nullable": false, 
-                "type": "decimal(18,0)"
+                "type": "decimal(30,10)"
             }, 
             {
                 "description": "A sequence that us unique within the account and invoice that links normal charges with the records that represent the included charges. This sequence aids review, audit and processing of the charges.", 
                 "name": "re_engineered_chrg_grp_seq", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "Financial revenue code ID for current charge", 
@@ -9533,31 +9765,43 @@
                 "description": "Amount of money without tax.", 
                 "name": "cost", 
                 "nullable": true, 
-                "type": "decimal(18,0)"
+                "type": "decimal(30,10)"
             }, 
             {
                 "description": "", 
                 "name": "transaction_count", 
                 "nullable": true, 
-                "type": "decimal(18,0)"
+                "type": "decimal(30,10)"
             }, 
             {
                 "description": "", 
                 "name": "internal_cost_mny", 
                 "nullable": true, 
-                "type": "decimal(18,0)"
+                "type": "decimal(30,10)"
             }, 
             {
                 "description": "", 
                 "name": "external_cost_mny", 
                 "nullable": true, 
-                "type": "decimal(18,0)"
+                "type": "decimal(30,10)"
             }, 
             {
                 "description": "", 
                 "name": "competitor_cost_mny", 
                 "nullable": true, 
-                "type": "decimal(18,0)"
+                "type": "decimal(30,10)"
+            },
+			{
+                "description": "", 
+                "name": "extraction_timestamp", 
+                "nullable": true, 
+                "type": "timestamp"
+            }, 
+            {
+                "description": "", 
+                "name": "date", 
+                "nullable": true, 
+                "type": "string"
             }
         ], 
         "table_name": "fct_billdetails"
@@ -9589,19 +9833,19 @@
                 "description": "A sequence number, unique within the account that owns this product charge, which links the product charge to the bill on which it has appeared.", 
                 "name": "charge_seq", 
                 "nullable": true, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "Unique identifier of the product charge within the charge sequence (charge_seq).", 
                 "name": "charge_number", 
                 "nullable": true, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "The unique sequence number of the bill within the account.", 
                 "name": "bill_seq", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "The nominal date and time of the bill, that is, when it should have been produced.", 
@@ -9619,13 +9863,13 @@
                 "description": "The sequence number for generations of this bill sequence for this account. This number is incremented by bill cancellations and re-bills for the account and bill sequence.", 
                 "name": "bill_version", 
                 "nullable": false, 
-                "type": "decimal(3,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "Specifies the domain of the account which was billed for the product charge.", 
                 "name": "domain_id", 
                 "nullable": true, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "Unique identifier of Business product instance", 
@@ -9670,12 +9914,6 @@
                 "type": "string"
             }, 
             {
-                "description": "Identifier of the product for this product charge.", 
-                "name": "product_id", 
-                "nullable": false, 
-                "type": "decimal(9,0)"
-            }, 
-            {
                 "description": "First day which this product charge record covers.", 
                 "name": "charge_start_dat", 
                 "nullable": false, 
@@ -9691,13 +9929,13 @@
                 "description": "The amount of the product charge in the currency of the account account_num, according to tariff_id and any override prices that have been applied.\nNote: If this charge record is for an early termination charge, this is the total amount of the early termination charge, that is, the fixed part plus the multiplier part.", 
                 "name": "charge_cost_mny", 
                 "nullable": false, 
-                "type": "decimal(18,0)"
+                "type": "decimal(30,10)"
             }, 
             {
                 "description": "The type of charge this product charge record represents.", 
                 "name": "charge_type_id", 
                 "nullable": false, 
-                "type": "decimal(1,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "The type of charge this product charge record represents.", 
@@ -9709,25 +9947,19 @@
                 "description": "Classifies charges within charge_type. For example, charge_type termination has sub types standard termination and early termination.", 
                 "name": "charge_sub_type_id", 
                 "nullable": false, 
-                "type": "decimal(3,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "Charge sub type name.", 
                 "name": "charge_sub_type_value", 
                 "nullable": false, 
                 "type": "string"
-            }, 
-            {
-                "description": "Identifier of the price plan under which this product was billed.", 
-                "name": "tariff_id", 
-                "nullable": false, 
-                "type": "decimal(9,0)"
-            }, 
+            },
             {
                 "description": "Identifier of the revenue code against which the basic cost of this product charge has been recorded (that is, the charge amount prior to any package price and/or override price being applied).\nNote: If this charge record is for an early termination charge, this is the revenue code related to the fixed part of the early termination charge, unless the fixed part of the early termination charge is zero, where the revenue code related to the multiplier part of the charge will be used instead (as this is a not null field).", 
                 "name": "revenue_code_id", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "The name of revenue code.", 
@@ -9739,7 +9971,7 @@
                 "description": "The ID of the CPS under which this product charge was taxed (that is, the cps_id as at the tax point date of the bill).", 
                 "name": "cps_id", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "The value of the CPS under which this product charge was taxed (that is, the cps_id as at the tax point date of the bill).", 
@@ -9751,7 +9983,7 @@
                 "description": "The ID of the last tax code that acted on the product charge at bill time.", 
                 "name": "taxcode_id", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "The name of this TaxCode.", 
@@ -9763,25 +9995,25 @@
                 "description": "Percentage of the full product charge that this record covers.", 
                 "name": "percentage_pct", 
                 "nullable": false, 
-                "type": "decimal(5,0)"
+                "type": "decimal(30,10)"
             }, 
             {
                 "description": "The quantity of the product which produced this product charge. Usually 1, but may be >1 for parametric products.", 
                 "name": "product_quantity", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(30,10)"
             }, 
             {
                 "description": "The age of the product (in months). Calculated as the difference between charge_start_dat and start_dat on the earliest CustProductDetails record for the product, then rounded down to a whole month value.", 
                 "name": "product_age", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(30,10)"
             }, 
             {
                 "description": "Represents the status of the product charge record.", 
                 "name": "bpc_status_id", 
                 "nullable": false, 
-                "type": "decimal(2,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "Represents the status of the product charge record.", 
@@ -9805,13 +10037,13 @@
                 "description": "The version of the price plan that was used when this charge was created.", 
                 "name": "tariff_version", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "ID to indicate the Receivable that this charge was actually billed to.", 
                 "name": "receivable_class_id", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "Value to indicate the Receivable that this charge was actually billed to.", 
@@ -9829,85 +10061,85 @@
                 "description": "For a product allocated to a budget center - sequence number of the budget center for account account_num.", 
                 "name": "budget_centre_seq", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "For a packaged product - sequence number of the package, unique for customer customer_ref.", 
                 "name": "package_seq", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "For a packaged product - identifier of the package for this product charge.", 
                 "name": "package_id", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "For a packaged product - identifies the instance of the product within the package (useful for cases where a product features in a package more than once).", 
                 "name": "product_package_instance", 
                 "nullable": false, 
-                "type": "decimal(3,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "The product sequence for the parent product of this product.", 
                 "name": "parent_product_seq", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "For parametric products may be >0 if this record represents an increase in the quantity taken from the previous product charge record for this product.", 
                 "name": "additions_quantity", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "For parametric products may be >0 if this record represents a decrease in the quantity taken from the previous product charge record for this product.", 
                 "name": "terminations_quantity", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "For packaged products - the identifier of the price plan under which the product would have been charged if the product had not been part of this package.", 
                 "name": "package_basic_tariff_id", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "For packaged products, the amount of charge that would have been incurred if the product had not been part of this package, that is, the amount of charge under the basic price plan, or comparison price plan (in the currency of the account account_num).", 
                 "name": "package_basic_cost_mny", 
                 "nullable": false, 
-                "type": "decimal(18,0)"
+                "type": "decimal(30,10)"
             }, 
             {
                 "description": "For packaged products, the identifier of the revenue code under which the 'package saving' or 'package discount' will be recorded.\n('package discount' = (package_basic_cost_mny - pre_override_cost_mny))\nOr, if pre_override_cost_mny is null,\n(package_basic_cost_mny - charge_cost_mny).", 
                 "name": "package_disc_rev_code_id", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "For products where override prices have applied - the amount the charge would have been if the overrides had not been in place (in the currency of the account account_num).", 
                 "name": "pre_override_cost_mny", 
                 "nullable": false, 
-                "type": "decimal(18,0)"
+                "type": "decimal(30,10)"
             }, 
             {
                 "description": "For products - where an override price has applied - the identifier of the revenue code under which the 'override difference' will be recorded.\n('override difference' = (charge_cost_mny - pre_override_cost_mny)).", 
                 "name": "override_rev_code_id", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "If this charge record is for an early termination charge, this is the amount of charge (in the currency of the account account_num) for the multiplier part of the early termination charge.\nNote: The total amount of the early termination charge is recorded in charge_cost_mny, therefore the early termination fixed amount can be derived by (charge_cost_my - early_term_mult_cost_mny).\nThis field will be null if the multiplier part of the early termination charge is zero or if a breakout function has been used to calculate the early termination charge.", 
                 "name": "early_term_mult_cost_mny", 
                 "nullable": false, 
-                "type": "decimal(18,0)"
+                "type": "decimal(30,10)"
             }, 
             {
                 "description": "If this charge record is for an early termination charge, this is the revenue code related to the multiplier part of the early termination charge.\nNote: The revenue code associated to the fixed part of the early termination charge is recorded in revenue_code_id.\nThis field will be null if the multiplier part of the early termination charge is zero, or if a breakout function has been used to calculate the early termination charge.", 
                 "name": "early_term_mult_rev_code_id", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "The contract reference under which this product charge was billed.", 
@@ -9919,7 +10151,7 @@
                 "description": "The term of the contract under which this product charge was billed.", 
                 "name": "contract_term", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "The term units of the contract under which this product charge was billed.", 
@@ -9967,13 +10199,13 @@
                 "description": "The value of the override, if one exists, for this charge type and charge sub type. This value will be used (in conjunction with override_mod_type_id) for refunding purposes to check whether the override details have changed.", 
                 "name": "override_number", 
                 "nullable": false, 
-                "type": "decimal(18,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "The modifier type of the override value, if one exists, for this charge type and charge sub type. This value will be used (in conjunction with override_number) for refunding purposes to check whether the override details have changed.", 
                 "name": "override_mod_type_id", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "Defines the modification type.", 
@@ -9985,19 +10217,19 @@
                 "description": "The age-dependent price that affected the cost of this charge. Always null for non-recurring charges. This field (and all other age-dependent price fields) and override fields will not be non-null at the same time. Both sets can be null (if no ADP or override), or just one set can be null.", 
                 "name": "age_dependent_price_id", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "The period at the start of the age band within the age-dependent price that affected the cost of this charge. Always null for non-recurring charges.", 
                 "name": "adp_from_number", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "The period at the end of the age band within the age-dependent price that affected the cost of this charge. Always null for non-recurring charges.", 
                 "name": "adp_to_number", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "The units in which the adp_from_number and adp_to_number are expressed.", 
@@ -10009,19 +10241,19 @@
                 "description": "The cost of this product charge before being modified by an age-dependent price. Always null for non-recurring charges.", 
                 "name": "pre_adp_cost_mny", 
                 "nullable": false, 
-                "type": "decimal(18,0)"
+                "type": "decimal(30,10)"
             }, 
             {
                 "description": "The revenue code used to record the difference between the pre- and post-age-dependent prices. Always null for non-recurring charges.", 
                 "name": "adp_recur_disc_rev_code_id", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "The cost of this product charge before prorating but after any override or age-dependent price has been applied. Always null for non-recurring charges.", 
                 "name": "full_period_cost_mny", 
                 "nullable": false, 
-                "type": "decimal(18,0)"
+                "type": "decimal(30,10)"
             }, 
             {
                 "description": "If this record is for a charge which covers part of a day, this is the date and time that the charge starts. If this record is for a charge which covers a whole number of days, this field will be null.", 
@@ -10039,37 +10271,37 @@
                 "description": "If this record is for a periodic charge, this is the activation rule from the price plan that was used when this charge was created. A value of null for a periodic charge is equivalent to '1'. For non-periodic charges, this field is always null.", 
                 "name": "activation_rule", 
                 "nullable": false, 
-                "type": "decimal(2,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "If this record is for a periodic charge, this is the suspension rule from the price plan that was used when this charge was created. A value of null for a periodic charge is equivalent to '2'. For non-periodic charges, this field is always null.", 
                 "name": "suspension_rule", 
                 "nullable": false, 
-                "type": "decimal(2,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "If this record is for a periodic charge, this is the reactivation rule from the price plan that was used when this charge was created. A value of null for a periodic charge is equivalent to '2'. For non-periodic charges, this field is always null.", 
                 "name": "reactivation_rule", 
                 "nullable": false, 
-                "type": "decimal(2,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "If this record is for a periodic charge, this is the termination rule from the price plan that was used when this charge was created. A value of null for a periodic charge is equivalent to '2'. For non-periodic charges, this field is always null.", 
                 "name": "termination_rule", 
                 "nullable": false, 
-                "type": "decimal(2,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "Revenue recognition class for this product charge.\n", 
                 "name": "rev_recognition_class_id", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "Indicates the source of the charge. Only relevant for early termination charge i.e., will only be populated for the records of type Early Termination. For all other charge sub types, this will be NULL. This will be NULL for all migrated records irrespective of the charge sub type.", 
                 "name": "charge_source", 
                 "nullable": false, 
-                "type": "decimal(1,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "Start date of the contract under which this product charge was billed.", 
@@ -10081,19 +10313,19 @@
                 "description": "The type of the contract under which this product charge was billed.", 
                 "name": "contract_type_id", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "The percentage of tax corresponding to the tax code that acted on the product charge at bill time. Must be null if tax_rate_mny is set. Must be set if tax_rate_mny is null. It is the same value as TaxCodeDetails.tax_rate_pct.", 
                 "name": "tax_rate_pct", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(30,10)"
             }, 
             {
                 "description": "The flat rate amount of tax corresponding to the tax code that acted on the product charge at bill time. Must be null if tax_rate_pct is set. Must be set if tax_rate_pct is null. It is the same value as TaxCodeDetails.tax_rate_mny.", 
                 "name": "tax_rate_mny", 
                 "nullable": false, 
-                "type": "decimal(18,0)"
+                "type": "decimal(30,10)"
             }, 
             {
                 "description": "The currency of the flat rate tax. Must be set if and only if tax_rate_mny is set.. It is the same value as TaxCodeDetails.tax_rate_currency_code.", 
@@ -10105,25 +10337,25 @@
                 "description": "When the product is an Community Group owner product that is charged by the number of members in the Community Group, that number that was calculated during billing will be populated here. Otherwise, this field will be null.", 
                 "name": "cog_member_qty", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(30,10)"
             }, 
             {
                 "description": "Accumulated points.", 
                 "name": "accumulated_points", 
                 "nullable": false, 
-                "type": "decimal(18,0)"
+                "type": "decimal(30,10)"
             }, 
             {
                 "description": "Stores points redeemed on the charge.", 
                 "name": "redeemed_points", 
                 "nullable": false, 
-                "type": "decimal(18,0)"
+                "type": "decimal(30,10)"
             }, 
             {
                 "description": "Stores the cost before applying the loyalty points.", 
                 "name": "pre_loyalty_cost_mny", 
                 "nullable": false, 
-                "type": "decimal(18,0)"
+                "type": "decimal(30,10)"
             }, 
             {
                 "description": "Price characteristics depending on RBM configuration. (The value of TariffElementAttrDetails.xxx_attr_value for product_price_attr_id = 1 depending on charge type of this record. Here xxx can be one_off/recurring/termination/susp/susp_recur/react/early_term depending on charge type of this record. For example if the record is for Standard recurring charges then the recurring_attr_value will be taken from TariffElementAttrDetails where product_price_attr_id = 1.)", 
@@ -10165,19 +10397,19 @@
                 "description": "This field will be populated with configured value from cpcsplitbyamount table when there is amount based splitting of charges and it will be NULL when there is percentage based splitting.", 
                 "name": "split_charge_amount_mny", 
                 "nullable": false, 
-                "type": "decimal(18,0)"
+                "type": "decimal(30,10)"
             }, 
             {
                 "description": "The Full period cost of this product charge before being modified by split amount(input from CPCsplitByAmount).Always null for non-recurring charges and recurring charges configured with percentage.\nFor parametric Product: This column holds the zero band threshold value if zero band exists. If zero band is not configured then it holds the highest threshold value of its quantity qualified.", 
                 "name": "pre_split_full_period_cost_mny", 
                 "nullable": false, 
-                "type": "decimal(18,0)"
+                "type": "decimal(30,10)"
             }, 
             {
                 "description": "Information in to this column will be populated when the split charge by amount functionality is in use. For all other cases, this column will be null.\n1. From Catalogue Price Plan\n2. From Override Price\n3. From ADP Price.", 
                 "name": "split_charge_source", 
                 "nullable": false, 
-                "type": "decimal(1,0)"
+                "type": "decimal(30,10)"
             }, 
             {
                 "description": "Date start of actual charge", 
@@ -10190,6 +10422,18 @@
                 "name": "actual_charge_end_dat", 
                 "nullable": false, 
                 "type": "timestamp"
+            },
+			{
+                "description": "", 
+                "name": "extraction_timestamp", 
+                "nullable": true, 
+                "type": "timestamp"
+            }, 
+            {
+                "description": "", 
+                "name": "date", 
+                "nullable": true, 
+                "type": "string"
             }
         ], 
         "table_name": "fct_billproductcharge"
@@ -10325,7 +10569,7 @@
                 "description": "The unique sequence number of the bill within the account.", 
                 "name": "bill_seq", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "The nominal date and time of the bill, that is, when it should have been produced.", 
@@ -10337,7 +10581,7 @@
                 "description": "The ID of bill type.", 
                 "name": "bill_type_id", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "The value of Bill type", 
@@ -10349,49 +10593,49 @@
                 "description": "The account balance brought forward from the last bill.", 
                 "name": "balance_fwd_mny", 
                 "nullable": false, 
-                "type": "decimal(18,0)"
+                "type": "decimal(30,10)"
             }, 
             {
                 "description": "The amount of money being invoiced, excluding tax.", 
                 "name": "invoice_net_mny", 
                 "nullable": false, 
-                "type": "decimal(18,0)"
+                "type": "decimal(30,10)"
             }, 
             {
                 "description": "The tax owing on the money being invoiced.", 
                 "name": "invoice_tax_mny", 
                 "nullable": false, 
-                "type": "decimal(18,0)"
+                "type": "decimal(30,10)"
             }, 
             {
                 "description": "The total amount of payments that appear on the bill.", 
                 "name": "payments_mny", 
                 "nullable": false, 
-                "type": "decimal(18,0)"
+                "type": "decimal(30,10)"
             }, 
             {
                 "description": "The total amount of failed payments that appear on the bill.", 
                 "name": "failed_payments_mny", 
                 "nullable": false, 
-                "type": "decimal(18,0)"
+                "type": "decimal(30,10)"
             }, 
             {
                 "description": "The total amount of adjustments that appear on the bill.", 
                 "name": "adjustments_mny", 
                 "nullable": false, 
-                "type": "decimal(18,0)"
+                "type": "decimal(30,10)"
             }, 
             {
                 "description": "The total amount of refunds that appear on the bill.", 
                 "name": "refunds_mny", 
                 "nullable": false, 
-                "type": "decimal(18,0)"
+                "type": "decimal(30,10)"
             }, 
             {
                 "description": "The new account balance as a result of this bill.", 
                 "name": "balance_out_mny", 
                 "nullable": false, 
-                "type": "decimal(18,0)"
+                "type": "decimal(30,10)"
             }, 
             {
                 "description": "Indicates the status of this bill in terms of Electronic Bill Distribution by e-mail.\nWill be moved to a bill distribution queue eventually when multiple bills (statements/invoices) are sent out for a single account.", 
@@ -10403,31 +10647,31 @@
                 "description": "The number of loyalty points brought forward from the last bill.", 
                 "name": "points_fwd", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(30,10)"
             }, 
             {
                 "description": "The number of loyalty points earned on this bill.", 
                 "name": "points_earned", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(30,10)"
             }, 
             {
                 "description": "The total of all loyalty point adjustments included on this bill.", 
                 "name": "points_adjusted", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(30,10)"
             }, 
             {
                 "description": "The number of loyalty points redeemed on this bill.", 
                 "name": "points_redeemed", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(30,10)"
             }, 
             {
                 "description": "The loyalty point balance after this bill.\nEqual to points_fwd + points_earned - points_redeemed.", 
                 "name": "points_out", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(30,10)"
             }, 
             {
                 "description": "The date/time up to which account transactions such as payments, refunds and failed payments have been billed.\nUsed to ensure all such bill elements are billed once and once only.", 
@@ -10451,25 +10695,25 @@
                 "description": "The total receivables from this bill that was unpaid as at Account.last_debt_analysis_dtm.", 
                 "name": "outstanding_debt_mny", 
                 "nullable": false, 
-                "type": "decimal(18,0)"
+                "type": "decimal(30,10)"
             }, 
             {
                 "description": "The net receivables on this bill as at Account.last_debt_analysis_dtm.", 
                 "name": "chase_debt_mny", 
                 "nullable": false, 
-                "type": "decimal(18,0)"
+                "type": "decimal(30,10)"
             }, 
             {
                 "description": "The receivables from this bill that were in dispute as at Account.last_debt_analysis_dtm.", 
                 "name": "current_dispute_mny", 
                 "nullable": false, 
-                "type": "decimal(18,0)"
+                "type": "decimal(30,10)"
             }, 
             {
                 "description": "Holds any manual modification to the collections schedule for this bill.\nA positive number indicates the customer has been given longer to pay (and thus reduces the effective age of the receivables), while a negative number indicates the opposite.", 
                 "name": "modification_days", 
                 "nullable": false, 
-                "type": "decimal(3,0)"
+                "type": "decimal(30,10)"
             }, 
             {
                 "description": "Tidemark indicating the point (in time) up to which adjustments in the customer's favor were billed on this bill.", 
@@ -10493,13 +10737,13 @@
                 "description": "A sequence number, unique within the account that owns this event, which defines which events have been billed on this bill, if any. Null if the bill is of a type that does not have events billed on it, for example, if the bill was a credit note.\n", 
                 "name": "event_seq", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "Invoice total (including tax) quoted for information in account information currency.", 
                 "name": "info_invoice_mny", 
                 "nullable": false, 
-                "type": "decimal(18,0)"
+                "type": "decimal(30,10)"
             }, 
             {
                 "description": "Currency in which info_invoice_mny is quoted. If info_invoice_mny is not null, this must be not null.", 
@@ -10529,7 +10773,7 @@
                 "description": "Indicates whether or not the costed events associated with the bill summary have been archived or deleted.", 
                 "name": "event_archive_status_id", 
                 "nullable": false, 
-                "type": "decimal(1,0)"
+                "type": "decimal(2,0)"
             }, 
             {
                 "description": "1 - Archived (written to file).\n2 - Deleted.\nnull - Not archived or deleted (produced).", 
@@ -10559,13 +10803,13 @@
                 "description": "The sequence number for generations of this bill sequence for this account. This number is incremented by bill cancellations and re-bills for the account and bill sequence.", 
                 "name": "bill_version", 
                 "nullable": false, 
-                "type": "decimal(3,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "The status of the BillSummary entry.", 
                 "name": "bill_status_id", 
                 "nullable": false, 
-                "type": "decimal(2,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "The status of the BillSummary entry.", 
@@ -10595,7 +10839,7 @@
                 "description": "The bill sequence of the partner bill. This will only be populated if two bills were created in the same bill run, which can only happen if both a period bill and a credit note were requested. In this case, this field will be populated with the bill sequence number of the 'other' bill.", 
                 "name": "billed_with_bill_seq", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "The reason given for the cancellation of the bill.", 
@@ -10613,7 +10857,7 @@
                 "description": "The status of the invoice number generation process.", 
                 "name": "invoice_num_status_id", 
                 "nullable": false, 
-                "type": "decimal(2,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "The status of the invoice number generation process.", 
@@ -10625,13 +10869,13 @@
                 "description": "The invoice register to be used to determine the invoice number for this invoice, if one has not already been allocated.", 
                 "name": "invoice_register_id", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "A sequence number, unique within the account that owns this bill, which defines which product charges have been billed on this bill, if any.", 
                 "name": "charge_seq", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "Defines the date from when the collections are calculated.", 
@@ -10721,7 +10965,7 @@
                 "description": "Specifies the domain containing the account information.", 
                 "name": "domain_id", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "For a given BillSummary record for an account subject to US taxation, this field will store the currency code applicable to the rows in the USTtaxTransaction, USTtaxDetails and USTtaxSummary tables whose account_num, bill_seq and bill_version fields match those of the BillSummary record.", 
@@ -10745,13 +10989,13 @@
                 "description": "This is the unique identifier for a specific offer under this account.", 
                 "name": "billing_offer_id", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "The total amount of one-time charges that appear on the bill. Null indicates zero money.", 
                 "name": "otc_mny", 
                 "nullable": false, 
-                "type": "decimal(18,0)"
+                "type": "decimal(30,10)"
             }, 
             {
                 "description": "Tidemark indicating the point (in time) up to which one-time charges were billed on this bill.", 
@@ -10769,25 +11013,25 @@
                 "description": "The total amount of late fee, late payment penalty and late payment penalty refund charges that appear on the bill, including any tax due on those charges.", 
                 "name": "late_fee_mny", 
                 "nullable": false, 
-                "type": "decimal(18,0)"
+                "type": "decimal(30,10)"
             }, 
             {
                 "description": "The total over written deferred amount for all the budget plans assigned to an account retroactive from last invoice.", 
                 "name": "deferred_charges_tot", 
                 "nullable": false, 
-                "type": "decimal(20,0)"
+                "type": "decimal(30,10)"
             }, 
             {
                 "description": "Sum of the deferred charges that were deduced when overriding the original invoice amount for this invoice.", 
                 "name": "overwritten_def_charge_tot", 
                 "nullable": false, 
-                "type": "decimal(20,0)"
+                "type": "decimal(30,10)"
             }, 
             {
                 "description": "The total amount of settle-up charges of all the budget plans that appear on the bill. Null indicates zero amount.", 
                 "name": "settleup_charges_tot", 
                 "nullable": false, 
-                "type": "decimal(20,0)"
+                "type": "decimal(30,10)"
             }, 
             {
                 "description": "Indicates if the bill is generated with output event file request. Default value is NULL and means 'F'.", 
@@ -10799,43 +11043,43 @@
                 "description": "The total amount of installment from down payment type of payment arrangement that appears on this bill.", 
                 "name": "pa_dp_invoice_bill_mny", 
                 "nullable": false, 
-                "type": "decimal(18,0)"
+                "type": "decimal(30,10)"
             }, 
             {
                 "description": "The total amount of installment due from this bill as a result of fixed end type of payment arrangement. This amount is added to the bill on which FED becomes due.", 
                 "name": "pa_fed_invoice_due_mny", 
                 "nullable": false, 
-                "type": "decimal(18,0)"
+                "type": "decimal(30,10)"
             }, 
             {
                 "description": "The total installment amount accrued from FED associated date that appears on this bill.", 
                 "name": "pa_fed_invoice_bill_mny", 
                 "nullable": false, 
-                "type": "decimal(18,0)"
+                "type": "decimal(30,10)"
             }, 
             {
                 "description": "The total of internal payments that appears on this bill.", 
                 "name": "pa_payment_mny", 
                 "nullable": false, 
-                "type": "decimal(18,0)"
+                "type": "decimal(30,10)"
             }, 
             {
                 "description": "This field holds loyalty points expired during this bill.", 
                 "name": "points_expired", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(30,10)"
             }, 
             {
                 "description": "Sequence number of an extract done by FDE for extracting journal data.", 
                 "name": "fde_extract_id", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "Describes the levels of taxes calculated.\nPossible levels are LinesAndLocsNoDetail ,LinesBasicDetail ,LinesProductDetail ,LocsDetail. With different combinations of gparams we will get different values.", 
                 "name": "ust_linesandlocs_detail_level", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "Date till which the lines and location taxes were billed.", 
@@ -10847,7 +11091,19 @@
                 "description": "To store tax transaction status.", 
                 "name": "ust_maxtax_transaction_status", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
+            },
+			{
+                "description": "", 
+                "name": "extraction_timestamp", 
+                "nullable": true, 
+                "type": "timestamp"
+            }, 
+            {
+                "description": "", 
+                "name": "date", 
+                "nullable": true, 
+                "type": "string"
             }
         ], 
         "table_name": "fct_billsummary"
@@ -10873,7 +11129,7 @@
                 "description": "Billing Account Number", 
                 "name": "account_num", 
                 "nullable": true, 
-                "type": "decimal(20,0)"
+                "type": "string"
             }, 
             {
                 "description": "Unique ID of Billing Account", 
@@ -10927,7 +11183,7 @@
                 "description": "Distribution Channel id of intiated Sales Order", 
                 "name": "distribution_channel_id", 
                 "nullable": false, 
-                "type": "string"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "Distribution Channel of intiated Sales Order", 
@@ -11282,6 +11538,18 @@
                 "name": "date_change_price", 
                 "nullable": true, 
                 "type": "timestamp"
+            },
+			{
+                "description": "", 
+                "name": "extraction_timestamp", 
+                "nullable": true, 
+                "type": "timestamp"
+            }, 
+            {
+                "description": "", 
+                "name": "date", 
+                "nullable": true, 
+                "type": "string"
             }
         ], 
         "table_name": "fct_bpi_history"
@@ -11768,6 +12036,18 @@
                 "name": "domain_id", 
                 "nullable": true, 
                 "type": "decimal(9,0)"
+            },
+			{
+                "description": "", 
+                "name": "extraction_timestamp", 
+                "nullable": true, 
+                "type": "timestamp"
+            }, 
+            {
+                "description": "", 
+                "name": "date", 
+                "nullable": true, 
+                "type": "string"
             }
         ], 
         "table_name": "fct_custeventsource"
@@ -11890,7 +12170,20 @@
                 "name": "domain_id", 
                 "nullable": true, 
                 "type": "decimal(9,0)"
+            },
+			{
+                "description": "", 
+                "name": "extraction_timestamp", 
+                "nullable": true, 
+                "type": "timestamp"
+            }, 
+            {
+                "description": "", 
+                "name": "date", 
+                "nullable": true, 
+                "type": "string"
             }
+			
         ], 
         "table_name": "fct_custhasproduct"
     }, 
@@ -14007,7 +14300,7 @@
                 "description": "Unique identifier of Subscriber", 
                 "name": "subs_id", 
                 "nullable": true, 
-                "type": "string"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "OCS Subscriber ID (OCS account)", 
@@ -14027,36 +14320,18 @@
                 "nullable": true, 
                 "type": "decimal(20,0)"
             }, 
-            {
-                "description": "Charged amount in cents for renewal out of CreditAllowance. ", 
-                "name": "charged_ca_amount", 
-                "nullable": true, 
-                "type": "decimal(30,3)"
-            }, 
-            {
-                "description": "Renewal: Offer Id on BSS. Applied only on Renewal of subscription. addSubscription: Offer Id on BSS. Applied only on addSubscription. ", 
-                "name": "bss_offer_id", 
-                "nullable": true, 
-                "type": "string"
-            }, 
-            {
-                "description": "Renewal: Instance Id on BSS. Applied only on Renewal of subscription. addSubscription: Instance Id on BSS. Applied only on addSubscription. ", 
-                "name": "bss_instance_id", 
-                "nullable": true, 
-                "type": "string"
-            }, 
-            {
+			{
                 "description": "Id of the Product Offering in the Product Offering Catalog (Flat product offering).", 
                 "name": "productoffering_id", 
                 "nullable": true, 
-                "type": "decimal(20)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "The product offering name (Flat product offering)", 
                 "name": "productoffering_name", 
                 "nullable": true, 
                 "type": "string"
-            }, 
+            },
             {
                 "description": "Flag wheter product offering is top level offering. Yes/No", 
                 "name": "is_top_offer", 
@@ -14073,7 +14348,7 @@
                 "description": "Product Offering Type ID", 
                 "name": "productoffering_type_id", 
                 "nullable": true, 
-                "type": "decimal(20)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "Product Offering Type Value", 
@@ -14134,13 +14409,7 @@
                 "name": "bpi_nrc", 
                 "nullable": true, 
                 "type": "decimal(30,3)"
-            }, 
-            {
-                "description": "Offer ID as configured in Offer Catalog", 
-                "name": "offer_id", 
-                "nullable": true, 
-                "type": "string"
-            }, 
+            },
             {
                 "description": "Price of offer subscribed.", 
                 "name": "offer_price", 
@@ -14158,25 +14427,19 @@
                 "name": "activation_date", 
                 "nullable": true, 
                 "type": "timestamp"
-            }, 
-            {
-                "description": "Shows the information about subscription status ", 
-                "name": "status", 
-                "nullable": true, 
-                "type": "string"
-            }, 
-            {
-                "description": "Shows the information about subscription status ", 
-                "name": "status_value", 
-                "nullable": true, 
-                "type": "string"
-            }, 
+            },
             {
                 "description": "Date when the subscription has been suspended  ", 
                 "name": "suspended_date", 
                 "nullable": true, 
                 "type": "timestamp"
-            }, 
+            },
+            {
+                "description": "Shows the information about subscription status ", 
+                "name": "status", 
+                "nullable": true, 
+                "type": "string"
+            },
             {
                 "description": "Unique transaction ID.", 
                 "name": "transaction_id", 
@@ -14193,26 +14456,14 @@
                 "description": "Result code for the provisioning action.", 
                 "name": "result_code", 
                 "nullable": true, 
-                "type": "decimal"
+                "type": "integer"
             }, 
             {
                 "description": "Charged amount in cents for renewal.", 
                 "name": "charged_amount", 
                 "nullable": true, 
                 "type": "decimal(30,3)"
-            }, 
-            {
-                "description": "addSubscription: Tax code of offer subscribed.", 
-                "name": "tax_code", 
-                "nullable": true, 
-                "type": "string"
-            }, 
-            {
-                "description": "addSubscription: Tax GLID of offer subscribed.", 
-                "name": "glid", 
-                "nullable": true, 
-                "type": "string"
-            }, 
+            },
             {
                 "description": "Remaining cash balance amount in cents", 
                 "name": "remaining_balance", 
@@ -14228,6 +14479,61 @@
             {
                 "description": "External Offer ID", 
                 "name": "externalofferid", 
+                "nullable": true, 
+                "type": "string"
+            }, 			
+            {
+                "description": "Charged amount in cents for renewal out of CreditAllowance. ", 
+                "name": "charged_ca_amount", 
+                "nullable": true, 
+                "type": "decimal(30,3)"
+            }, 
+            {
+                "description": "Renewal: Offer Id on BSS. Applied only on Renewal of subscription. addSubscription: Offer Id on BSS. Applied only on addSubscription. ", 
+                "name": "bss_offer_id", 
+                "nullable": true, 
+                "type": "string"
+            }, 
+            {
+                "description": "Renewal: Instance Id on BSS. Applied only on Renewal of subscription. addSubscription: Instance Id on BSS. Applied only on addSubscription. ", 
+                "name": "bss_instance_id", 
+                "nullable": true, 
+                "type": "string"
+            },
+            {
+                "description": "Shows the information about subscription status ", 
+                "name": "status_value", 
+                "nullable": true, 
+                "type": "string"
+            }, 			
+            {
+                "description": "Offer ID as configured in Offer Catalog", 
+                "name": "offer_id", 
+                "nullable": true, 
+                "type": "string"
+            }, 
+            {
+                "description": "addSubscription: Tax code of offer subscribed.", 
+                "name": "tax_code", 
+                "nullable": true, 
+                "type": "string"
+            }, 
+            {
+                "description": "addSubscription: Tax GLID of offer subscribed.", 
+                "name": "glid", 
+                "nullable": true, 
+                "type": "string"
+            }, 
+
+			{
+                "description": "", 
+                "name": "extraction_timestamp", 
+                "nullable": true, 
+                "type": "timestamp"
+            }, 
+            {
+                "description": "", 
+                "name": "date", 
                 "nullable": true, 
                 "type": "string"
             }
@@ -14340,6 +14646,18 @@
                 "name": "status_value", 
                 "nullable": true, 
                 "type": "string"
+            },
+			{
+                "description": "", 
+                "name": "extraction_timestamp", 
+                "nullable": true, 
+                "type": "timestamp"
+            }, 
+            {
+                "description": "", 
+                "name": "date", 
+                "nullable": true, 
+                "type": "string"
             }
         ], 
         "table_name": "fct_prepaid_payments"
@@ -14389,7 +14707,7 @@
                 "description": "Unique identifier of Business product instance", 
                 "name": "bpi_id", 
                 "nullable": true, 
-                "type": "decimal(20)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "Offer Id on BSS. ", 
@@ -14413,7 +14731,7 @@
                 "description": "Id of the Product Offering in the Product Offering Catalog (Flat product offering).", 
                 "name": "productoffering_id", 
                 "nullable": true, 
-                "type": "decimal(20)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "The product offering name (Flat product offering)", 
@@ -14437,7 +14755,7 @@
                 "description": "Product Offering Type ID", 
                 "name": "productoffering_type_id", 
                 "nullable": true, 
-                "type": "decimal(20)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "Product Offering Type Value", 
@@ -14449,7 +14767,7 @@
                 "description": "Id of type of OCS event ", 
                 "name": "event_type_id", 
                 "nullable": true, 
-                "type": "decimal"
+                "type": "integer"
             }, 
             {
                 "description": "Value of type of OCS event ", 
@@ -14497,19 +14815,19 @@
                 "description": "Upload volume of data session in Mb", 
                 "name": "upload_volume", 
                 "nullable": true, 
-                "type": "decimal"
+                "type": "integer"
             }, 
             {
                 "description": "Download volume of data sessions in Mb", 
                 "name": "download_volume", 
                 "nullable": true, 
-                "type": "decimal"
+                "type": "integer"
             }, 
             {
                 "description": "Total chargeable volume of this data session in Mb", 
                 "name": "total_volume", 
                 "nullable": true, 
-                "type": "decimal"
+                "type": "integer"
             }, 
             {
                 "description": "Rating group of the event", 
@@ -14521,13 +14839,13 @@
                 "description": "The duration of voice call in seconds or data streaming", 
                 "name": "duration_seconds", 
                 "nullable": true, 
-                "type": "decimal"
+                "type": "integer"
             }, 
             {
                 "description": "Number of messages this event represents", 
                 "name": "number_of_messages", 
                 "nullable": true, 
-                "type": "decimal"
+                "type": "integer"
             }, 
             {
                 "description": "I' to indicate that the call is terminating on Vodafone subcriber's mobile number (incomming call). Vodafone subscriber is the called number.\n'O' to indicate that the call is origination from the Vodafone subscriber's mobile number (outgoing call). Vodafone subscriber is the calling number.", 
@@ -14628,6 +14946,18 @@
             {
                 "description": "External Offer ID", 
                 "name": "externalofferid", 
+                "nullable": true, 
+                "type": "string"
+            },
+			{
+                "description": "", 
+                "name": "extraction_timestamp", 
+                "nullable": true, 
+                "type": "timestamp"
+            }, 
+            {
+                "description": "", 
+                "name": "date", 
                 "nullable": true, 
                 "type": "string"
             }
@@ -15072,12 +15402,6 @@
                 "name": "bpi_id", 
                 "nullable": true, 
                 "type": "decimal(20)"
-            }, 
-            {
-                "description": "Type of OCS event ", 
-                "name": "event_type_id", 
-                "nullable": false, 
-                "type": "integer"
             }, 
             {
                 "description": "", 
@@ -15634,7 +15958,13 @@
                 "name": "customer_id", 
                 "nullable": false, 
                 "type": "decimal(20,0)"
-            }, 
+            },
+            {
+                "description": "Billing Account Type", 
+                "name": "account_type", 
+                "nullable": true, 
+                "type": "string"
+            }, 			
             {
                 "description": "Billing Account Number", 
                 "name": "account_num", 
@@ -15664,18 +15994,18 @@
                 "name": "sales_order_id", 
                 "nullable": true, 
                 "type": "decimal(20,0)"
-            }, 
-            {
-                "description": "Name of the Subscription  (contains a name for tariff plan and unique number)", 
-                "name": "bill_issue_notification_id", 
-                "nullable": true, 
-                "type": "decimal(20,0)"
-            }, 
+            },
             {
                 "description": "Name of the Subscription  (contains a name for tariff plan and unique number)", 
                 "name": "bill_issue_notification_value", 
                 "nullable": true, 
                 "type": "string"
+            },			
+            {
+                "description": "Name of the Subscription  (contains a name for tariff plan and unique number)", 
+                "name": "bill_issue_notification_id", 
+                "nullable": true, 
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "Name of the Subscription  (contains a name for tariff plan and unique number)", 
@@ -15694,7 +16024,43 @@
                 "name": "subscription_name", 
                 "nullable": true, 
                 "type": "string"
+            },
+            {
+                "description": "", 
+                "name": "ocs_subscriber_id", 
+                "nullable": true, 
+                "type": "string"
+            },
+            {
+                "description": "", 
+                "name": "cash_balance_id", 
+                "nullable": true, 
+                "type": "string"
             }, 
+            {
+                "description": "", 
+                "name": "ocs_subscription_id", 
+                "nullable": true, 
+                "type": "string"
+            }, 
+            {
+                "description": "", 
+                "name": "sms_allowance", 
+                "nullable": true, 
+                "type": "string"
+            }, 
+            {
+                "description": "", 
+                "name": "voice_allowance", 
+                "nullable": true, 
+                "type": "string"
+            }, 
+            {
+                "description": "", 
+                "name": "data_allowance", 
+                "nullable": true, 
+                "type": "string"
+            }, 			
             {
                 "description": "The date of activation of the subscriber (date when status of the subscriber was changed from Planned to Active)", 
                 "name": "actual_start_date", 
@@ -15712,7 +16078,19 @@
                 "name": "sequence_number", 
                 "nullable": false, 
                 "type": "string"
+            },
+            {
+                "description": "AUTORENEWAL value", 
+                "name": "autorenewal_id", 
+                "nullable": true, 
+                "type": "decimal(20,0)"
             }, 
+            {
+                "description": "AUTORENEWAL id", 
+                "name": "autorenewal_value", 
+                "nullable": true, 
+                "type": "string"
+            }, 			
             {
                 "description": "Current billing status of subscriber id", 
                 "name": "billing_subs_status_id", 
@@ -15729,14 +16107,26 @@
                 "description": "Current status of subscriber id", 
                 "name": "subs_status_id", 
                 "nullable": false, 
-                "type": "decimal(20,0)"
+                "type": "bigint"
             }, 
             {
                 "description": "Current status of subscriber value", 
                 "name": "subs_status_value", 
                 "nullable": false, 
                 "type": "string"
+            },
+            {
+                "description": "Customer category ID. Customer category is configured in PIM. Link to DIM_CUSTOMER_CATEGORIES.category_id", 
+                "name": "customer_category_id", 
+                "nullable": true, 
+                "type": "decimal(20,0)"
             }, 
+            {
+                "description": "Customer category value", 
+                "name": "customer_category_value", 
+                "nullable": true, 
+                "type": "string"
+            },			
             {
                 "description": "ID of the system which initiated Sales Order", 
                 "name": "initiating_system_id", 
@@ -15766,7 +16156,19 @@
                 "name": "shop_id", 
                 "nullable": false, 
                 "type": "decimal(20,0)"
-            }, 
+            },
+            {
+                "description": "", 
+                "name": "upfront_payment", 
+                "nullable": true, 
+                "type": "decimal(20,0)"
+            },
+            {
+                "description": "", 
+                "name": "remaining_upfront_payment", 
+                "nullable": true, 
+                "type": "decimal(20,0)"
+            },  			
             {
                 "description": "The date when was last changes in subscription.", 
                 "name": "processed_when_date", 
@@ -15801,7 +16203,7 @@
                 "description": "ID of the Template for the Tariff plan", 
                 "name": "tariff_plan_template_id", 
                 "nullable": false, 
-                "type": "decimal(20,0)"
+                "type": "string"
             }, 
             {
                 "description": "Name of the Template for the Tariff plan", 
@@ -15910,16 +16312,16 @@
                 "name": "sim_card_type_value", 
                 "nullable": false, 
                 "type": "string"
-            }, 
-            {
-                "description": "Logical status value of SIM Card/eSIM", 
-                "name": "sim_card_logical_status_value", 
-                "nullable": true, 
-                "type": "string"
-            }, 
+            },
             {
                 "description": "Logical status value of SIM Card/eSIM", 
                 "name": "sim_card_logical_status_id", 
+                "nullable": true, 
+                "type": "decimal(20,0)"
+            }, 			
+            {
+                "description": "Logical status value of SIM Card/eSIM", 
+                "name": "sim_card_logical_status_value", 
                 "nullable": true, 
                 "type": "string"
             }, 
@@ -15952,7 +16354,13 @@
                 "name": "last_event_date", 
                 "nullable": true, 
                 "type": "timestamp"
-            }, 
+            },
+            {
+                "description": "Last incoming call date", 
+                "name": "last_incoming_call", 
+                "nullable": true, 
+                "type": "timestamp"
+            },			
             {
                 "description": "Last Charge Date", 
                 "name": "last_charge_date", 
@@ -15965,11 +16373,17 @@
                 "nullable": true, 
                 "type": "timestamp"
             }, 
-            {
-                "description": "Last incoming call date", 
-                "name": "last_incoming_call", 
+			{
+                "description": "", 
+                "name": "extraction_timestamp", 
                 "nullable": true, 
                 "type": "timestamp"
+            }, 
+            {
+                "description": "", 
+                "name": "date", 
+                "nullable": true, 
+                "type": "string"
             }
         ], 
         "table_name": "vf_dim_subscription"
