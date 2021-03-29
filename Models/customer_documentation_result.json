@@ -5700,7 +5700,7 @@
                 "description": "", 
                 "name": "amount", 
                 "nullable": true, 
-                "type": "decimal"
+                "type": "decimal(30,3)"
             }, 
             {
                 "description": "", 
@@ -11355,49 +11355,49 @@
                 "description": "", 
                 "name": "recurrent_individ_basic_price", 
                 "nullable": true, 
-                "type": "decimal(30,10)"
+                "type": "decimal(30,3)"
             }, 
             {
                 "description": "", 
                 "name": "one_time_individ_basic_price", 
                 "nullable": true, 
-                "type": "decimal(30,10)"
+                "type": "decimal(30,3)"
             }, 
             {
                 "description": "", 
                 "name": "bpi_discount_mrc", 
                 "nullable": true, 
-                "type": "decimal(30,10)"
+                "type": "decimal(30,3)"
             }, 
             {
                 "description": "", 
                 "name": "bpi_discount_nrc", 
                 "nullable": true, 
-                "type": "decimal(30,10)"
+                "type": "decimal(30,3)"
             }, 
             {
                 "description": "", 
                 "name": "bpi_tax_mrc", 
                 "nullable": true, 
-                "type": "decimal(30,10)"
+                "type": "decimal(30,3)"
             }, 
             {
                 "description": "", 
                 "name": "bpi_tax_nrc", 
                 "nullable": true, 
-                "type": "decimal(30,10)"
+                "type": "decimal(30,3)"
             }, 
             {
                 "description": "", 
                 "name": "bpi_mrc", 
                 "nullable": true, 
-                "type": "decimal(30,10)"
+                "type": "decimal(30,3)"
             }, 
             {
                 "description": "", 
                 "name": "bpi_nrc", 
                 "nullable": true, 
-                "type": "decimal(30,10)"
+                "type": "decimal(30,3)"
             }, 
             {
                 "description": "Timestamp of the charge. Format yyyy-MM-dd HH:mm:ss", 
@@ -11427,13 +11427,13 @@
                 "description": "", 
                 "name": "upfront_payment_mrc", 
                 "nullable": true, 
-                "type": "decimal(30,10)"
+                "type": "decimal(30,3)"
             }, 
             {
                 "description": "", 
                 "name": "upfront_payment_nrc", 
                 "nullable": true, 
-                "type": "decimal(30,10)"
+                "type": "decimal(30,3)"
             }, 
             {
                 "description": "", 
@@ -14025,13 +14025,13 @@
                 "description": "Unique identifier of Business product instance", 
                 "name": "bpi_id", 
                 "nullable": true, 
-                "type": "decimal(20)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "Charged amount in cents for renewal out of CreditAllowance. ", 
                 "name": "charged_ca_amount", 
                 "nullable": true, 
-                "type": "integer"
+                "type": "decimal(30,3)"
             }, 
             {
                 "description": "Renewal: Offer Id on BSS. Applied only on Renewal of subscription. addSubscription: Offer Id on BSS. Applied only on addSubscription. ", 
@@ -14091,67 +14091,49 @@
                 "description": "", 
                 "name": "recurrent_individ_basic_price", 
                 "nullable": true, 
-                "type": "string"
+                "type": "decimal(30,3)"
             }, 
             {
                 "description": "", 
                 "name": "one_time_individ_basic_price", 
                 "nullable": true, 
-                "type": "string"
+                "type": "decimal(30,3)"
             }, 
             {
                 "description": "The sum of all MRC discounts for the Business Product Instance (hierarchically).", 
                 "name": "bpi_discount_mrc", 
                 "nullable": true, 
-                "type": "string"
+                "type": "decimal(30,3)"
             }, 
             {
                 "description": "", 
                 "name": "bpi_discount_nrc", 
                 "nullable": true, 
-                "type": "string"
+                "type": "decimal(30,3)"
             }, 
             {
                 "description": "", 
                 "name": "bpi_tax_mrc", 
                 "nullable": true, 
-                "type": "string"
+                "type": "decimal(30,3)"
             }, 
             {
                 "description": "", 
                 "name": "bpi_tax_nrc", 
                 "nullable": true, 
-                "type": "string"
+                "type": "decimal(30,3)"
             }, 
             {
                 "description": "The individual MRC for the BPI, with taxes, without discounts.", 
                 "name": "bpi_mrc", 
                 "nullable": true, 
-                "type": "string"
+                "type": "decimal(30,3)"
             }, 
             {
                 "description": "", 
                 "name": "bpi_nrc", 
                 "nullable": true, 
-                "type": "string"
-            }, 
-            {
-                "description": "The individual MRC for the BPI, with taxes, without discounts.", 
-                "name": "bpi_total_mrc", 
-                "nullable": true, 
-                "type": "string"
-            }, 
-            {
-                "description": "The total MRC discount. The attribute is displayed as a positive value.", 
-                "name": "recurrent_basic_total_discount", 
-                "nullable": true, 
-                "type": "string"
-            }, 
-            {
-                "description": "The total MRC. The attribute is displayed as a positive value.", 
-                "name": "recurrent_basic_total_price", 
-                "nullable": true, 
-                "type": "string"
+                "type": "decimal(30,3)"
             }, 
             {
                 "description": "Offer ID as configured in Offer Catalog", 
@@ -14163,7 +14145,7 @@
                 "description": "Price of offer subscribed.", 
                 "name": "offer_price", 
                 "nullable": true, 
-                "type": "integer"
+                "type": "decimal(30,3)"
             }, 
             {
                 "description": "Timestamp of the EDR. yyyy-MM-dd HH:mm:ss", 
@@ -14217,7 +14199,7 @@
                 "description": "Charged amount in cents for renewal.", 
                 "name": "charged_amount", 
                 "nullable": true, 
-                "type": "decimal"
+                "type": "decimal(30,3)"
             }, 
             {
                 "description": "addSubscription: Tax code of offer subscribed.", 
@@ -14235,7 +14217,7 @@
                 "description": "Remaining cash balance amount in cents", 
                 "name": "remaining_balance", 
                 "nullable": true, 
-                "type": "decimal"
+                "type": "decimal(30,3)"
             }, 
             {
                 "description": "Date of next renewal charge. addSubscription/updateSubscription: Date of next renewal charge in format yyyy-MM-dd HH:mm:ss", 
@@ -14333,7 +14315,7 @@
                 "description": "Amount in cents.", 
                 "name": "balance_amount", 
                 "nullable": true, 
-                "type": "decimal"
+                "type": "decimal(30,3)"
             }, 
             {
                 "description": "Generic string value from requesting system.", 
@@ -14345,13 +14327,13 @@
                 "description": "creditBalance/debitBalances/debitBalance: Amount in cents applied on CreditAllowance. ", 
                 "name": "ca_amount", 
                 "nullable": true, 
-                "type": "integer"
+                "type": "decimal(30,3)"
             }, 
             {
                 "description": "creditBalance: amount in cents taken to cover CreditAllowance Fee.", 
                 "name": "ca_fee", 
                 "nullable": true, 
-                "type": "integer"
+                "type": "decimal(30,3)"
             }, 
             {
                 "description": "Original request json body.", 
@@ -14563,7 +14545,7 @@
                 "description": "Total (tax exclusive in case of money) amount consumed from consumption bucket name, in case consumed amount should not be charged to subscriber in the bill. Units are assumed as below:\nVoice - Seconds\nCost - 0.001 OMR i.e. 1 is interpreted as 0.001 OMR", 
                 "name": "consumption_bucket_amount", 
                 "nullable": true, 
-                "type": "decimal"
+                "type": "decimal(30,3)"
             }, 
             {
                 "description": "", 
@@ -14629,19 +14611,19 @@
                 "description": "The amount of the Event pre tax", 
                 "name": "charged_amount", 
                 "nullable": true, 
-                "type": "decimal"
+                "type": "decimal(30,3)"
             }, 
             {
                 "description": "The amount of the Event post tax", 
                 "name": "charged_amount_post_tax", 
                 "nullable": true, 
-                "type": "decimal"
+                "type": "decimal(30,3)"
             }, 
             {
                 "description": "Tax amount", 
                 "name": "tax_amount", 
                 "nullable": true, 
-                "type": "decimal"
+                "type": "decimal(30,3)"
             }, 
             {
                 "description": "External Offer ID", 
