@@ -45,6 +45,18 @@
                 "name": "own_last_number", 
                 "nullable": true, 
                 "type": "string"
+            },
+            {
+                "description": "",
+                "name": "extraction_timestamp",
+                "nullable": true,
+                "type": "timestamp"
+            },
+            {
+                "description": "",
+                "name": "date",
+                "nullable": true,
+                "type": "string"
             }
         ], 
         "table_name": "dim_100k_pn_range"
@@ -356,7 +368,7 @@
                     "nullable": false,
                     "description": "It indicates whether adjustment of this type can be taxed during charge creation time or not."
                 }
-            ], 
+            ],
         "table_name": "dim_adjustmenttype"
     }, 
     "dim_aggregation_level": {
@@ -1533,15 +1545,15 @@
                 "type": "decimal(20,0)"
             },
 			{
-                "description": "", 
-                "name": "extraction_timestamp", 
-                "nullable": true, 
+                "description": "",
+                "name": "extraction_timestamp",
+                "nullable": true,
                 "type": "timestamp"
-            }, 
+            },
             {
-                "description": "", 
-                "name": "date", 
-                "nullable": true, 
+                "description": "",
+                "name": "date",
+                "nullable": true,
                 "type": "string"
             }
         ], 
@@ -1573,36 +1585,36 @@
         "domain": "charges", 
         "fields": [
             {
-                "description": "Unique Id of bill type", 
-                "name": "bill_type_id", 
-                "nullable": false, 
-                "type": "decimal(9,0)"
-            }, 
+                "description": "Unique Id of bill type",
+                "name": "bill_type_id",
+                "nullable": false,
+                "type": "decimal(20,0)"
+            },
             {
-                "description": "Name of bill type (electronic, etc)", 
-                "name": "bill_type_value", 
-                "nullable": true, 
+                "description": "Name of bill type (electronic, etc)",
+                "name": "bill_type_value",
+                "nullable": true,
                 "type": "string"
             },
 			            {
-                "description": "Description of bill type", 
-                "name": "bill_type_desc", 
-                "nullable": true, 
+                "description": "Description of bill type",
+                "name": "bill_type_desc",
+                "nullable": true,
                 "type": "string"
             },
 			{
-                "description": "", 
-                "name": "extraction_timestamp", 
-                "nullable": true, 
+                "description": "",
+                "name": "extraction_timestamp",
+                "nullable": true,
                 "type": "timestamp"
-            }, 
+            },
             {
-                "description": "", 
-                "name": "date", 
-                "nullable": true, 
+                "description": "",
+                "name": "date",
+                "nullable": true,
                 "type": "string"
             }
-        ], 
+        ],
         "table_name": "dim_billtype"
     }, 
     "dim_bpc_status": {
@@ -2105,15 +2117,15 @@
                 "type": "string"
             },
 			{
-                "description": "", 
-                "name": "extraction_timestamp", 
-                "nullable": true, 
+                "description": "",
+                "name": "extraction_timestamp",
+                "nullable": true,
                 "type": "timestamp"
-            }, 
+            },
             {
-                "description": "", 
-                "name": "date", 
-                "nullable": true, 
+                "description": "",
+                "name": "date",
+                "nullable": true,
                 "type": "string"
             }
         ], 
@@ -2293,15 +2305,15 @@
                 "type": "timestamp"
             },
 			{
-                "description": "", 
-                "name": "extraction_timestamp", 
-                "nullable": true, 
+                "description": "",
+                "name": "extraction_timestamp",
+                "nullable": true,
                 "type": "timestamp"
-            }, 
+            },
             {
-                "description": "", 
-                "name": "date", 
-                "nullable": true, 
+                "description": "",
+                "name": "date",
+                "nullable": true,
                 "type": "string"
             }
         ], 
@@ -2496,7 +2508,26 @@
         "database": "refined", 
         "description": "Dictionary for currency", 
         "domain": "charges", 
-        "fields": [], 
+        "fields": [
+            {
+                "description": "Defines the possible values of above domain.", 
+                "name": "currency_code_id", 
+                "nullable": false, 
+                "type": "string"
+            }, 
+            {
+                "description": "", 
+                "name": "currency_value", 
+                "nullable": true, 
+                "type": "string"
+            }, 
+            {
+                "description": "", 
+                "name": "currency_desc", 
+                "nullable": true, 
+                "type": "string"
+            }
+        ], 
         "table_name": "dim_currency"
     }, 
     "dim_cust_activity": {
@@ -2622,6 +2653,12 @@
         "description": "Table for storing all customer consents", 
         "domain": "customer", 
         "fields": [
+            {
+                "description": "ID of the Customer", 
+                "name": "customer_id", 
+                "nullable": false, 
+                "type": "decimal(20,0)"
+            }, 
             {
                 "description": "NC ID of the consent", 
                 "name": "consent_id", 
@@ -3014,7 +3051,7 @@
                 "nullable": true, 
                 "type": "string"
             }
-		], 
+		],
         "table_name": "dim_customer"
     }, 
     "dim_customer_categories": {
@@ -3121,7 +3158,7 @@
                 "name": "date", 
                 "nullable": true, 
                 "type": "string"
-            }			
+            }
         ], 
         "table_name": "dim_customerlocation"
     }, 
@@ -3508,13 +3545,13 @@
                 "description": "Event discount ID.", 
                 "name": "event_discount_id", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "Identifies a related set of changes to the catalog (product, price plans, packages) that may be applied to the live price plan.", 
                 "name": "catalogue_change_id", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "The name of the discount.", 
@@ -3532,7 +3569,7 @@
                 "description": "Defines the attribute to be summed and compared with EventDiscountStep.threshold. Note: with respect to a rating time discount, the fixed charge portion of an event's cost will only ever be discounted if this attribute specifies 'cost' or 'number of events' (even in cases where the discount is flat-rate, that is, only one EventDiscountStep with threshold zero).", 
                 "name": "summation_attr_num_id", 
                 "nullable": false, 
-                "type": "decimal(2,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "Defines the possible values of the summation attributes for an event discount. Based on the number of attributes in CostedEvent.\n", 
@@ -3550,7 +3587,7 @@
                 "description": "The identifier of the bonus scheme to which this EventDiscount relates. This defines the account specific threshold to be used when calculating a 'free event' discount. Thresholds in EventDiscountStep are therefore ignored.", 
                 "name": "bonus_scheme_id", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "If set to T, this event discount only applies to periodic bills. This is to prevent too many free events being given away for discounts of the form 'First 15 minutes of calls free'.", 
@@ -3562,13 +3599,13 @@
                 "description": "The identifier of the revenue code against which the discount should be registered. It may only be null for a non-accumulating flat amount discount.", 
                 "name": "revenue_code_id", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "Level at which events are aggregated in the assessment set for threshold based discounts.", 
                 "name": "assessment_aggregation_level_id", 
                 "nullable": false, 
-                "type": "decimal(1,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "Level at which events are aggregated in the assessment set for threshold based discounts.", 
@@ -3580,7 +3617,7 @@
                 "description": "Level at which events are aggregated in the discounted set to receive threshold based discounts.", 
                 "name": "discounting_aggregation_level_id", 
                 "nullable": false, 
-                "type": "decimal(1,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "Level at which events are aggregated in the discounted set to receive threshold based discounts.", 
@@ -3592,25 +3629,25 @@
                 "description": "The event type associated with the assessment set. Note that an entry of null and the absence of an entry in bonus_scheme_id implies the discount is assessed on all event types. If there is an entry in bonus_scheme_id, assessment is done in the processing of UsageTypes.", 
                 "name": "assessment_event_type_id", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "The event type associated with the discounting set. Note that an entry of null implies the discount is made on all event types.", 
                 "name": "discounting_event_type_id", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "The filter used to calculate the assessment set. Note that an entry of null and the absence of an entry in bonus_scheme_id implies the discount is assessed on all events of the type listed in assessment_event_type_id. If there is an entry in bonus_scheme_id, assessment is done in the processing of UsageTypes.", 
                 "name": "assessment_filter_id", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "The filter used to calculate the discounting set. Note that an entry of null implies the discount is made on all events of the type listed in discounting_event_type_id.", 
                 "name": "discounting_filter_id", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "States whether a discount can be prorated in part periods. Discounts belonging to bonus schemes (having an entry in bonus_scheme_id) should automatically be non prorating.", 
@@ -3652,7 +3689,7 @@
                 "description": "The multiplier that relates the aggregation units to one of the standard system units.", 
                 "name": "aggregation_rate_multiplier", 
                 "nullable": false, 
-                "type": "decimal(18,0)"
+                "type": "decimal(30,10)"
             }, 
             {
                 "description": "The system units that are related to the aggregation units measuring volume in an aggregate pricing.", 
@@ -3676,13 +3713,13 @@
                 "description": "Value only relevant for \"Free/Discounted Usage\" discounts in rating, where rating_carry_over_boo is set to T, should be null for other types of discount. Gives the maximum amount of discounted usage carried over from one period to the next.", 
                 "name": "max_carry_over_num", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "Replaces re_rating_boo. Dictates the type of discount the EventDiscount record describes.", 
                 "name": "discount_type_id", 
                 "nullable": false, 
-                "type": "decimal(1,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "", 
@@ -3694,13 +3731,13 @@
                 "description": "Optional attribute that sets a priority for \"Free/Discounted Usage\" discounts, for use if more than one \"Free/Discounted Usage\" discount applies to an event. Null if the discount is not a \"Free Usage\" or \"Discounted Usage\" discount.\nIf the discount is a usage counter, then this field will have -1 or -2. -1 indicates the usage counter accumulates pre-discounted usage; -2 indicates the usage counter accumulates discounted usage\nThis attribute can also be set optionally to billing time post-itemisation discounts applicable to event charges. The valid values are from 1 to 99.", 
                 "name": "priority_num", 
                 "nullable": false, 
-                "type": "decimal(2,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "Gives the filter set applicable to the discoun.", 
                 "name": "filter_set_id", 
                 "nullable": false, 
-                "type": "decimal(1,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "Gives the filter set applicable to the discoun.", 
@@ -3712,13 +3749,13 @@
                 "description": "The identifier of the rating time discount bundle level action threshold set that should be applied to this rating time discount.", 
                 "name": "disc_act_thold_set_id", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "Specifies whether an event qualifies for a rating discount as defined by its event_dtm or created_dtm. It is null for all discount types other than rating time discounts.", 
                 "name": "rating_assessment_criteria_id", 
                 "nullable": false, 
-                "type": "decimal(1,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "Specifies whether an event qualifies for a rating discount as defined by its event_dtm or created_dtm. It is null for all discount types other than rating time discounts.", 
@@ -3754,7 +3791,7 @@
                 "description": "Specifies the attribute of the discount set of events whose value is used to multiply (divided by the multiplier) the discount amount to calculate the total discount amount. If this attribute is populated then discount_sum_multiplier must be populated and amount_per_unit_boo must be T.", 
                 "name": "discount_summation_attr_num_id", 
                 "nullable": false, 
-                "type": "decimal(2,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "Defines the possible values of the summation attributes for an event discount. Based on the number of attributes in CostedEvent.", 
@@ -3766,7 +3803,7 @@
                 "description": "Specifies a number that is used to divide the value of the discount_sumn_attr_num of the discount event(s) before it is multiplied by the discount amount to calculate the total discount amount. If this attribute is populated then discount_sum_attr_num must be populated and amount_per_unit_boo must be T.", 
                 "name": "discount_sum_multiplier", 
                 "nullable": false, 
-                "type": "decimal(18,0)"
+                "type": "decimal(30,10)"
             }, 
             {
                 "description": "This name will be output to BillData along with the discount set. This must be null if amount_per_unit_boo is F.", 
@@ -3778,7 +3815,7 @@
                 "description": "If a discount period is specified, then this value specifies the maximum amount of money that will be discounted per discount period. It must be null if rating_accumulate_boo is 'F'. For flat-rate discounts, the maximum applies to the entire life of the discount", 
                 "name": "period_maximum_mny", 
                 "nullable": false, 
-                "type": "decimal(18,0)"
+                "type": "decimal(30,10)"
             }, 
             {
                 "description": "T' if the CustProdInvoiceDiscUsage.counter_usage should be reset when the accumulated usage in a usage counter crosses a threshold.", 
@@ -3826,7 +3863,7 @@
                 "description": "Indicates if a permanent override of the threshold amount is allowed (assuming user has proper permissions).", 
                 "name": "perm_override_enable_rule_id", 
                 "nullable": false, 
-                "type": "decimal(1,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "Indicates if a permanent override of the threshold amount is allowed (assuming user has proper permissions).", 
@@ -3838,7 +3875,7 @@
                 "description": "Indicates if a temporary (current-period only) override of the threshold amount is allowed\n(assuming user has proper permissions).", 
                 "name": "temp_override_enable_rule_id", 
                 "nullable": false, 
-                "type": "decimal(1,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "Indicates if a temporary (current-period only) override of the threshold amount is allowed\n(assuming user has proper permissions).", 
@@ -3850,31 +3887,31 @@
                 "description": "Indicates the number of CustProductDiscountUsage records that can be re-used cyclically. If null, CustProductDiscountUsage/CustProdInvoiceDiscUsage will not be re-used. This should have a minimum value of 2.", 
                 "name": "keep_periods", 
                 "nullable": false, 
-                "type": "decimal(2,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "An optional initial bonus awarded for this Discounted Usage Discount. This is only relevant for periodic Discounted Usage Discounts (discount_type = 1 and discount_period is not null).", 
                 "name": "initial_bonus_award", 
                 "nullable": false, 
-                "type": "decimal(18,0)"
+                "type": "decimal(30,10)"
             }, 
             {
                 "description": "Identifies the reason code used for any initial bonus awarded on this Discounted Usage Discount. This cannot be null if initial_bonus_award is not null.", 
                 "name": "initial_bonus_reason_id", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "An optional initial value for the discount counter usage. If null, the initial counter usage will be set to zero. This is only relevant for discounts of discount_type = 7 (Usage Counter).", 
                 "name": "initial_counter_usage", 
                 "nullable": false, 
-                "type": "decimal(18,0)"
+                "type": "decimal(30,10)"
             }, 
             {
                 "description": "Indicates the prioritization of CustProductDiscountUsage records during per discount consumption. This should have value of 1, 2 or 3.\n1. indicates the earliest discount bucket is used first followed by the next earliest discount in ascending date order.\n2 indicates latest discount bucket to be used first followed by the next discount in descending date order.\n3 indicates latest discount bucket to be consumed first, followed by the earliest discount buckets in ascending date order.", 
                 "name": "period_priority_strategy_id", 
                 "nullable": false, 
-                "type": "decimal(1,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "Indicates the prioritization of CustProductDiscountUsage records during per discount consumption. ", 
@@ -3886,13 +3923,13 @@
                 "description": "Enables recharge of non-monetary rating time discounts, or charging only a proportion of the discountable usage for cost-based rating time discounts.\nMust be populated for an event discount specified by a recharge. A recharge of R MNY units buys R * 1000 / cost_per_1000_units_mny units of discount.\nFor a cost-based discount where a recharge buys the face value of discount usage, cost_per_1000_units_mny = 1000.", 
                 "name": "cost_per_1000_units_mny", 
                 "nullable": false, 
-                "type": "decimal(18,0)"
+                "type": "decimal(30,10)"
             }, 
             {
                 "description": "The identifier of the lifecycle profile associated to this discount. Enables the lifecycle management at bucket level. This must be populated if discount is lifecycle managed.", 
                 "name": "lc_profile_id", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "Identifies if the discount is enabled for Sharing. Applicable only for Rating Time discounted usage discounts and Usage counters.\nIf the discount is a Discounted Usage discount, indicates that this discount is being shared by sub-Limit usage counters. If the discount is a usage counter, indicates that this is a sub-Limit usage counter and it is sharing from a discounted usage discount.", 
@@ -3916,13 +3953,13 @@
                 "description": "The identifier of the one-time charge to which this record relates. Optionally populated only for dynamic discounts. If set to 'null' for dynamic discounts, dynamic bucket allocation shall not incur any cost.", 
                 "name": "otc_id", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "Defines the choice of rules for dynamic allocation of buckets, if the discount is dynamic.", 
                 "name": "dynamic_allocation_rule_id", 
                 "nullable": false, 
-                "type": "decimal(1,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "Defines the choice of rules for dynamic allocation of buckets, if the discount is dynamic.", 
@@ -3934,13 +3971,13 @@
                 "description": "Specifies the maximum number of buckets that could be dynamically allocated within the same discount period.\nValid values range from 0-999.\n0 indicates unlimited number of buckets per discount period.\nAny value between 1-999 indicates the exact maximum number of buckets that could be allocated per discount period applicable.\nThis field can be not null only for dynamic discounts with dynamic_allocation_rule 1 and null for all other discounts.", 
                 "name": "max_num_buckets", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "Allied discounts group identifier. Only dynamic discounts are allowed to form an allied group.", 
                 "name": "allied_discounts_group_id", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "Determines whether the allocation cost of dynamic buckets can be charged 'only' to cash discount buckets .If set to False (or null) the allocation cost is charged to account.", 
@@ -3970,25 +4007,25 @@
                 "description": "Specifies the precision for billing time discount, its maximum value could be 6. If it is null then it considered as 2 decimal places and it is the minimum value.", 
                 "name": "discount_pct_granularity", 
                 "nullable": false, 
-                "type": "decimal(1,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "Specifies the precision for billing time discount, its maximum value could be 6. If it is null then it considered as 2 decimal places and it is the minimum value.", 
                 "name": "additional_validity_mode", 
                 "nullable": false, 
-                "type": "decimal(2,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "", 
                 "name": "additional_priority_num", 
                 "nullable": false, 
-                "type": "decimal(2,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "", 
                 "name": "ocs_insession_action_type", 
                 "nullable": false, 
-                "type": "decimal(1,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "Indicates whether the event discount is negotiable or not. If the values is \"T\", then the discount is negotiable and will allow the user to create the customer specific discount slabs.", 
@@ -4000,37 +4037,37 @@
                 "description": "Value defines the lower limit for negotiable discount to allow for the customer or account or product in percentage.", 
                 "name": "min_discount_pct", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "Value defines the upper limit for negotiable discount to allow for the customer or account or product in percentage.", 
                 "name": "max_discount_pct", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "Value defines the lower limit for negotiable discount to allow for the customer or account or product in monetary amount.", 
                 "name": "min_discount_mny", 
                 "nullable": false, 
-                "type": "decimal(18,0)"
+                "type": "decimal(30,10)"
             }, 
             {
                 "description": "Value defines the upper limit for negotiable discount to allow for the customer or account or product in monetary amount.", 
                 "name": "max_discount_mny", 
                 "nullable": false, 
-                "type": "decimal(18,0)"
+                "type": "decimal(30,10)"
             }, 
             {
                 "description": "Defines the threshold in percentage for the shared discounts. Consumers can start looking up this discount consumption once the defined threshold of usage is left in the real time flow. It is applicable only in CUBE deployments.\nFor PERCENTAGE values, the units are always in multiples of 0.01%. e.g. shrd_lookup_threshold_value = 9000 means 90%.", 
                 "name": "shrd_lookup_threshold_value", 
                 "nullable": false, 
-                "type": "decimal(5,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "Set to 1 or 0 based on whether to, include or exclude reserved quota during notification threshold evaluation by QCM.\nBy-default it has to be zero for NULL in DB.", 
                 "name": "threshold_assesment_criteria_id", 
                 "nullable": false, 
-                "type": "decimal(1,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "Set to 1 or 0 based on whether to, include or exclude reserved quota during notification threshold evaluation by QCM.\nBy-default it has to be zero for NULL in DB.", 
@@ -4042,19 +4079,19 @@
                 "description": "To identify the rating time discount actions set that should be applied to this rating time discount.", 
                 "name": "disc_status_action_set_id", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "Column used as divisor to determine how many units needs to be added/truncated (based upon Discount_Rounding_type value)", 
                 "name": "rounding_unit_size", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "It determines whether to increase or decrease the value while rounding.", 
                 "name": "discount_rounding_type", 
                 "nullable": false, 
-                "type": "decimal(1,0)"
+                "type": "decimal(20,0)"
             }
         ], 
         "table_name": "dim_eventdiscount"
@@ -4657,7 +4694,7 @@
             {
                 "description": "Priority ID of customer activity", 
                 "name": "priority_id", 
-                "nullable": true, 
+                "nullable": false, 
                 "type": "decimal(20,0)"
             }, 
             {
@@ -6601,15 +6638,15 @@
                 "type": "string"
             },
 			{
-                "description": "", 
-                "name": "extraction_timestamp", 
-                "nullable": true, 
+                "description": "",
+                "name": "extraction_timestamp",
+                "nullable": true,
                 "type": "timestamp"
-            }, 
+            },
             {
-                "description": "", 
-                "name": "date", 
-                "nullable": true, 
+                "description": "",
+                "name": "date",
+                "nullable": true,
                 "type": "string"
             }
         ], 
@@ -6753,15 +6790,15 @@
                 "type": "string"
             },
 			{
-                "description": "", 
-                "name": "extraction_timestamp", 
-                "nullable": true, 
+                "description": "",
+                "name": "extraction_timestamp",
+                "nullable": true,
                 "type": "timestamp"
-            }, 
+            },
             {
-                "description": "", 
-                "name": "date", 
-                "nullable": true, 
+                "description": "",
+                "name": "date",
+                "nullable": true,
                 "type": "string"
             }
         ], 
@@ -6808,25 +6845,25 @@
         "table_name": "dim_rating_assessment_criteria"
     }, 
     "dim_record_type": {
-        "database": "refined", 
-        "description": "Dictionary table to identify the record type`s values", 
-        "domain": "Detailed usage", 
+        "database": "refined",
+        "description": "Dictionary table to identify the record type`s values",
+        "domain": "Detailed usage",
         "fields": [
             {
-                "description": "ID of record type of OCS event", 
-                "name": "record_type_id", 
-                "nullable": false, 
+                "description": "ID of record type of OCS event",
+                "name": "record_type_id",
+                "nullable": false,
                 "type": "string"
-            }, 
+            },
             {
-                "description": "Value of record type of OCS event ", 
-                "name": "record_type_value", 
-                "nullable": true, 
+                "description": "Value of record type of OCS event ",
+                "name": "record_type_value",
+                "nullable": true,
                 "type": "string"
             }
-        ], 
+        ],
         "table_name": "dim_record_type"
-    }, 
+    },
     "dim_request_status": {
         "database": "refined", 
         "description": "Dictionary for request statuses", 
@@ -6992,13 +7029,13 @@
                 "description": "Unique identifier for a given revenue feed.", 
                 "name": "revenue_feed_id", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "The attribute number for this revenue feed attribute definition.", 
                 "name": "attribute_number", 
                 "nullable": false, 
-                "type": "decimal(2,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "The name of the revenue feed attribute. As the origin of an attribute value can vary for different entries in a revenue feed based on source class and ID, this field provides a label that describes the logical contents of this attribute in the feed.", 
@@ -7010,7 +7047,7 @@
                 "description": "Indicates whether the attribute is used for grouping or summation.", 
                 "name": "action_type", 
                 "nullable": true, 
-                "type": "decimal(1,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "Optional text to output in the feed when the value of the grouping attribute is NULL. Always NULL for attributes summation attributes.", 
@@ -7042,25 +7079,25 @@
                 "description": "Unique identifier for a revenue feed.", 
                 "name": "revenue_feed_id", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "The attribute number this revenue feed attribute map applies to.", 
                 "name": "attribute_number", 
                 "nullable": false, 
-                "type": "decimal(2,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "Identifies the source class the attribute mapping applies to.", 
                 "name": "source_class_id", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "For a given source class, multiple mappings can be defined based on some attribute of the financial activity, e.g. the PRODUCT_ID, EVENT_TYPE_ID, etc. SOURCE_ID is the value that this attribute must take for the mapping to apply. The attribute the value refers to is defined in REVENUEFEEDSOURCECLASS for the source class.\nA NULL value represents a wildcard, i.e. always use this mapping for financial activity with the chosen SOURCE_CLASS_ID regardless of its SOURCE_ID.", 
                 "name": "source_id", 
                 "nullable": true, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "Controls whether or not data is output to the feed for the specified source class and source identifier. If any one of the attribute mappings used in producing a feed output record has a value of TRUE then no feed data will be output for the combination of source class and source identifier.", 
@@ -7072,7 +7109,7 @@
                 "description": "Identifies the data the process that is producing the revenue feed date should output for this ATTRIBUTE_NUMBER of the feed. Will be NULL if EXCLUDE_FROM_FEED_BOO is TRUE, and will be NOT NULL if EXCLUDE_FROM_FEED_BOO is FALSE.\n RevenueFeedSourceAttr.revenue_feed_src_attr_id", 
                 "name": "revenue_feed_src_attr_id", 
                 "nullable": true, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }
         ], 
         "table_name": "dim_revenuefeedattributemap"
@@ -7210,7 +7247,7 @@
                 "description": "Unique identifier for a revenue feed source class.", 
                 "name": "source_class_id", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "The name of the revenue feed source class.", 
@@ -7222,13 +7259,13 @@
                 "description": "A unique number for the source class that is a power of 2 (a binary number). Can be OR'ed with the bitflags of other source classes to form bitfields that identify a set of revenue feed source classes. SOURCE_CLASS_BITFLAG is used in the SOURCE_CLASS_BITFIELD column of the REVENUEFEEDSOURCEATTR table.", 
                 "name": "source_class_bitflag", 
                 "nullable": true, 
-                "type": "decimal(18,0)"
+                "type": "decimal(30,10)"
             }, 
             {
                 "description": "Identifies the feed sources that process this source class.\nIf a source class can only be processed by a single feed source then the value of FEED_SOURCE_BITFIELD will be equal to the FEED_SOURCE_BITFLAG value for that feed source.\nIf a source class can be processed by multiple feed sources then the value of FEED_SOURCE_BITFIELD will be equal to the sum of the FEED_SOURCE_BITFLAG values for all of the feed sources that can process the source class.", 
                 "name": "feed_source_bitfield", 
                 "nullable": true, 
-                "type": "decimal(18,0)"
+                "type": "decimal(30,10)"
             }, 
             {
                 "description": "Identifies the table that contains the attribute referenced by the SOURCE_ID field of REVENUEFEEDATTRIBUTEMAP for records that use this source class.", 
@@ -7903,7 +7940,7 @@
                 "nullable": true, 
                 "type": "string"
             },
-			{
+            {
                 "description": "", 
                 "name": "extraction_timestamp", 
                 "nullable": true, 
@@ -8473,7 +8510,7 @@
                 "description": "The identifier of the one-time charge instance.", 
                 "name": "otc_seq", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "The date and time this one-time charge instance is charged to the account.", 
@@ -8545,7 +8582,7 @@
                 "description": "Defines the possible status of a one-time charge instance.", 
                 "name": "otc_status_id", 
                 "nullable": false, 
-                "type": "decimal(1,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "Defines the possible status of a one-time charge instance.", 
@@ -8557,13 +8594,13 @@
                 "description": "The amount that will be liable to the account balance for this one-time charge instance. Positive amount indicates in favour of the operator, negative in favour of the account. May be a value that is used to contribute to the real time balance on the public view for account balances depending on the value of realtime_charge_boo.", 
                 "name": "otc_mny", 
                 "nullable": false, 
-                "type": "decimal(18,0)"
+                "type": "decimal(30,10)"
             }, 
             {
                 "description": "The identifier of the contracted point of supply to which this record relates.", 
                 "name": "cps_id", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "The value of the contracted point of supply to which this record relates.", 
@@ -8593,7 +8630,7 @@
                 "description": "The revenue code assigned to this one-time charge.", 
                 "name": "revenue_code_id", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "The revenue code assigned to this one-time charge.", 
@@ -8605,7 +8642,7 @@
                 "description": "Receivable class assigned to this one-time charge type.", 
                 "name": "receivable_class_id", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "Receivable class assigned to this one-time charge type.", 
@@ -8617,7 +8654,7 @@
                 "description": "The classification of the one-time charge.", 
                 "name": "otc_class_id", 
                 "nullable": false, 
-                "type": "decimal(1,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "The classification of the one-time charge.", 
@@ -8629,7 +8666,7 @@
                 "description": "Specifies the domain containing the account information.", 
                 "name": "domain_id", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "Label field to allow easy identification of one-time charge instance.", 
@@ -8641,31 +8678,31 @@
                 "description": "Service address association for the one-time charge instance. Mandatory if account is in U.S. tax mode, optional otherwise.\n Address.address_seq", 
                 "name": "service_address_seq", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "Association of the one-time charge to a product instance. The one-time charge instance can be associated with zero or one of a product instance, a subscription or a budget centre.", 
                 "name": "product_seq", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "Association of the one-time charge to a budget centre. The one-time charge instance can be associated with either a product instance or a budget centre but not both.", 
                 "name": "budget_centre_seq", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "Populated by billing when the one-time charge instance is billed. Will be null for unbilled one-time charge instances.", 
                 "name": "bill_seq", 
                 "nullable": true, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "Revenue recognition class for accounts with this one-time charge.", 
                 "name": "rev_recognition_class_id", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "Text which can be added to a one-time charge instance.", 
@@ -8683,7 +8720,7 @@
                 "description": "The bill sequence of the invoice from which this one-time charge (representing either a Late Fee, a Late Payment Penalty or a Late Payment Penalty Refund) originated.", 
                 "name": "originating_bill_seq", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "The bill version of the invoice from which this one-time charge (representing either a Late Fee, a Late Payment Penalty or a Late Payment Penalty Refund) originated.", 
@@ -8695,7 +8732,7 @@
                 "description": "Specifies the sequence of installment one-time charge unique for a given account.", 
                 "name": "otc_installment_seq", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "Specifies the installment number.", 
@@ -8713,13 +8750,13 @@
                 "description": "The quantity of the product that produced this one-time charge. Usually 1, but may be greater than 1 for parametric products.", 
                 "name": "product_quantity", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "This represents the original installment amount at the start of billing.", 
                 "name": "previous_otc_mny", 
                 "nullable": false, 
-                "type": "decimal(18,0)"
+                "type": "decimal(30,10)"
             }, 
             {
                 "description": "The beginning of the period over which the charge was applied.", 
@@ -8743,19 +8780,19 @@
                 "description": "Specifies the domain group associated with this record.", 
                 "name": "domain_group_id", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "This field holds the actual money which is given for onetime charge creation. If this field is populated, OTC_MNY field will contain overridden money based on loyalty point's redemption for this onetime charge purchase.", 
                 "name": "actual_mny", 
                 "nullable": false, 
-                "type": "decimal(18,0)"
+                "type": "decimal(30,10)"
             }, 
             {
                 "description": "The tax amount that was calculated when the charge is created and will be liable to the account balance for this one time charge instance. This will have valid value (zero or non zero value) for real-time OTCs and those are taxed only for all other cases will be null. This value will contribute to the real-time account balances.", 
                 "name": "otc_tax_mny", 
                 "nullable": false, 
-                "type": "decimal(18,0)"
+                "type": "decimal(30,10)"
             }, 
             {
                 "description": "Comma delimited string containing the list of unique discount identifiers that are applied by external system while creating OTC instance.", 
@@ -8767,7 +8804,7 @@
                 "description": "Discounted amount on OTC as calculated by external system while creating OTC instance.", 
                 "name": "precalc_disc_amount_on_otc", 
                 "nullable": false, 
-                "type": "decimal(18,0)"
+                "type": "decimal(30,10)"
             }, 
             {
                 "description": "Flag indicating that the external system has granted a discount while creating OTC. Default value will be null (which means F).", 
@@ -8785,13 +8822,13 @@
                 "description": "The one-time charge amount in alternate currency that will be liable to the account for this one-time charge instance. Positive amount indicates in favor of the operator, negative in favour of the account.", 
                 "name": "alt_currency_otc_mny", 
                 "nullable": false, 
-                "type": "decimal(18,0)"
+                "type": "decimal(30,10)"
             }, 
             {
                 "description": "The lines tax amount that will be liable to the account balance for this one time charge instance. This will have valid value for otc_class 9 only for all other cases will be null. This value will contribute to the real-time account balances.", 
                 "name": "rtpc_otc_lines_tax_mny", 
                 "nullable": false, 
-                "type": "decimal(18,0)"
+                "type": "decimal(30,10)"
             }, 
             {
                 "description": "The data used by the system for obtaining the currency conversion rate.", 
@@ -8812,19 +8849,19 @@
                 "type": "string"
             },
 			{
-                "description": "", 
-                "name": "extraction_timestamp", 
-                "nullable": true, 
+                "description": "",
+                "name": "extraction_timestamp",
+                "nullable": true,
                 "type": "timestamp"
-            }, 
+            },
             {
-                "description": "", 
-                "name": "date", 
-                "nullable": true, 
+                "description": "",
+                "name": "date",
+                "nullable": true,
                 "type": "string"
             }
-			
-        ], 
+
+        ],
         "table_name": "fct_acchasonetimecharge"
     }, 
     "fct_account_pay_attributes": {
@@ -9152,8 +9189,8 @@
                 "nullable": true, 
                 "type": "string"
             }
-			
-        ], 
+
+        ],
         "table_name": "fct_account_payment"
     }, 
     "fct_accountratingsummary": {
@@ -9488,15 +9525,15 @@
                 "type": "decimal(20,0)"
             },
 			{
-                "description": "", 
-                "name": "extraction_timestamp", 
-                "nullable": true, 
+                "description": "",
+                "name": "extraction_timestamp",
+                "nullable": true,
                 "type": "timestamp"
-            }, 
+            },
             {
-                "description": "", 
-                "name": "date", 
-                "nullable": true, 
+                "description": "",
+                "name": "date",
+                "nullable": true,
                 "type": "string"
             }
         ], 
@@ -9792,15 +9829,15 @@
                 "type": "decimal(30,10)"
             },
 			{
-                "description": "", 
-                "name": "extraction_timestamp", 
-                "nullable": true, 
+                "description": "",
+                "name": "extraction_timestamp",
+                "nullable": true,
                 "type": "timestamp"
-            }, 
+            },
             {
-                "description": "", 
-                "name": "date", 
-                "nullable": true, 
+                "description": "",
+                "name": "date",
+                "nullable": true,
                 "type": "string"
             }
         ], 
@@ -10424,15 +10461,15 @@
                 "type": "timestamp"
             },
 			{
-                "description": "", 
-                "name": "extraction_timestamp", 
-                "nullable": true, 
+                "description": "",
+                "name": "extraction_timestamp",
+                "nullable": true,
                 "type": "timestamp"
-            }, 
+            },
             {
-                "description": "", 
-                "name": "date", 
-                "nullable": true, 
+                "description": "",
+                "name": "date",
+                "nullable": true,
                 "type": "string"
             }
         ], 
@@ -11094,15 +11131,15 @@
                 "type": "decimal(20,0)"
             },
 			{
-                "description": "", 
-                "name": "extraction_timestamp", 
-                "nullable": true, 
+                "description": "",
+                "name": "extraction_timestamp",
+                "nullable": true,
                 "type": "timestamp"
-            }, 
+            },
             {
-                "description": "", 
-                "name": "date", 
-                "nullable": true, 
+                "description": "",
+                "name": "date",
+                "nullable": true,
                 "type": "string"
             }
         ], 
@@ -11540,15 +11577,15 @@
                 "type": "timestamp"
             },
 			{
-                "description": "", 
-                "name": "extraction_timestamp", 
-                "nullable": true, 
+                "description": "",
+                "name": "extraction_timestamp",
+                "nullable": true,
                 "type": "timestamp"
-            }, 
+            },
             {
-                "description": "", 
-                "name": "date", 
-                "nullable": true, 
+                "description": "",
+                "name": "date",
+                "nullable": true,
                 "type": "string"
             }
         ], 
@@ -11562,13 +11599,13 @@
             {
                 "description": "", 
                 "name": "customer_ref", 
-                "nullable": true, 
+                "nullable": false, 
                 "type": "string"
             }, 
             {
                 "description": "", 
                 "name": "account_num", 
-                "nullable": true, 
+                "nullable": false, 
                 "type": "string"
             }, 
             {
@@ -11592,7 +11629,7 @@
             {
                 "description": "", 
                 "name": "bpi_id", 
-                "nullable": true, 
+                "nullable": false, 
                 "type": "decimal(20,0)"
             }, 
             {
@@ -12183,8 +12220,8 @@
                 "nullable": true, 
                 "type": "string"
             }
-			
-        ], 
+
+        ],
         "table_name": "fct_custhasproduct"
     }, 
     "fct_customer_complaint_ticket": {
@@ -13102,7 +13139,7 @@
                 "description": "Unique sequence to identify the dispute for the account.", 
                 "name": "dispute_seq", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "Dispute creation date & time.", 
@@ -13114,7 +13151,7 @@
                 "description": "The unique sequence number of the bill within the account. May only be null for event disputes, and then only if the event to which the dispute relates has yet to be billed.", 
                 "name": "bill_seq", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "Initial Comment.", 
@@ -13126,7 +13163,7 @@
                 "description": "The amount of the dispute excluding tax, that is, the amount which appears on the bill for a particular event or other invoice line item.", 
                 "name": "dispute_mny", 
                 "nullable": false, 
-                "type": "decimal(18,0)"
+                "type": "decimal(30,10)"
             }, 
             {
                 "description": "The status of this dispute.", 
@@ -13186,19 +13223,19 @@
                 "description": "The ID of the product this dispute relates to.", 
                 "name": "product_id", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "The ID of the event type this dispute relates to.", 
                 "name": "event_type_id", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "Dispute type identifier. Foreign key reference to table DisputeType.", 
                 "name": "dispute_type_id", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "Dispute type value", 
@@ -13210,7 +13247,7 @@
                 "description": "The contracted point of supply that the dispute amount will be taxed under. May only be null for event disputes, and then only if the event to which the dispute relates has yet to be billed.", 
                 "name": "cps_id", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "The contracted point of supply that the dispute amount will be taxed under. May only be null for event disputes, and then only if the event to which the dispute relates has yet to be billed.", 
@@ -13222,19 +13259,19 @@
                 "description": "Together with account_num/customer_ref and actuall_bill_dtm (retrieved from the BillSummary table using bill_seq), identifies the CustProductDetails to which this dispute applies, and thus the price plan.", 
                 "name": "product_seq", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "The product sequence number of the subscription to which this customer's product belongs.", 
                 "name": "subs_product_seq", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "Identifies the type of product charge. This will be populated when US tax is being used and a dispute is entered against a product charge.", 
                 "name": "charge_type_id", 
                 "nullable": false, 
-                "type": "decimal(1,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "Identifies the type of product charge.", 
@@ -13252,7 +13289,7 @@
                 "description": "The class of the dispute, indicating the entity to which the dispute relates. Can have product disputes, event type disputes and event disputes.", 
                 "name": "dispute_class_id", 
                 "nullable": false, 
-                "type": "decimal(1,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "The class of the dispute, indicating the entity to which the dispute relates. Can have product disputes, event type disputes and event disputes.", 
@@ -13264,19 +13301,19 @@
                 "description": "The override tax treatment that must applied to the dispute when billed. May only be populated for event type and event disputes. If null, the standard tax treatment for the event type or event will be applied.", 
                 "name": "tax_override_id", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "Identifier that is used by the third-party tax package to determine the taxability and tax rate for a charge.", 
                 "name": "ust_category_id", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "A US tax identifier that is used by the third-party tax package to determine the taxability and tax rate for a charge.", 
                 "name": "ust_code_id", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "Date and time when a dispute was resolved.", 
@@ -13288,7 +13325,7 @@
                 "description": "Receivable class to be used for any adjustments created as a result of this dispute, taken from the receivable class of the disputed charge.", 
                 "name": "receivable_class_id", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "Receivable class to be used for any adjustments created as a result of this dispute, taken from the receivable class of the disputed charge.", 
@@ -13306,19 +13343,19 @@
                 "description": "Will be set only if the dispute is against a One-time Charge. Together with account_num, identifies the One-time Charge to which this dispute applies.", 
                 "name": "otc_seq", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "The identifier of the one-time charge to which this one-time charge instance record relates.", 
                 "name": "otc_id", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "This column used to group multiple disputes under same group id.", 
                 "name": "group_id", 
                 "nullable": false, 
-                "type": "decimal(9,0)"
+                "type": "decimal(20,0)"
             }
         ], 
         "table_name": "fct_dispute"
@@ -13361,44 +13398,44 @@
             {
                 "description": "OCS Subscriber ID (OCS account)", 
                 "name": "ocs_subscriber_id", 
+                "nullable": false, 
+                "type": "string"
+            }, 
+            {
+                "description": "Flag wheter product offering is top level offering. Yes/No", 
+                "name": "is_top_offer", 
                 "nullable": true, 
                 "type": "string"
             }, 
             {
-                "description": "", 
+                "description": "Flag wheter tlo tariff is payg. Yes/No", 
                 "name": "is_payg", 
                 "nullable": true, 
                 "type": "string"
             }, 
             {
-                "description": "For all rows for particular subs_id we should propagate \\u201cEvent Timestamp\\u201d from fct_prepaid_charges with type \\u201cEvent Timestamp\\u201d", 
-                "name": "bill_cycle_start_date", 
+                "description": "Flag wheter tlo tariff is payg. Yes/No", 
+                "name": "status", 
                 "nullable": true, 
                 "type": "string"
+            }, 
+            {
+                "description": "Flag wheter tlo tariff is payg. Yes/No", 
+                "name": "suspended_date", 
+                "nullable": true, 
+                "type": "timestamp"
+            }, 
+            {
+                "description": "For all rows for particular subs_id we should propagate \\u201cEvent Timestamp\\u201d from fct_prepaid_charges with type \\u201cEvent Timestamp\\u201d", 
+                "name": "bill_cycle_start_date", 
+                "nullable": false, 
+                "type": "timestamp"
             }, 
             {
                 "description": "For all rows for particular subs_id we should propagate \\u201cExpire date\\u201d from fct_prepaid_charges with type \\u201cRenewal\\u201d", 
                 "name": "bill_cycle_end_date", 
                 "nullable": true, 
-                "type": "string"
-            }, 
-            {
-                "description": "", 
-                "name": "amount", 
-                "nullable": true, 
-                "type": "decimal"
-            }, 
-            {
-                "description": "", 
-                "name": "tax", 
-                "nullable": true, 
-                "type": "decimal"
-            }, 
-            {
-                "description": "", 
-                "name": "total_amount", 
-                "nullable": true, 
-                "type": "decimal"
+                "type": "timestamp"
             }
         ], 
         "table_name": "fct_ocs_subscription_bill_cycles"
@@ -14311,7 +14348,7 @@
             {
                 "description": "OCS Subscription ID of subscription from which this event has consumed", 
                 "name": "ocs_subscription_id", 
-                "nullable": false, 
+                "nullable": true, 
                 "type": "string"
             }, 
             {
@@ -14320,7 +14357,25 @@
                 "nullable": true, 
                 "type": "decimal(20,0)"
             }, 
-			{
+            {
+                "description": "Charged amount in cents for renewal out of CreditAllowance. ", 
+                "name": "charged_ca_amount", 
+                "nullable": true, 
+                "type": "decimal(30,3)"
+            }, 
+            {
+                "description": "Renewal: Offer Id on BSS. Applied only on Renewal of subscription. addSubscription: Offer Id on BSS. Applied only on addSubscription. ", 
+                "name": "bss_offer_id", 
+                "nullable": true, 
+                "type": "string"
+            }, 
+            {
+                "description": "Renewal: Instance Id on BSS. Applied only on Renewal of subscription. addSubscription: Instance Id on BSS. Applied only on addSubscription. ", 
+                "name": "bss_instance_id", 
+                "nullable": true, 
+                "type": "string"
+            }, 
+            {
                 "description": "Id of the Product Offering in the Product Offering Catalog (Flat product offering).", 
                 "name": "productoffering_id", 
                 "nullable": true, 
@@ -14331,7 +14386,7 @@
                 "name": "productoffering_name", 
                 "nullable": true, 
                 "type": "string"
-            },
+            }, 
             {
                 "description": "Flag wheter product offering is top level offering. Yes/No", 
                 "name": "is_top_offer", 
@@ -14409,7 +14464,13 @@
                 "name": "bpi_nrc", 
                 "nullable": true, 
                 "type": "decimal(30,3)"
-            },
+            }, 
+            {
+                "description": "Offer ID as configured in Offer Catalog", 
+                "name": "offer_id", 
+                "nullable": true, 
+                "type": "string"
+            }, 
             {
                 "description": "Price of offer subscribed.", 
                 "name": "offer_price", 
@@ -14427,23 +14488,29 @@
                 "name": "activation_date", 
                 "nullable": true, 
                 "type": "timestamp"
-            },
-            {
-                "description": "Date when the subscription has been suspended  ", 
-                "name": "suspended_date", 
-                "nullable": true, 
-                "type": "timestamp"
-            },
+            }, 
             {
                 "description": "Shows the information about subscription status ", 
                 "name": "status", 
                 "nullable": true, 
                 "type": "string"
-            },
+            }, 
+            {
+                "description": "Shows the information about subscription status ", 
+                "name": "status_value", 
+                "nullable": true, 
+                "type": "string"
+            }, 
+            {
+                "description": "Date when the subscription has been suspended  ", 
+                "name": "suspended_date", 
+                "nullable": true, 
+                "type": "timestamp"
+            }, 
             {
                 "description": "Unique transaction ID.", 
                 "name": "transaction_id", 
-                "nullable": true, 
+                "nullable": false, 
                 "type": "string"
             }, 
             {
@@ -14463,54 +14530,6 @@
                 "name": "charged_amount", 
                 "nullable": true, 
                 "type": "decimal(30,3)"
-            },
-            {
-                "description": "Remaining cash balance amount in cents", 
-                "name": "remaining_balance", 
-                "nullable": true, 
-                "type": "decimal(30,3)"
-            }, 
-            {
-                "description": "Date of next renewal charge. addSubscription/updateSubscription: Date of next renewal charge in format yyyy-MM-dd HH:mm:ss", 
-                "name": "renewal_date", 
-                "nullable": true, 
-                "type": "timestamp"
-            }, 
-            {
-                "description": "External Offer ID", 
-                "name": "externalofferid", 
-                "nullable": true, 
-                "type": "string"
-            }, 			
-            {
-                "description": "Charged amount in cents for renewal out of CreditAllowance. ", 
-                "name": "charged_ca_amount", 
-                "nullable": true, 
-                "type": "decimal(30,3)"
-            }, 
-            {
-                "description": "Renewal: Offer Id on BSS. Applied only on Renewal of subscription. addSubscription: Offer Id on BSS. Applied only on addSubscription. ", 
-                "name": "bss_offer_id", 
-                "nullable": true, 
-                "type": "string"
-            }, 
-            {
-                "description": "Renewal: Instance Id on BSS. Applied only on Renewal of subscription. addSubscription: Instance Id on BSS. Applied only on addSubscription. ", 
-                "name": "bss_instance_id", 
-                "nullable": true, 
-                "type": "string"
-            },
-            {
-                "description": "Shows the information about subscription status ", 
-                "name": "status_value", 
-                "nullable": true, 
-                "type": "string"
-            }, 			
-            {
-                "description": "Offer ID as configured in Offer Catalog", 
-                "name": "offer_id", 
-                "nullable": true, 
-                "type": "string"
             }, 
             {
                 "description": "addSubscription: Tax code of offer subscribed.", 
@@ -14524,17 +14543,34 @@
                 "nullable": true, 
                 "type": "string"
             }, 
-
-			{
-                "description": "", 
-                "name": "extraction_timestamp", 
+            {
+                "description": "Remaining cash balance amount in cents",
+                "name": "remaining_balance",
+                "nullable": true,
+                "type": "decimal(30,3)"
+            },
+            {
+                "description": "Date of next renewal charge. addSubscription/updateSubscription: Date of next renewal charge in format yyyy-MM-dd HH:mm:ss",
+                "name": "renewal_date",
                 "nullable": true, 
                 "type": "timestamp"
             }, 
             {
-                "description": "", 
-                "name": "date", 
+                "description": "External Offer ID",
+                "name": "externalofferid",
                 "nullable": true, 
+                "type": "string"
+            },
+            {
+                "description": "",
+                "name": "extraction_timestamp",
+                "nullable": true,
+                "type": "timestamp"
+            },
+            {
+                "description": "",
+                "name": "date",
+                "nullable": true,
                 "type": "string"
             }
         ], 
@@ -14573,13 +14609,13 @@
                 "description": "Unique identifier of Business product instance", 
                 "name": "bpi_id", 
                 "nullable": true, 
-                "type": "decimal(20)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "Id of the Product Offering in the Product Offering Catalog (Flat product offering).", 
                 "name": "tariff_plan_id", 
                 "nullable": true, 
-                "type": "decimal(20)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "The product offering name (Flat product offering)", 
@@ -14596,13 +14632,13 @@
             {
                 "description": "Timestamp of the EDR. Format yyyy-MM-dd HH:mm:ss", 
                 "name": "event_dtm", 
-                "nullable": true, 
+                "nullable": false, 
                 "type": "timestamp"
             }, 
             {
                 "description": "Unique transaction ID.", 
                 "name": "transaction_id", 
-                "nullable": true, 
+                "nullable": false, 
                 "type": "string"
             }, 
             {
@@ -14615,7 +14651,7 @@
                 "description": "Result code for the provisioning action.", 
                 "name": "result_code", 
                 "nullable": true, 
-                "type": "decimal"
+                "type": "integer"
             }, 
             {
                 "description": "Amount in cents.", 
@@ -14648,15 +14684,15 @@
                 "type": "string"
             },
 			{
-                "description": "", 
-                "name": "extraction_timestamp", 
-                "nullable": true, 
+                "description": "",
+                "name": "extraction_timestamp",
+                "nullable": true,
                 "type": "timestamp"
-            }, 
+            },
             {
-                "description": "", 
-                "name": "date", 
-                "nullable": true, 
+                "description": "",
+                "name": "date",
+                "nullable": true,
                 "type": "string"
             }
         ], 
@@ -14766,7 +14802,7 @@
             {
                 "description": "Id of type of OCS event ", 
                 "name": "event_type_id", 
-                "nullable": true, 
+                "nullable": false, 
                 "type": "integer"
             }, 
             {
@@ -14778,7 +14814,7 @@
             {
                 "description": "ID of record type of OCS event", 
                 "name": "record_type_id", 
-                "nullable": true, 
+                "nullable": false, 
                 "type": "integer"
             }, 
             {
@@ -14886,7 +14922,7 @@
             {
                 "description": "IMSI of SIM that this event is related to", 
                 "name": "served_imsi", 
-                "nullable": true, 
+                "nullable": false, 
                 "type": "string"
             }, 
             {
@@ -14916,7 +14952,7 @@
             {
                 "description": "SessionID of diameter session of which this event is a part", 
                 "name": "session_id", 
-                "nullable": true, 
+                "nullable": false, 
                 "type": "string"
             }, 
             {
@@ -14950,15 +14986,15 @@
                 "type": "string"
             },
 			{
-                "description": "", 
-                "name": "extraction_timestamp", 
-                "nullable": true, 
+                "description": "",
+                "name": "extraction_timestamp",
+                "nullable": true,
                 "type": "timestamp"
-            }, 
+            },
             {
-                "description": "", 
-                "name": "date", 
-                "nullable": true, 
+                "description": "",
+                "name": "date",
+                "nullable": true,
                 "type": "string"
             }
         ], 
@@ -15402,6 +15438,12 @@
                 "name": "bpi_id", 
                 "nullable": true, 
                 "type": "decimal(20)"
+            }, 
+            {
+                "description": "Type of OCS event ", 
+                "name": "event_type_id", 
+                "nullable": false, 
+                "type": "integer"
             }, 
             {
                 "description": "", 
@@ -15964,12 +16006,18 @@
                 "name": "account_type", 
                 "nullable": true, 
                 "type": "string"
-            }, 			
+            },
             {
                 "description": "Billing Account Number", 
                 "name": "account_num", 
                 "nullable": true, 
                 "type": "string"
+            }, 
+            {
+                "description": "Unique identifier of Subscriber", 
+                "name": "subs_id", 
+                "nullable": false, 
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "Unique ID of Billing Account", 
@@ -15994,19 +16042,19 @@
                 "name": "sales_order_id", 
                 "nullable": true, 
                 "type": "decimal(20,0)"
-            },
-            {
-                "description": "Name of the Subscription  (contains a name for tariff plan and unique number)", 
-                "name": "bill_issue_notification_value", 
-                "nullable": true, 
-                "type": "string"
-            },			
+            }, 
             {
                 "description": "Name of the Subscription  (contains a name for tariff plan and unique number)", 
                 "name": "bill_issue_notification_id", 
                 "nullable": true, 
                 "type": "decimal(20,0)"
             }, 
+            {
+                "description": "Name of the Subscription  (contains a name for tariff plan and unique number)", 
+                "name": "bill_issue_notification_value", 
+                "nullable": true, 
+                "type": "string"
+            },
             {
                 "description": "Name of the Subscription  (contains a name for tariff plan and unique number)", 
                 "name": "bill_paid_notification_value", 
@@ -16060,7 +16108,7 @@
                 "name": "data_allowance", 
                 "nullable": true, 
                 "type": "string"
-            }, 			
+            },
             {
                 "description": "The date of activation of the subscriber (date when status of the subscriber was changed from Planned to Active)", 
                 "name": "actual_start_date", 
@@ -16090,7 +16138,7 @@
                 "name": "autorenewal_value", 
                 "nullable": true, 
                 "type": "string"
-            }, 			
+            }, 
             {
                 "description": "Current billing status of subscriber id", 
                 "name": "billing_subs_status_id", 
@@ -16107,14 +16155,14 @@
                 "description": "Current status of subscriber id", 
                 "name": "subs_status_id", 
                 "nullable": false, 
-                "type": "bigint"
+                "type": "long"
             }, 
             {
                 "description": "Current status of subscriber value", 
                 "name": "subs_status_value", 
                 "nullable": false, 
                 "type": "string"
-            },
+            }, 
             {
                 "description": "Customer category ID. Customer category is configured in PIM. Link to DIM_CUSTOMER_CATEGORIES.category_id", 
                 "name": "customer_category_id", 
@@ -16126,7 +16174,7 @@
                 "name": "customer_category_value", 
                 "nullable": true, 
                 "type": "string"
-            },			
+            },
             {
                 "description": "ID of the system which initiated Sales Order", 
                 "name": "initiating_system_id", 
@@ -16168,7 +16216,7 @@
                 "name": "remaining_upfront_payment", 
                 "nullable": true, 
                 "type": "decimal(20,0)"
-            },  			
+            },
             {
                 "description": "The date when was last changes in subscription.", 
                 "name": "processed_when_date", 
@@ -16312,18 +16360,18 @@
                 "name": "sim_card_type_value", 
                 "nullable": false, 
                 "type": "string"
-            },
-            {
-                "description": "Logical status value of SIM Card/eSIM", 
-                "name": "sim_card_logical_status_id", 
-                "nullable": true, 
-                "type": "decimal(20,0)"
-            }, 			
+            }, 
             {
                 "description": "Logical status value of SIM Card/eSIM", 
                 "name": "sim_card_logical_status_value", 
                 "nullable": true, 
                 "type": "string"
+            }, 
+            {
+                "description": "Logical status value of SIM Card/eSIM", 
+                "name": "sim_card_logical_status_id", 
+                "nullable": true, 
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "Service Provider to which Phone Number is ported-to.", 
@@ -16354,13 +16402,7 @@
                 "name": "last_event_date", 
                 "nullable": true, 
                 "type": "timestamp"
-            },
-            {
-                "description": "Last incoming call date", 
-                "name": "last_incoming_call", 
-                "nullable": true, 
-                "type": "timestamp"
-            },			
+            }, 
             {
                 "description": "Last Charge Date", 
                 "name": "last_charge_date", 
@@ -16373,16 +16415,22 @@
                 "nullable": true, 
                 "type": "timestamp"
             }, 
-			{
-                "description": "", 
-                "name": "extraction_timestamp", 
+            {
+                "description": "Last incoming call date",
+                "name": "last_incoming_call",
                 "nullable": true, 
                 "type": "timestamp"
-            }, 
+            },
             {
-                "description": "", 
-                "name": "date", 
-                "nullable": true, 
+                "description": "",
+                "name": "extraction_timestamp",
+                "nullable": true,
+                "type": "timestamp"
+            },
+            {
+                "description": "",
+                "name": "date",
+                "nullable": true,
                 "type": "string"
             }
         ], 
