@@ -16026,12 +16026,6 @@
                 "type": "decimal(20,0)"
             }, 
             {
-                "description": "Unique identifier of Subscriber", 
-                "name": "subs_id", 
-                "nullable": false, 
-                "type": "decimal(20,0)"
-            }, 
-            {
                 "description": "Unique ID of Subscriber", 
                 "name": "bpi_id", 
                 "nullable": false, 
