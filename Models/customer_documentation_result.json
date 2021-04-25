@@ -14379,6 +14379,7 @@
         ], 
         "table_name": "vf_fct_payment_transaction"
     }, 
+	
     "vf_fct_payment_transaction_status": {
         "database": "refined", 
         "description": "Stores history of status changes of payment transactions", 
