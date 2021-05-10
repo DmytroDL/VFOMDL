@@ -1,0 +1,106 @@
+swagger: '2.0'
+info:
+  description: ''
+  version: '2.0'
+  title: API BillingManagement
+schemes:
+  - http
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /appliedCustomerBillingCharge:
+    get:
+      tags:
+        - appliedCustomerBillingCharge
+      operationId: appliedCustomerBillingChargeFind
+      summary: appliedCustomerBillingChargeFind
+      description: ''
+      deprecated: false
+      parameters:
+        - name: fields
+          in: query
+          required: false
+          description: ''
+          type: string
+      responses:
+        '200':
+          description: List of AppliedCustomerBillingCharge
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/AppliedCustomerBillingCharge'
+
+definitions:
+  AppliedCustomerBillingCharge:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      href:
+        type: string
+      date:
+        type: string
+        format: date-time
+      description:
+        type: string
+      type:
+        type: string
+      currencyCode:
+        type: string
+      taxIncludedAmount:
+        type: number
+        format: float
+      taxExcludedAmount:
+        type: number
+        format: float
+      appliedCustomerBillingTaxRate:
+        type: array
+        items:
+          $ref: '#/definitions/AppliedCustomerBillingTaxRate'
+      serviceId:
+        type: array
+        items:
+          $ref: '#/definitions/ServiceId'
+      productSpecification:
+        type: array
+        items:
+          $ref: '#/definitions/ProductSpecification'
+      period:
+        type: array
+        items:
+          $ref: '#/definitions/Period'
+  AppliedCustomerBillingTaxRate:
+    type: object
+    properties:
+      amount:
+        type: number
+        format: float
+      taxCategory:
+        type: string
+  ServiceId:
+    type: object
+    properties:
+      id:
+        type: string
+      type:
+        type: string
+  ProductSpecification:
+    type: object
+    properties:
+      name:
+        type: string
+      productNumber:
+        type: string
+  Period:
+    type: object
+    properties:
+      startPeriod:
+        type: string
+        format: date-time
+      endPeriod:
+        type: string
+        format: date-time
+ 

@@ -1,0 +1,232 @@
+swagger: '2.0'
+info:
+  title: API Party
+  description: |-
+    ## TMF API Reference : TMF 632 - Party 
+
+    ### Release : 19.0 
+
+    The party API provides standardized mechanism for party management such as creation, update, retrieval, deletion and notification of events. Party can be an individual or an organization that has any kind of relation with the enterprise. Party is created to record individual or organization information before the assignment of any role. For example, within the context of a split billing mechanism, Party API allows creation of the individual or organization that will play the role of 3 rd payer for a given offer and, then, allows consultation or update of his information.
+
+    ### Resources
+    - Individual
+
+    Party API performs the following operations :
+    - Retrieve an individual
+  version: 4.0.0
+host: serverRoot
+basePath: /tmf-api/party/v4/
+schemes:
+  - https
+consumes:
+  - application/json;charset=utf-8
+produces:
+  - application/json;charset=utf-8
+tags:
+  - name: individual
+paths:
+  /individual:
+    get:
+      operationId: listIndividual
+      summary: List or find Individual objects
+      description: This operation list or find Individual entities
+      tags:
+        - individual
+      parameters:
+        - type: string
+          required: false
+          in: query
+          name: fields
+          description: Comma-separated properties to be provided in response
+        - type: integer
+          required: false
+          in: query
+          name: offset
+          description: Requested index for start of resources to be provided in response
+        - type: integer
+          required: false
+          in: query
+          name: limit
+          description: Requested number of resources to be provided in response
+      responses:
+        '200':
+          description: Success
+          headers:
+            X-Total-Count:
+              type: integer
+              description: Total number of items matching criteria
+            X-Result-Count:
+              type: integer
+              description: Actual number of items returned in the response body
+          schema:
+            items:
+              $ref: '#/definitions/Individual'
+            type: array
+        '400':
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/Error'
+        '401':
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/Error'
+        '403':
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/Error'
+        '404':
+          description: Not Found
+          schema:
+            $ref: '#/definitions/Error'
+        '405':
+          description: Method Not allowed
+          schema:
+            $ref: '#/definitions/Error'
+        '409':
+          description: Conflict
+          schema:
+            $ref: '#/definitions/Error'
+        '500':
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/Error'
+  '/individual/{id}':
+    get:
+      operationId: retrieveIndividual
+      summary: Retrieves a Individual by ID
+      description: This operation retrieves a Individual entity. Attribute selection is enabled for all first level attributes.
+      tags:
+        - individual
+      parameters:
+        - required: true
+          type: string
+          name: id
+          in: path
+          description: Identifier of the Individual
+        - required: false
+          type: string
+          name: fields
+          in: query
+          description: Comma-separated properties to provide in response
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/Individual'
+        '400':
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/Error'
+        '401':
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/Error'
+        '403':
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/Error'
+        '404':
+          description: Not Found
+          schema:
+            $ref: '#/definitions/Error'
+        '405':
+          description: Method Not allowed
+          schema:
+            $ref: '#/definitions/Error'
+        '409':
+          description: Conflict
+          schema:
+            $ref: '#/definitions/Error'
+        '500':
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/Error'
+definitions:
+  Individual:
+    type: object
+    description: 'Individual represents a single human being (a man, woman or child). The individual can be a customer, an employee or any other person that the organization needs to store information about.'
+    required:
+      - id
+    properties:
+      id:
+        type: string
+        description: Unique identifier of the organization
+      individualIdentification:
+          type: array
+          items:
+            $ref: '#/definitions/IndividualIdentification'
+  IndividualIdentification:
+    type: object
+    description: 'Represents our registration of information used as proof of identity by an individual (passport, national identity card, drivers license, social security number, birth certificate)'
+    properties:
+      identificationId:
+        type: string
+        description: Identifier
+      identificationType:
+        type: string
+        description: 'Identification type (passport, national identity card, drivers license, social security number, birth certificate)'
+      issuingAuthority:
+        type: string
+        description: 'Authority which has issued the identifier, such as: social security, town hall'
+      issuingDate:
+        type: string
+        format: date-time
+        description: Date at which the identifier was issued
+      validFor:
+        $ref: '#/definitions/TimePeriod'
+        description: The period for which the identification information is valid.
+      '@baseType':
+        type: string
+        description: 'When sub-classing, this defines the super-class'
+      '@schemaLocation':
+        type: string
+        description: A URI to a JSON-Schema file that defines additional attributes and relationships
+        format: uri
+      '@type':
+        type: string
+        description: 'When sub-classing, this defines the sub-class entity name'            
+  TimePeriod:
+    type: object
+    description: 'A period of time, either as a deadline (endDateTime only) a startDateTime only, or both'
+    properties:
+      endDateTime:
+        type: string
+        format: date-time
+        description: 'End of the time period, using IETC-RFC-3339 format'
+      startDateTime:
+        type: string
+        format: date-time
+        description: 'Start of the time period, using IETC-RFC-3339 format. If you define a start, you must also define an end'
+  Error:
+    required:
+      - code
+      - reason
+    type: object
+    description: 'Used when an API throws an Error, typically with a HTTP error response-code (3xx, 4xx, 5xx)'
+    properties:
+      code:
+        type: string
+        description: 'Application relevant detail, defined in the API or a common list.'
+      reason:
+        type: string
+        description: Explanation of the reason for the error which can be shown to a client user.
+      message:
+        type: string
+        description: More details and corrective actions related to the error which can be shown to a client user.
+      status:
+        type: string
+        description: HTTP Error code extension
+      referenceError:
+        type: string
+        description: URI of documentation describing the error.
+        format: uri
+      '@baseType':
+        type: string
+        description: 'When sub-classing, this defines the super-class.'
+      '@schemaLocation':
+        type: string
+        description: A URI to a JSON-Schema file that defines additional attributes and relationships
+        format: uri
+      '@type':
+        type: string
+        description: 'When sub-classing, this defines the sub-class entity name.'

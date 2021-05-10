@@ -1,0 +1,430 @@
+swagger: '2.0'
+info:
+  description: |-
+    ##TMF API Reference : TMF 637 - Product Inventory Management
+
+    ##Release : 18.0 - May 2018
+
+    The Product Inventory Management API provides standardized mechanism for product inventory management such as creation, update and retrieval of the representation of a product in the inventory. It also allows the notification of events related to product lifecycle
+
+    ###Product resource
+    A product offering procured by a customer or other interested party playing a party role. A product is realized as one or more service(s) and / or resource(s).
+
+    ###Product Inventory API performs the following operations on product :
+    - Retrieval of a product or a collection of products depending on filter criteria
+    - Partial update of a product (including updating rules and for administration purpose)
+    - Creation of a product (including default values and creation rules and for administration purpose)
+    - Deletion of a product (for administration purposes)
+    - Notification of events on product.
+
+    Copyright © TM Forum 2017. All Rights Reserved
+  version: 3.0.0
+  title: API ProductInventory
+host: serverRoot
+basePath: /tmf-api/productInventory/v3/
+schemes:
+  - https
+consumes:
+  - application/json;charset=utf-8
+produces:
+  - application/json;charset=utf-8
+tags:
+  - name: Product
+    description: ''
+  - name: Hub
+    description: HUB resource is used to allows API event subscription.
+paths:
+  /product:
+    get:
+      tags:
+        - Product
+      operationId: productFind
+      summary: List products
+      description: |
+        This operation list product entities.
+        Attribute selection is enabled for all first level attributes.
+        Filtering may be available depending on the compliance level supported by an implementation.
+
+        Specific business errors for current operation will be encapsulated in
+
+        HTTP Response 422 Unprocessable entity
+      deprecated: false
+      parameters:
+        - name: fields
+          required: false
+          in: query
+          description: Attributes selection
+          type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Product'
+        '400':
+          description: |-
+            Bad Request
+
+            List of supported error codes:
+            - 20: Invalid URL parameter value
+            - 21: Missing body
+            - 22: Invalid body
+            - 23: Missing body field
+            - 24: Invalid body field
+            - 25: Missing header
+            - 26: Invalid header value
+            - 27: Missing query-string parameter
+            - 28: Invalid query-string parameter value
+          schema:
+            $ref: '#/definitions/ErrorRepresentation'
+        '404':
+          description: |-
+            Not Found
+
+            List of supported error codes:
+            - 60: Resource not found
+          schema:
+            $ref: '#/definitions/ErrorRepresentation'
+        '405':
+          description: |-
+            Method Not Allowed
+
+            List of supported error codes:
+            - 61: Method not allowed
+          schema:
+            $ref: '#/definitions/ErrorRepresentation'
+        '409':
+          description: |-
+            Conflict
+
+            The request could not be completed due to a conflict with the current state of the target resource.
+          schema:
+            $ref: '#/definitions/ErrorRepresentation'
+        '422':
+          description: |-
+            Unprocessable entity
+
+            Functional error
+          schema:
+            $ref: '#/definitions/ErrorRepresentation'
+        '500':
+          description: |-
+            Internal Server Error
+
+            List of supported error codes:
+            - 1: Internal error
+          schema:
+            $ref: '#/definitions/ErrorRepresentation'
+  '/product/{productId}':
+    get:
+      tags:
+        - Product
+      operationId: productGet
+      summary: Retrieve product
+      description: |
+        This operation retrieves a product entity.
+        Attribute selection is enabled for all first level attributes.
+        Filtering on sub-resources may be available depending on the compliance level supported by an implementation.
+
+        Specific business errors for current operation will be encapsulated in
+
+        HTTP Response 422 Unprocessable entity
+      deprecated: false
+      parameters:
+        - name: productId
+          in: path
+          required: true
+          type: string
+          description: ''
+        - name: fields
+          required: false
+          in: query
+          description: Attributes selection
+          type: string
+      responses:
+        '200':
+          description: Success
+          schema:
+            $ref: '#/definitions/Product'
+        '400':
+          description: |-
+            Bad Request
+
+            List of supported error codes:
+            - 20: Invalid URL parameter value
+            - 21: Missing body
+            - 22: Invalid body
+            - 23: Missing body field
+            - 24: Invalid body field
+            - 25: Missing header
+            - 26: Invalid header value
+            - 27: Missing query-string parameter
+            - 28: Invalid query-string parameter value
+          schema:
+            $ref: '#/definitions/ErrorRepresentation'
+        '404':
+          description: |-
+            Not Found
+
+            List of supported error codes:
+            - 60: Resource not found
+          schema:
+            $ref: '#/definitions/ErrorRepresentation'
+        '405':
+          description: |-
+            Method Not Allowed
+
+            List of supported error codes:
+            - 61: Method not allowed
+          schema:
+            $ref: '#/definitions/ErrorRepresentation'
+        '409':
+          description: |-
+            Conflict
+
+            The request could not be completed due to a conflict with the current state of the target resource.
+          schema:
+            $ref: '#/definitions/ErrorRepresentation'
+        '422':
+          description: |-
+            Unprocessable entity
+
+            Functional error
+          schema:
+            $ref: '#/definitions/ErrorRepresentation'
+        '500':
+          description: |-
+            Internal Server Error
+
+            List of supported error codes:
+            - 1: Internal error
+          schema:
+            $ref: '#/definitions/ErrorRepresentation'
+definitions:
+  ErrorRepresentation:
+    description: Error Representation
+    required:
+      - code
+      - reason
+    type: object
+    properties:
+      code:
+        description: ''
+        type: integer
+        format: int32
+      reason:
+        description: ''
+        type: string
+      message:
+        description: ''
+        type: string
+      status:
+        description: ''
+        type: string
+      referenceError:
+        description: ''
+        type: string
+      '@type':
+        description: ''
+        type: string
+      '@schemaLocation':
+        description: ''
+        type: string  
+  Product:
+    description: |-
+      A Product represents the subscription of a ProductOffering by a Party playing a PartyRole, such as a Customer.  For example, Jean has subscribed to company ABC’s internet ProductOffering.
+      The association between ProductSpecification and Product allows ProductSpecification, to be instantiated as Product and related to customers or other involved parties.
+    required:
+      - id
+    type: object
+    properties:
+      id:
+        description: Unique identifier of the product
+        type: string
+      href:
+        description: Reference of the product
+        type: string
+      description:
+        description: The description of the product. It could be copied from the description of the Product Offering.
+        type: string
+      isBundle:
+        description: 'If true, the product is a ProductBundle which is an instantiation of a BundledProductOffering. If false, the product is a ProductComponent which is an instantiation of a SimpleProductOffering'
+        type: boolean
+      isCustomerVisible:
+        description: 'If true, the product is visible by the customer'
+        type: boolean
+      name:
+        description: The name of the product. It could be the same as the name of the Product Offering
+        type: string
+      productSerialNumber:
+        description: Serial number for the product. This is typically applicable to tangible products e.g. Broadband Router.
+        type: string
+      orderDate:
+        description: A date time (DateTime). Is the date when the product was ordered.
+        type: string
+        format: date-time  
+      startDate:
+        description: The date from which the product starts
+        type: string
+        format: date-time
+      terminationDate:
+        description: The date when the product was terminated. Not applicable to active products
+        type: string
+        format: date-time
+      '@baseType':
+        description: Indicates the base type of the resource. Here can be 'Product'
+        type: string
+      '@type':
+        description: Indicated the type of resource.
+        type: string
+      '@schemaLocation':
+        description: A link to the schema describing this REST resource.
+        type: string
+      productOffering:
+        $ref: '#/definitions/ProductOfferingRef'
+      productCharacteristic:
+        type: array
+        items:
+          $ref: '#/definitions/ProductCharacteristic'
+      productPrice:
+        type: array
+        items:
+          $ref: '#/definitions/ProductPrice'
+  ProductOfferingRef:
+    description: 'ProductOffering reference. A product offering represents entities that are orderable from the provider of the catalog, this resource includes pricing information.'
+    required:
+      - id
+    type: object
+    properties:
+      id:
+        description: Unique identifier of the product offering
+        type: string
+      href:
+        description: Reference of the product offering
+        type: string
+      name:
+        description: Name of the product offering
+        type: string
+      '@referredType':
+        description: Type (class) of the product offering
+        type: string
+  ProductCharacteristic:
+    description: Characteristics of the product to instantiate or to modify.
+    type: object
+    properties:
+      name:
+        description: Name of the characteristic
+        type: string
+      value:
+        description: Value of the characteristic
+        type: string
+      valueType:
+        description: Type of the characteristic
+        type: string
+      '@type':
+        description: Indicates the (class) type of resource
+        type: string
+      '@schemaLocation':
+        description: This field provided a link to the schema describing this REST resource.
+        type: string
+  ProductPrice:
+    description: 'An amount, usually of money, that represents the actual price paid by a Customer for a purchase, a rent or a lease of a Product. The price is valid for a defined period of time.'
+    type: object
+    properties:
+      id:
+        description: Unique identifier of a productOfferingPrice
+        type: string
+      name:
+        description: A short descriptive name such as "Subscription price"
+        type: string
+      description:
+        description: A narrative that explains in detail the semantics of this product price
+        type: string
+      priceType:
+        description: 'A category that describes the price, such as recurring, discount, allowance, penalty, and so forth'
+        type: string
+      recurringChargePeriod:
+        description: 'Could be month, week...'
+        type: string
+      unitOfMeasure:
+        description: 'Could be minutes, GB...'
+        type: string
+      '@type':
+        description: Indicates the type of ProductPrice class
+        type: string
+      '@schemaLocation':
+        description: A link to the schema describing this REST resource
+        type: string
+      price:
+        $ref: '#/definitions/Price'
+  Price:
+    description: 'Provides all amounts (tax included, duty free, tax rate), used currency and percentage applied for price and price alteration'
+    type: object
+    properties:
+      taxIncludedAmount:
+        $ref: '#/definitions/Money'
+      dutyFreeAmount:
+        $ref: '#/definitions/Money'
+      percentage:
+        description: Percentage applied
+        type: number
+        format: float
+      taxRate:
+        description: Applied tax rate on amount
+        type: number
+        format: float
+      '@type':
+        description: Indicates the (class) type of the price
+        type: string
+      '@schemaLocation':
+        description: Link to the schema describing this REST resource.
+        type: string
+  ProductOrderRef:
+    description: The product order(s) related to this product inventory
+    required:
+      - orderItemId
+    type: object
+    properties:
+      id:
+        description: Unique identifier of product order
+        type: string
+      href:
+        description: Hypertext Reference of the product order
+        type: string
+      '@referredType':
+        description: Indicate the class (type) of productOrder
+        type: string
+      orderItemId:
+        description: Identifier of the order item where the product was managed
+        type: string
+      orderItemAction:
+        description: Action of the order item for this product
+        type: string
+  Money:
+    description: A base / value business entity used to represent money.
+    required:
+      - value
+      - unit
+    type: object
+    properties:
+      value:
+        description: A positive floating point number
+        type: string
+      unit:
+        description: Currency (ISO4217 norm uses 3 letters to define the currency).
+        type: string
+  Quantity:
+    description: Description of a quantity like for the Duration attribute
+    required:
+      - amount
+      - units
+    type: object
+    properties:
+      amount:
+        description: A value for the quantity
+        type: number
+        format: float
+      units:
+        description: A unit associated with the quantity (for example months)
+        type: string
