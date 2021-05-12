@@ -234,7 +234,6 @@ definitions:
     description: |-
       A Product represents the subscription of a ProductOffering by a Party playing a PartyRole, such as a Customer.  For example, Jean has subscribed to company ABC’s internet ProductOffering.
       The association between ProductSpecification and Product allows ProductSpecification, to be instantiated as Product and related to customers or other involved parties.
-    required:
     type: object
     properties:
       id:
@@ -401,7 +400,6 @@ definitions:
         type: string
   Money:
     description: A base / value business entity used to represent money.
-    required:
     type: object
     properties:
       value:
