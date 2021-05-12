@@ -1086,7 +1086,6 @@ definitions:
       The ReserveBalance resource allows adjustments to be made to the original BalanceTopup eg increment the amount, alter the recharge periodicity
       Skipped properties: id,href,status,requestedDate,confirmationDate,relatedParty
     required:
-      - status
       - usageType
       - bucket
       - partyAccount
@@ -1144,7 +1143,6 @@ definitions:
     required:
       - status
       - reason
-      - id
     properties:
       confirmationDate:
         type: string
@@ -1327,7 +1325,6 @@ definitions:
       Represents a detailed description of a recharge operation requested over a bucket (defined by a specific product or reference to a product (i.e.: a commercial id such as an msisidn) and a service type)
       Skipped properties: id,href,status,requestedDate,confirmationDate,relatedParty
     required:
-      - status
       - amount
       - usageType
       - bucket
@@ -1587,17 +1584,13 @@ definitions:
       The TransferBalance resource is a detailed description of credit transfer operation requested between two buckets (reference to products owned by customers and consuming credit when using a service).
       Skipped properties: id,href,status,requestedDate,confirmationDate,relatedParty,partyAccount
     required:
-      - href
-      - id
       - reason
       - receiverLogicalResource
       - channel
       - logicalResource
-      - status
       - amount
       - usageType
       - bucket
-      - partyAccount
       - receiverBucket
       - receiverBucketUsageType
     properties:
@@ -1670,13 +1663,10 @@ definitions:
       The TransferBalance resource is a detailed description of credit transfer operation requested between two buckets (reference to products owned by customers and consuming credit when using a service).
       Skipped properties: id,href,status,requestedDate,confirmationDate,validFor,description,partyAccount,relatedParty
     required:
-      - href
-      - id
       - reason
       - receiverLogicalResource
       - channel
       - logicalResource
-      - status
     properties:
       reason:
         type: string
