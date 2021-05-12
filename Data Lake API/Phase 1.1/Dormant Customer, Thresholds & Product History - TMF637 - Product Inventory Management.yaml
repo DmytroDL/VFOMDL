@@ -202,6 +202,18 @@ paths:
           schema:
             $ref: '#/definitions/ErrorRepresentation'
 definitions:
+  StatusType:
+    description: ''
+    type: string
+    enum:
+      - created
+      - pendingActive
+      - cancelled
+      - active
+      - pendingTerminate
+      - terminated
+      - suspended
+      - aborted
   ErrorRepresentation:
     description: Error Representation
     required:
@@ -230,7 +242,7 @@ definitions:
         type: string
       '@schemaLocation':
         description: ''
-        type: string  
+        type: string
   Product:
     description: |-
       A Product represents the subscription of a ProductOffering by a Party playing a PartyRole, such as a Customer.  For example, Jean has subscribed to company ABC’s internet ProductOffering.
@@ -260,14 +272,12 @@ definitions:
       productSerialNumber:
         description: Serial number for the product. This is typically applicable to tangible products e.g. Broadband Router.
         type: string
-      orderDate:
-        description: A date time (DateTime). Is the date when the product was ordered.
-        type: string
-        format: date-time  
       startDate:
         description: The date from which the product starts
         type: string
         format: date-time
+      status:
+        $ref: '#/definitions/StatusType'
       terminationDate:
         description: The date when the product was terminated. Not applicable to active products
         type: string
@@ -281,16 +291,50 @@ definitions:
       '@schemaLocation':
         description: A link to the schema describing this REST resource.
         type: string
+      place:
+        type: array
+        items:
+          $ref: '#/definitions/Place'
       productOffering:
         $ref: '#/definitions/ProductOfferingRef'
-      productCharacteristic:
+      productSpecification:
+        $ref: '#/definitions/ProductSpecification'
+      characteristic:
         type: array
         items:
           $ref: '#/definitions/ProductCharacteristic'
+      productRelationship:
+        type: array
+        items:
+          $ref: '#/definitions/ProductRelationship'
+      billingAccount:
+        type: array
+        items:
+          $ref: '#/definitions/BillingAccountRef'
+      relatedParty:
+        type: array
+        items:
+          $ref: '#/definitions/RelatedParty'
+      realizingResource:
+        type: array
+        items:
+          $ref: '#/definitions/RealizingResource'
+      realizingService:
+        type: array
+        items:
+          $ref: '#/definitions/RealizingService'
       productPrice:
         type: array
         items:
           $ref: '#/definitions/ProductPrice'
+      productOrder:
+        type: array
+        items:
+          $ref: '#/definitions/ProductOrderRef'
+      productTerm:
+        type: array
+        items:
+          $ref: '#/definitions/ProductTerm'
   ProductOfferingRef:
     description: 'ProductOffering reference. A product offering represents entities that are orderable from the provider of the catalog, this resource includes pricing information.'
     required:
@@ -309,6 +353,29 @@ definitions:
       '@referredType':
         description: Type (class) of the product offering
         type: string
+  ProductSpecification:
+    description: A ProductSpecification is a detailed description of a tangible or intangible object made available externally in the form of a ProductOffering to customers or other parties playing a party role.
+    required:
+      - id
+    type: object
+    properties:
+      id:
+        description: Unique identifier of the product specification
+        type: string
+      href:
+        description: Reference of the product specification
+        type: string
+      version:
+        description: Version of the product specification
+        type: string
+      name:
+        description: Name of the product specification
+        type: string
+      '@referredType':
+        description: Indicate the productSpecification type class
+        type: string
+      describing:
+        $ref: '#/definitions/TargetResourceSchema'
   ProductCharacteristic:
     description: Characteristics of the product to instantiate or to modify.
     type: object
@@ -319,14 +386,105 @@ definitions:
       value:
         description: Value of the characteristic
         type: string
-      valueType:
-        description: Type of the characteristic
-        type: string
       '@type':
         description: Indicates the (class) type of resource
         type: string
       '@schemaLocation':
         description: This field provided a link to the schema describing this REST resource.
+        type: string
+  ProductRelationship:
+    description: |-
+      Type of the product relationship. it can be 'bundled' if the product is a bundle and you want to describe the 'bundled' products inside this bundle, 'reliesOn' if the product needs another already owned product to rely on
+      (e.g. an option on an already owned mobile access product) or 'targets' or 'isTargeted' (depending on the way of expressing the link) for any other kind of links that may be useful
+    required:
+      - product
+    type: object
+    properties:
+      type:
+        description: Type of the product relationship
+        type: string
+      product:
+        $ref: '#/definitions/ProductRef'
+  BillingAccountRef:
+    description: A BillingAccount is a detailed description of a bill structure
+    required:
+      - id
+    type: object
+    properties:
+      id:
+        description: Unique identier of the billing account
+        type: string
+      href:
+        description: Reference of the billing account
+        type: string
+      name:
+        description: Name of the billing account
+        type: string
+      '@referredType':
+        description: Indicates the (class) type of the billing account
+        type: string
+  RelatedParty:
+    description: The party which the product is related with.
+    type: object
+    properties:
+      id:
+        description: Unique identifier of the related party
+        type: string
+      href:
+        description: Reference of the related party
+        type: string
+      name:
+        description: Name of the related party
+        type: string
+      role:
+        description: Role played by the related party
+        type: string
+      validFor:
+        $ref: '#/definitions/TimePeriod'
+      '@referredType':
+        description: Indicates the (class) type of party
+        type: string
+  RealizingResource:
+    description: RealizingResource reference. RealizingResource is a link to the resource that realizes the product.
+    required:
+      - id
+    type: object
+    properties:
+      id:
+        description: Unique identifier of the resource
+        type: string
+      href:
+        description: Reference of the resource
+        type: string
+      name:
+        description: Name of the resource.
+        type: string
+      role:
+        description: Role of the resource
+        type: string
+      '@referredType':
+        description: Indicate the class (type) of the realizing resource
+        type: string
+  RealizingService:
+    description: RealizingService reference. RealizingService is a link to the service that realizes the product.
+    required:
+      - id
+    type: object
+    properties:
+      id:
+        description: Unique identifier of the service
+        type: string
+      href:
+        description: Reference of the service
+        type: string
+      name:
+        description: Name of the service
+        type: string
+      role:
+        description: Role of the realizing service
+        type: string
+      '@referredType':
+        description: Indicate the class (type) of the realizing service.
         type: string
   ProductPrice:
     description: 'An amount, usually of money, that represents the actual price paid by a Customer for a purchase, a rent or a lease of a Product. The price is valid for a defined period of time.'
@@ -358,6 +516,10 @@ definitions:
         type: string
       price:
         $ref: '#/definitions/Price'
+      prodPriceAlteration:
+        $ref: '#/definitions/PriceAlteration'
+      billingAccount:
+        $ref: '#/definitions/BillingAccountRef'
   Price:
     description: 'Provides all amounts (tax included, duty free, tax rate), used currency and percentage applied for price and price alteration'
     type: object
@@ -380,6 +542,114 @@ definitions:
       '@schemaLocation':
         description: Link to the schema describing this REST resource.
         type: string
+  TimePeriod:
+    description: A time period described through 2 dates
+    type: object
+    properties:
+      startDateTime:
+        description: ''
+        type: string
+        format: date-time
+      endDateTime:
+        description: ''
+        type: string
+        format: date-time
+  ProductRef:
+    description: A product reference to be used for relationship target
+    required:
+      - id
+    type: object
+    properties:
+      id:
+        description: Unique identifier of the product
+        type: string
+      href:
+        description: Reference of the product
+        type: string
+  Place:
+    description: Place defines the places where the products is installed or has a footprint (a place could be used for geo fencing
+    required:
+      - role
+    type: object
+    properties:
+      id:
+        description: Unique identifier of the place
+        type: string
+      href:
+        description: Reference of the place
+        type: string
+      name:
+        description: A user-friendly name for the place
+        type: string
+      role:
+        description: 'Role of the place (for instance: ''installation site'', ''A-extremity site'', ''Supervised Perimeter'' etc...)'
+        type: string
+      '@referredType':
+        description: 'Indicate the type of Place class (example: ''geographicAddress'')'
+        type: string
+      '@schemaLocation':
+        description: A link to the schema describing this REST resource
+        type: string
+  PriceAlteration:
+    description: 'Is an amount, usually of money, that modifies the price charged for a Product'
+    type: object
+    properties:
+      id:
+        description: Link to the schema describing this REST resource.
+        type: string
+      name:
+        description: A short descriptive name such as "Monthly discount"
+        type: string
+      description:
+        description: A narrative that explains in detail the semantics of this ProdPriceAlteration
+        type: string
+      priceType:
+        description: 'A category that describes the price such as recurring, one shot and so forth'
+        type: string
+      unitOfMeasure:
+        description: 'Could be minutes, GB...'
+        type: string
+      recurringChargePeriod:
+        description: 'Could be month, week...'
+        type: string
+      validFor:
+        $ref: '#/definitions/TimePeriod'
+      priority:
+        description: Priority level for applying this alteration among all the defined alterations
+        type: integer
+        format: int32
+      '@type':
+        description: Indicated the class (type) of the price alteration.
+        type: string
+      '@schemaLocation':
+        description: A link to the schema describing the price alteration.
+        type: string
+      price:
+        $ref: '#/definitions/Price'
+  Hub:
+    description: 'Sets the communication endpoint address the service instance must use to deliver information about its health state, execution state, failures and metrics'
+    discriminator: id
+    type: object
+    properties:
+      id:
+        description: Unique identifier of the hub
+        type: string
+      callback:
+        description: The callback address to be registered
+        type: string
+      query:
+        description: Additional Data to be passed
+        type: string
+  HubInput:
+    description: 'Sets the communication endpoint address the service instance must use to deliver information about its health state, execution state, failures and metrics'
+    type: object
+    properties:
+      callback:
+        description: The callback address to be registered
+        type: string
+      query:
+        description: Additional Data to be passed
+        type: string
   ProductOrderRef:
     description: The product order(s) related to this product inventory
     required:
@@ -401,6 +671,23 @@ definitions:
       orderItemAction:
         description: Action of the order item for this product
         type: string
+  ProductTerm:
+    description: This represent a commitment with a duration
+    type: object
+    properties:
+      name:
+        description: Name of the commitment term
+        type: string
+      description:
+        description: Description of the commitment term
+        type: string
+      duration:
+        $ref: '#/definitions/Quantity'
+      validFor:
+        $ref: '#/definitions/TimePeriod'
+      '@type':
+        description: Indicate the class (type) of the product term
+        type: string
   Money:
     description: A base / value business entity used to represent money.
     required:
@@ -413,6 +700,18 @@ definitions:
         type: string
       unit:
         description: Currency (ISO4217 norm uses 3 letters to define the currency).
+        type: string
+  TargetResourceSchema:
+    description: Target to the schema describing the product spec resource
+    required:
+      - '@type'
+    type: object
+    properties:
+      '@type':
+        description: 'Indicated the type of the productSpec described there - for example an E-Line Spec, a CPE spec'
+        type: string
+      '@schemaLocation':
+        description: A link to the schema describing the product spec
         type: string
   Quantity:
     description: Description of a quantity like for the Duration attribute
