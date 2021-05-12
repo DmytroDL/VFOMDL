@@ -106,6 +106,41 @@ definitions:
         items:
           $ref: '#/definitions/Characteristic'
         description: Describes the characteristic of a customer
+      engagedParty:
+        $ref: '#/definitions/RelatedParty'
+        description: The party - an organization or an individual - that is engaged as a customer.
+  RelatedParty:
+    type: object
+    description: Related Entity reference. A related party defines party or party role linked to a specific entity.
+    required:
+      - '@referredType'
+      - id
+    properties:
+      id:
+        type: string
+        description: Unique identifier of a related entity.
+      href:
+        type: string
+        description: Reference of the related entity.
+      name:
+        type: string
+        description: Name of the related entity.
+      role:
+        type: string
+        description: Role played by the related party
+      '@baseType':
+        type: string
+        description: 'When sub-classing, this defines the super-class'
+      '@schemaLocation':
+        type: string
+        format: uri
+        description: A URI to a JSON-Schema file that defines additional attributes and relationships
+      '@type':
+        type: string
+        description: 'When sub-classing, this defines the sub-class entity name'
+      '@referredType':
+        type: string
+        description: The actual type of the target instance when needed for disambiguation.      
   Error:
     description: 'Used when an API throws an Error, typically with a HTTP error response-code (3xx, 4xx, 5xx)'
     type: object
