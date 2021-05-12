@@ -134,7 +134,7 @@ definitions:
       totalBalance:
         $ref: '#/definitions/Quantity'
         description: Aggregated for a set of prepay balance buckets associated to the product
-      '@basetype':
+      '@baseType':
         type: string
         description: 'When sub-classing, this defines the super-class'
       '@schemaLocation':
@@ -207,7 +207,7 @@ definitions:
       validFor:
         $ref: '#/definitions/TimePeriod'
         description: The period for which the balance in the bucket is valid
-      '@basetype':
+      '@baseType':
         type: string
         description: 'When sub-classing, this defines the super-class'
       '@schemaLocation':
@@ -235,7 +235,7 @@ definitions:
       href:
         type: string
         description: Hyperlink reference
-      '@basetype':
+      '@baseType':
         type: string
         description: 'When sub-classing, this defines the super-class'
       '@schemaLocation':
@@ -311,7 +311,7 @@ definitions:
       validFor:
         $ref: '#/definitions/TimePeriod'
         description: The period for which the balance in the bucket is valid
-      '@basetype':
+      '@baseType':
         type: string
         description: 'When sub-classing, this defines the super-class'
       '@schemaLocation':
@@ -366,7 +366,7 @@ definitions:
       validFor:
         $ref: '#/definitions/TimePeriod'
         description: The period for which the balance in the bucket is valid
-      '@basetype':
+      '@baseType':
         type: string
         description: 'When sub-classing, this defines the super-class'
       '@schemaLocation':
@@ -438,7 +438,7 @@ definitions:
       validFor:
         $ref: '#/definitions/TimePeriod'
         description: The period for which the balance in the bucket is valid
-      '@basetype':
+      '@baseType':
         type: string
         description: 'When sub-classing, this defines the super-class'
       '@schemaLocation':
@@ -557,7 +557,7 @@ definitions:
       validFor:
         $ref: '#/definitions/TimePeriod'
         description: The period for which the balance in the bucket is valid
-      '@basetype':
+      '@baseType':
         type: string
         description: 'When sub-classing, this defines the super-class'
       '@schemaLocation':
@@ -628,7 +628,7 @@ definitions:
       validFor:
         $ref: '#/definitions/TimePeriod'
         description: The period for which the balance in the bucket is valid
-      '@basetype':
+      '@baseType':
         type: string
         description: 'When sub-classing, this defines the super-class'
       '@schemaLocation':
@@ -651,7 +651,7 @@ definitions:
       name:
         type: string
         description: Name of the related entity.
-      '@basetype':
+      '@baseType':
         example: ResourceSpecification
         type: string
         description: 'When sub-classing, this defines the super-class'
@@ -689,7 +689,7 @@ definitions:
       name:
         type: string
         description: Name of the channel.
-      '@basetype':
+      '@baseType':
         example: ResourceSpecification
         type: string
         description: 'When sub-classing, this defines the super-class'
@@ -726,7 +726,7 @@ definitions:
       name:
         type: string
         description: Name of the related entity.
-      '@basetype':
+      '@baseType':
         example: ResourceSpecification
         type: string
         description: 'When sub-classing, this defines the super-class'
@@ -748,7 +748,7 @@ definitions:
     type: object
     description: Base Extensible schema for use in TMForum Open-APIs
     properties:
-      '@basetype':
+      '@baseType':
         example: ResourceSpecification
         type: string
         description: 'When sub-classing, this defines the super-class'
@@ -774,7 +774,7 @@ definitions:
       name:
         type: string
         description: Name of the related entity.
-      '@basetype':
+      '@baseType':
         example: ResourceSpecification
         type: string
         description: 'When sub-classing, this defines the super-class'
@@ -803,7 +803,7 @@ definitions:
         type: number
         format: float
         description: A positive floating point number
-      '@basetype':
+      '@baseType':
         type: string
         description: 'When sub-classing, this defines the super-class'
       '@schemaLocation':
@@ -832,7 +832,7 @@ definitions:
       status:
         type: string
         description: 'The condition of the account, such as due, paid, in arrears.'
-      '@basetype':
+      '@baseType':
         type: string
         description: 'When sub-classing, this defines the super-class'
       '@schemaLocation':
@@ -860,7 +860,7 @@ definitions:
       name:
         type: string
         description: Name of the related entity.
-      '@basetype':
+      '@baseType':
         example: ResourceSpecification
         type: string
         description: 'When sub-classing, this defines the super-class'
@@ -890,7 +890,7 @@ definitions:
       name:
         type: string
         description: Name of the related entity.
-      '@basetype':
+      '@baseType':
         example: ResourceSpecification
         type: string
         description: 'When sub-classing, this defines the super-class'
@@ -920,7 +920,7 @@ definitions:
       units:
         type: string
         description: Unit
-      '@basetype':
+      '@baseType':
         type: string
         description: 'When sub-classing, this defines the super-class'
       '@schemaLocation':
@@ -956,7 +956,7 @@ definitions:
       role:
         type: string
         description: Role played by the related party
-      '@basetype':
+      '@baseType':
         example: ResourceSpecification
         type: string
         description: 'When sub-classing, this defines the super-class'
@@ -991,7 +991,7 @@ definitions:
       role:
         type: string
         description: Role played by the TopupBalance. In the PrepayBalanceManagement API this is parent or child
-      '@basetype':
+      '@baseType':
         example: ResourceSpecification
         type: string
         description: 'When sub-classing, this defines the super-class'
@@ -1070,7 +1070,7 @@ definitions:
       validFor:
         $ref: '#/definitions/TimePeriod'
         description: The period for which the balance in the bucket is valid
-      '@basetype':
+      '@baseType':
         type: string
         description: 'When sub-classing, this defines the super-class'
       '@schemaLocation':
@@ -1126,7 +1126,7 @@ definitions:
       validFor:
         $ref: '#/definitions/TimePeriod'
         description: The period for which the balance in the bucket is valid
-      '@basetype':
+      '@baseType':
         type: string
         description: 'When sub-classing, this defines the super-class'
       '@schemaLocation':
@@ -1197,7 +1197,7 @@ definitions:
       validFor:
         $ref: '#/definitions/TimePeriod'
         description: The period for which the balance in the bucket is valid
-      '@basetype':
+      '@baseType':
         type: string
         description: 'When sub-classing, this defines the super-class'
       '@schemaLocation':
@@ -1221,7 +1221,7 @@ definitions:
         type: string
         format: date-time
         description: 'Start of the time period, using IETC-RFC-3339 format. If you define a start, you must also define an end'
-      '@basetype':
+      '@baseType':
         type: string
         description: 'When sub-classing, this defines the super-class'
       '@schemaLocation':
@@ -1311,7 +1311,7 @@ definitions:
       validFor:
         $ref: '#/definitions/TimePeriod'
         description: The period for which the balance in the bucket is valid
-      '@basetype':
+      '@baseType':
         type: string
         description: 'When sub-classing, this defines the super-class'
       '@schemaLocation':
@@ -1385,7 +1385,7 @@ definitions:
       validFor:
         $ref: '#/definitions/TimePeriod'
         description: The period for which the balance in the bucket is valid
-      '@basetype':
+      '@baseType':
         type: string
         description: 'When sub-classing, this defines the super-class'
       '@schemaLocation':
@@ -1471,7 +1471,7 @@ definitions:
       validFor:
         $ref: '#/definitions/TimePeriod'
         description: The period for which the balance in the bucket is valid
-      '@basetype':
+      '@baseType':
         type: string
         description: 'When sub-classing, this defines the super-class'
       '@schemaLocation':
@@ -1571,7 +1571,7 @@ definitions:
       validFor:
         $ref: '#/definitions/TimePeriod'
         description: The period for which the balance in the bucket is valid
-      '@basetype':
+      '@baseType':
         type: string
         description: 'When sub-classing, this defines the super-class'
       '@schemaLocation':
@@ -1654,7 +1654,7 @@ definitions:
       validFor:
         $ref: '#/definitions/TimePeriod'
         description: The period for which the balance in the bucket is valid
-      '@basetype':
+      '@baseType':
         type: string
         description: 'When sub-classing, this defines the super-class'
       '@schemaLocation':
@@ -1725,7 +1725,7 @@ definitions:
       usageType:
         $ref: '#/definitions/UsageType'
         description: 'defines the type of the underlying Balance eg data,voice, any currency eg EUR, USD etc'
-      '@basetype':
+      '@baseType':
         type: string
         description: 'When sub-classing, this defines the super-class'
       '@schemaLocation':
@@ -2311,7 +2311,7 @@ definitions:
         type: string
         format: uri
         description: URI of documentation describing the error.
-      '@basetype':
+      '@baseType':
         type: string
         description: 'When sub-classing, this defines the super-class.'
       '@schemaLocation':
