@@ -411,9 +411,6 @@ definitions:
         type: string
   Quantity:
     description: Description of a quantity like for the Duration attribute
-    required:
-      - amount
-      - units
     type: object
     properties:
       amount:
