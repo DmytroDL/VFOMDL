@@ -1508,7 +1508,7 @@
             {
                 "description": "Shop ID of intial Sales Order", 
                 "name": "shop_id", 
-                "type": "decimal(20,0)"
+                "type": "string"
             }, 
             {
                 "description": "The date when was last changes BPI", 
@@ -6623,7 +6623,7 @@
             {
                 "description": "Shop ID of intial Sales Order", 
                 "name": "shop_id", 
-                "type": "decimal(20,0)"
+                "type": "string"
             }, 
             {
                 "description": "", 
@@ -9631,7 +9631,7 @@
             {
                 "description": "Shop ID of intial Sales Order", 
                 "name": "shop_id", 
-                "type": "decimal(20,0)"
+                "type": "string"
             }, 
             {
                 "description": "ID of the system which initiated Sales Order", 
@@ -13858,7 +13858,7 @@
             {
                 "description": "Shop ID of intial Sales Order", 
                 "name": "shop_id", 
-                "type": "decimal(20,0)"
+                "type": "string"
             }, 
             {
                 "description": "", 
