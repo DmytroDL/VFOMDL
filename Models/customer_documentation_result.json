@@ -12430,6 +12430,12 @@
                 "name": "date",
                 "nullable": true,
                 "type": "string"
+            },
+            {
+                "description": "",
+                "name": "autorenewal_value",
+                "nullable": true,
+                "type": "string"
             }
         ], 
         "table_name": "fct_prepaid_charges"
@@ -14051,6 +14057,12 @@
                 "name": "date",
                 "nullable": true,
                 "type": "string"
+            },
+            {
+                "description": "",
+                "name": "date_change_tariff_plan",
+                "nullable": true,
+                "type": "timestamp"
             }
         ], 
         "table_name": "vf_dim_subscription"
