@@ -9587,7 +9587,27 @@
                 "description": "Unique identifier of Business product instance", 
                 "name": "bpi_id", 
                 "type": "decimal(20,0)"
-            }, 
+            },
+            {
+                "description": "AUTORENEWAL id",
+                "name": "autorenewal_value",
+                "type": "string"
+            },
+            {
+                "description": "",
+                "name": "included_in_base_plan",
+                "type": "string"
+            },
+            {
+                "description": "OCS Subscriber ID (OCS account)",
+                "name": "ocs_subscriber_id",
+                "type": "string"
+            },
+            {
+                "description": "",
+                "name": "ocs_subscription_id",
+                "type": "string"
+            },
             {
                 "description": "Unique identifier of the fact of the Sale order", 
                 "name": "sales_order_id", 
@@ -9817,7 +9837,12 @@
                 "description": "Monthly discounts for the fact change of the BPI", 
                 "name": "prev_bpi_discount_mrc", 
                 "type": "string"
-            }, 
+            },
+            {
+                "description": "",
+                "name": "bpi_discount_nrc",
+                "type": "decimal(30,3)"
+            },
             {
                 "description": "", 
                 "name": "prev_rec_individ_basic_price", 
@@ -9857,7 +9882,7 @@
                 "description": "", 
                 "name": "prev_bpi_nrc", 
                 "type": "string"
-            }, 
+            },
             {
                 "description": "Monthly discounts for the fact change of the BPI", 
                 "name": "bpi_discount_mrc", 
@@ -9902,7 +9927,12 @@
                 "description": "", 
                 "name": "bpi_nrc", 
                 "type": "string"
-            }, 
+            },
+            {
+                "description": "External ID",
+                "name": "external_id",
+                "type": "string"
+            },
             {
                 "description": "Is it price changed by this processed date Yes/No", 
                 "name": "is_price_changed", 
