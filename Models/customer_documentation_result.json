@@ -1691,6 +1691,11 @@
                 "type": "string"
             }, 
             {
+                 "description": "SIM Information (Product Information). NC ID in TOMS. On third level",
+                 "name": "iccid",
+                 "type": "decimal(20,0)"
+            },
+            {
                 "description": "Flag wheter product offering is top level offering. Yes/No", 
                 "name": "is_top_offer", 
                 "type": "string"
