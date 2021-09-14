@@ -1900,6 +1900,16 @@
         "domain": "customer", 
         "fields": [
             {
+                "description": "Primary customer ref for individual, to whom this contact method refers", 
+                "name": "primary_customer_ref", 
+                "type": "string"
+            },
+            {
+                "description": "NC ID of individual, to whom this contact method refers", 
+                "name": "individual_id", 
+                "type": "decimal(20,0)"
+            },
+            {
                 "description": "NC ID of contact method", 
                 "name": "contact_method_id", 
                 "type": "decimal(20,0)"
@@ -1951,12 +1961,12 @@
             }, 
             {
                 "description": "A phone number type ID", 
-                "name": "phone_type_id", 
+                "name": "cust_phone_type_id", 
                 "type": "decimal(20,0)"
             }, 
             {
                 "description": "A phone number type value", 
-                "name": "phone_type_value", 
+                "name": "cust_phone_type_value", 
                 "type": "string"
             }, 
             {
