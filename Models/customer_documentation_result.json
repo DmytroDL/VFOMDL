@@ -390,7 +390,7 @@
             {
                 "description": "Bill Handling code ID", 
                 "name": "bill_handling_code_id", 
-                "type": "string"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "Fuller name for the bill handling code.", 
@@ -484,11 +484,6 @@
             {
                 "description": "Customer Unique Identifier", 
                 "name": "customer_ref", 
-                "type": "string"
-            }, 
-            {
-                "description": "Name of particular Billing Account", 
-                "name": "name", 
                 "type": "string"
             }, 
             {
@@ -739,7 +734,7 @@
             {
                 "description": "Currency", 
                 "name": "currency", 
-                "type": "decimal(20,0)"
+                "type": "string"
             }, 
             {
                 "description": "Datastore Masking", 
@@ -1488,7 +1483,7 @@
             {
                 "description": "Reference to Customer Location", 
                 "name": "location_id", 
-                "type": "decimal(20,0)"
+                "type": "string"
             }, 
             {
                 "description": "The sequence number of the product, unique for the customer (customer_ref).", 
@@ -1529,6 +1524,11 @@
                 "description": "The system which initiated Sales Order", 
                 "name": "initiating_system_value", 
                 "type": "string"
+            },
+            {
+                "description": "Indicates if add-on included in base plan",
+                "name": "included_in_base_plan",
+                "type": "string"    
             }, 
             {
                 "description": "Distribution Channel ID of the last Sales Order", 
@@ -1573,7 +1573,7 @@
             {
                 "description": "Id of the Product Offering Template in the Product Offering Catalog.", 
                 "name": "productoffering_template_id", 
-                "type": "string"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "The Product Offering Template name", 
@@ -1753,7 +1753,7 @@
             {
                 "description": "", 
                 "name": "ocs_offer_id", 
-                "type": "string"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "", 
@@ -1773,7 +1773,7 @@
             {
                 "description": "", 
                 "name": "fr_ocs_offer_id", 
-                "type": "string"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "", 
@@ -2466,7 +2466,7 @@
             {
                 "description": "Last payment amount, provisioned to Self Service Portal", 
                 "name": "last_payment_amount", 
-                "type": "decimal(20,0)"
+                "type": "decimal(30,10)"
             }, 
             {
                 "description": "Last payment date, provisioned to Self Service Portal", 
@@ -5705,6 +5705,16 @@
                 "description": "Product Offering Characteristic billing attribute ID", 
                 "name": "productoffering_characteristic_attr_id", 
                 "type": "string"
+            },
+            {
+                "description": "Unique ID of OCS Offer (not-PAYG).",
+                "name": "ocs_offer_id",
+                "type": "decimal(20,0)"          
+            },
+            {
+                "description": "Unique ID of Cash Balance Offer .",
+                "name": "cash_bal_offer_id",
+                "type": "decimal(20,0)"              
             }, 
             {
                 "description": "Product Offering Characteristic Name", 
@@ -7371,7 +7381,7 @@
             {
                 "description": "The sequence number for generations of this bill sequence for this account. This number is incremented by bill cancellations and re-bills for the account and bill sequence.", 
                 "name": "bill_version", 
-                "type": "decimal(10,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "Unique identifier of Business product instance", 
@@ -7531,7 +7541,7 @@
             {
                 "description": "The bill version of the invoice from which this one-time charge (representing either a Late Fee, a Late Payment Penalty or a Late Payment Penalty Refund) originated.", 
                 "name": "originating_bill_version", 
-                "type": "decimal(3,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "Specifies the sequence of installment one-time charge unique for a given account.", 
@@ -7541,7 +7551,7 @@
             {
                 "description": "Specifies the installment number.", 
                 "name": "installment_number", 
-                "type": "decimal(3,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "The date and time this one-time charge with installment nature terminates.", 
@@ -7571,7 +7581,7 @@
             {
                 "description": "The sequence number (unique within the account) of the Unbilled Product Revenue Extractor (UPRE) run, that processed this record.\nThis field is populated only for OTCs against rating-only accounts with OTC Class=8", 
                 "name": "upre_seq", 
-                "type": "decimal(3,0)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "Specifies the domain group associated with this record.", 
@@ -7819,7 +7829,7 @@
             {
                 "description": "The amount of money involved in the account transaction.", 
                 "name": "account_payment_mny", 
-                "type": "decimal(18,0)"
+                "type": "decimal(30,10)"
             }, 
             {
                 "description": "The nominal date of the account transaction.", 
@@ -7869,7 +7879,7 @@
             {
                 "description": "If the account payment derives from a physical payment made in a different currency to the account operating currency, this field records the value of the account payment in the currency used for the physical payment.", 
                 "name": "alt_account_payment_mny", 
-                "type": "decimal(18,0)"
+                "type": "decimal(30,10)"
             }, 
             {
                 "description": "If the account payment derives from a physical payment made in a different currency to the account operating currency, this field has the same value as PhysicalPayment.currency_code for the parent record.", 
@@ -8115,7 +8125,7 @@
             {
                 "description": "Indicates status of adjustment.", 
                 "name": "adjustment_status_id", 
-                "type": "decimal(20,0)"
+                "type": "string"
             }, 
             {
                 "description": "Indicates status of adjustment.", 
@@ -8250,7 +8260,7 @@
             {
                 "description": "The amount of money involved in the transaction.", 
                 "name": "amount_mny", 
-                "type": "decimal(18,0)"
+                "type": "decimal(30,10)"
             }, 
             {
                 "description": "Notes.", 
@@ -8270,17 +8280,17 @@
             {
                 "description": "The amount of money being invoiced, excluding tax.", 
                 "name": "invoice_net_mny", 
-                "type": "decimal(18,0)"
+                "type": "decimal(30,10)"
             }, 
             {
                 "description": "The tax owing on the money being invoiced.", 
                 "name": "invoice_tax_mny", 
-                "type": "decimal(18,0)"
+                "type": "decimal(30,10)"
             }, 
             {
                 "description": "The total amount of payments that appear on the bill.", 
                 "name": "payments_mny", 
-                "type": "decimal(18,0)"
+                "type": "decimal(30,10)"
             }, 
             {
                 "description": "Defines the date from when the payment is due.", 
@@ -8978,7 +8988,7 @@
             {
                 "description": "Information in to this column will be populated when the split charge by amount functionality is in use. For all other cases, this column will be null.\n1. From Catalogue Price Plan\n2. From Override Price\n3. From ADP Price.", 
                 "name": "split_charge_source", 
-                "type": "decimal(30,10)"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "Date start of actual charge", 
@@ -9636,7 +9646,7 @@
             {
                 "description": "", 
                 "name": "ocs_offer_id", 
-                "type": "string"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "", 
@@ -9781,7 +9791,7 @@
             {
                 "description": "Id of the Product Offering Template in the Product Offering Catalog.", 
                 "name": "productoffering_template_id", 
-                "type": "string"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "The Product Offering Template name", 
@@ -12328,7 +12338,17 @@
                 "description": "Flag wheter tlo tariff is payg. Yes/No", 
                 "name": "is_payg", 
                 "type": "string"
+            },
+            {
+                "description": "Indicates if base/add-on autorenewable or not",
+                "name": "autorenewal_value",
+                "type": "string"              
             }, 
+            {
+                "description": "Indicates if add-on included in base plan",
+                "name": "included_in_base_plan",
+                "type": "string"              
+            },
             {
                 "description": "Product Offering Type ID", 
                 "name": "productoffering_type_id", 
@@ -13750,23 +13770,18 @@
                 "description": "Billing Account Number", 
                 "name": "account_num", 
                 "type": "string"
-            }, 
+            },
             {
-                "description": "Unique identifier of Subscriber", 
-                "name": "subs_id", 
-                "type": "decimal(20,0)"
-            }, 
-            {
-                "description": "Unique ID of Billing Account", 
+                "description": "Unique identifier of Billing Account", 
                 "name": "billing_account_id", 
                 "type": "decimal(20,0)"
-            }, 
+            },  
             {
                 "description": "Unique identifier of Subscriber", 
                 "name": "subs_id", 
                 "type": "decimal(20,0)"
-            }, 
-            {
+            },
+           	{
                 "description": "Unique ID of Subscriber", 
                 "name": "bpi_id", 
                 "type": "decimal(20,0)"
@@ -13869,7 +13884,7 @@
             {
                 "description": "Current status of subscriber id", 
                 "name": "subs_status_id", 
-                "type": "long"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "Current status of subscriber value", 
@@ -13914,12 +13929,12 @@
             {
                 "description": "", 
                 "name": "upfront_payment", 
-                "type": "decimal(20,0)"
+                "type": "decimal(30,10)"
             }, 
             {
                 "description": "", 
                 "name": "remaining_upfront_payment", 
-                "type": "decimal(20,0)"
+                "type": "decimal(30,10)"
             }, 
             {
                 "description": "The date when was last changes in subscription.", 
@@ -13949,12 +13964,17 @@
             {
                 "description": "ID of the Template for the Tariff plan", 
                 "name": "tariff_plan_template_id", 
-                "type": "string"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "Name of the Template for the Tariff plan", 
                 "name": "tariff_plan_template_name", 
                 "type": "string"
+            },
+            {
+                "description": "Date when customer has changed the Tariff plan (flat product offering)",
+                "name": "date_change_tariff_plan",
+                "type": "timestamp"              
             }, 
             {
                 "description": "ID of the Tariff plan (flat product offering)", 
@@ -14102,12 +14122,6 @@
                 "name": "date",
                 "nullable": true,
                 "type": "string"
-            },
-            {
-                "description": "",
-                "name": "date_change_tariff_plan",
-                "nullable": true,
-                "type": "timestamp"
             }
         ], 
         "table_name": "vf_dim_subscription"
