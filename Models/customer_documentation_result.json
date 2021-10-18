@@ -383,7 +383,7 @@
             {
                 "description": "Bill Handling code ID", 
                 "name": "bill_handling_code_id", 
-                "type": "string"
+                "type": "decimal(20,0)"
             }, 
             {
                 "description": "Fuller name for the bill handling code.", 
