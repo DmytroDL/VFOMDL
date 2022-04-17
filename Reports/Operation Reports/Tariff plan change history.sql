@@ -1,33 +1,24 @@
-with hist as (select
-                  distinct
-                  bh.subs_id,
-                  bh.productoffering_name,
-                  bh.date_change_productoffering
-              from refined.fct_bpi_history bh
-                       join REFINED.dim_productofferings dpo on dpo.external_id = bh.external_id
-              where dpo.is_top_offer = 'Yes'),
-     chng_arr as (select
-                      row_number() over (partition by h.subs_id order by h.date_change_productoffering) as rownum,
-                      h.subs_id,
-                      h.productoffering_name,
-                      h.date_change_productoffering
-                  from hist h),
-     rslts as (select
-                   t1.subs_id as subs_id,
-                   t1.productoffering_name as prev_tariff,
-                   CASE WHEN t2.productoffering_name is NULL THEN t1.productoffering_name ELSE t2.productoffering_name END as new_tariff,
-                   t1.date_change_productoffering tariff_start_date,
-                   t2.date_change_productoffering tariff_end_date
-               from chng_arr t1
-                        left join chng_arr t2 on t1.subs_id = t2.subs_id and cast(t2.rownum as int) = (cast(t1.rownum as int) + 1)
-               order by subs_id, tariff_start_date,tariff_end_date)
+with bc as (select
+dense_rank() over (partition by ocs_subscriber_id order by activation_date) as subscription_cycle_id,
+ocs_subscriber_id,
+ocs_subscription_id,
+productoffering_name,
+lag(productoffering_name) over (partition by ocs_subscriber_id order by activation_date) as prev_tariff,
+activation_date,
+lead(activation_date) over (partition by ocs_subscriber_id order by activation_date) as next_activation_date,
+renewal_date
+from refined.fct_prepaid_charges
+where lower(is_payg) = 'n' and bpi_id not like '%RACK' and event_type ='addSubscriptionRequest' /* TLO and Addons */
+order by subscription_cycle_id)
+
 select
-    substr(bpi.name,instr(bpi.name,'|')+2,8) msisdn,
-    trim(REGEXP_EXTRACT(bpi.ext_business_prod_inst_stat, '(.#(?:[0-9a-fA-F]{3}){1,2}[$])?(.)', 2)) as subs_status_value,
-    rslts.prev_tariff prev_tariff,
-    rslts.new_tariff new_tariff,
-    rslts.tariff_start_date tariff_start_date,
-    rslts.tariff_end_date tariff_change_date
-from rslts
-         join interim.r_oe_bpi bpi on bpi.object_id = rslts.subs_id
-order by msisdn,tariff_start_date,tariff_end_date
+ci.msisdn msisdn,
+bc.prev_tariff prev_tariff_plan_name,
+bc.productoffering_name new_tariff_plan_name,
+nvl(sub.subs_status_value,'NA') mobile_line_status,
+bc.activation_date date_start,
+bc.next_activation_date date_end
+from refined.dim_customer_info ci
+join bc on ci.ocs_subscriber_id = bc.ocs_subscriber_id
+left join refined.dim_subscription sub on sub.msisdn = ci.msisdn
+order by ci.msisdn, bc.activation_date;
