@@ -14,13 +14,12 @@ esim_logical_status_value = 'Assigned'
  /*
   Information about ESIM:
   */
-select ds.activation_state_value, ds.imsi, dm.item_model_name, bpi.actual_start_date, bpi.distribution_channel_value, ds.date
-from dim_esim ds
-         join dim_item_model dm
-              on ds.item_model_id = dm.item_model_id
-         left join dim_businessproductinstances bpi
-                   on ds.iccid = bpi.iccid
-where ds.activation_state_value = ‘Activated’ and ds.esim_logical_status_value = 'Assigned'
+select 
+ds.activation_state_value, ds.imsi, dm.item_model_name, bpi.actual_start_date, bpi.distribution_channel_value, ds.`date`
+from refined.dim_esim ds
+join refined.dim_item_model dm on ds.item_model_id = dm.item_model_id
+left join refined.dim_businessproductinstances bpi on cast(ds.iccid as decimal(20,0)) = bpi.iccid
+where ds.activation_state_value = 'Activated' and ds.esim_logical_status_value = 'Assigned'
 
 /*
  Information about Physical SIM:
